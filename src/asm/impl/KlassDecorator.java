@@ -50,6 +50,11 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         }
     }
 
+    String stripFilePath(String s){
+        String[] sArray = s.split("/");
+        return sArray[sArray.length -1];
+    }
+
     @Override
     public String printBefore() {
         return baseKlass.printBefore();
