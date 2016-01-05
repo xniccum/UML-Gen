@@ -1,0 +1,163 @@
+digraph G {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+
+    node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+    ]
+
+    edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    ]
+IField [ 
+ label = " { IField||+ getFieldName ( ): java.lang.String \l+ getFieldType ( ): java.lang.String \l+ getAccessLevel ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ IField -> Object 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  IField -> IKlassPart 
+IInterphace [ 
+ label = " { IInterphace||+ getInterphase ( ): java.lang.String[] \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ IInterphace -> Object 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  IInterphace -> IKlassPart 
+IKlass [ 
+ label = " { IKlass||+ getName ( ): java.lang.String \l+ setVersion ( arg0 : int): void \l+ getVersion ( ): int \l+ setAccess ( arg0 : int): void \l+ getAccess ( ): int \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ IKlass -> Object 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  IKlass -> IKlassPart 
+IKlassPart [ 
+ label = " { IKlassPart||+ getBaseName ( ): java.lang.String \l+ printBefore ( ): java.lang.String \l+ printNameBlock ( ): java.lang.String \l+ printFieldBlock ( ): java.lang.String \l+ printMethodBlock ( ): java.lang.String \l+ printEnd ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ IKlassPart -> Object 
+IMethod [ 
+ label = " { IMethod||+ getAccessLevel ( ): java.lang.String \l+ getMethodName ( ): java.lang.String \l+ getReturnType ( ): java.lang.String \l+ getArguments ( ): java.lang.Object[] \l+ getExceptions ( ): java.lang.String[] \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ IMethod -> Object 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  IMethod -> IKlassPart 
+ISuperKlass [ 
+ label = " { ISuperKlass||+ getSuperKlass ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ ISuperKlass -> Object 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  ISuperKlass -> IKlassPart 
+Field [ 
+ label = " { Field|- baseKlass: asm.api.IKlassPart \l- accessLevel: java.lang.String \l- fieldName: java.lang.String \l- fieldType: java.lang.String \l|+ init ( arg0 : asm.api.IKlassPart, arg1 : int, arg2 : java.lang.String, arg3 : java.lang.String): void \l+ getFieldName ( ): java.lang.String \l+ getFieldType ( ): java.lang.String \l+ getAccessLevel ( ): java.lang.String \l+ printFieldBlock ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ Field -> KlassDecorator 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  Field -> IField 
+Interphace [ 
+ label = " { Interphace|- interphaceNames: java.lang.String[] \l- baseKlass: asm.api.IKlassPart \l|+ init ( arg0 : java.lang.String[], arg1 : asm.api.IKlassPart): void \l+ getInterphase ( ): java.lang.String[] \l+ printEnd ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ Interphace -> KlassDecorator 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  Interphace -> IInterphace 
+Klass [ 
+ label = " { Klass|- name: java.lang.String \l- version: int \l- access: int \l- klassParts: java.util.Collection \l|+ init ( arg0 : java.lang.String, arg1 : int, arg2 : int): void \l+ setVersion ( arg0 : int): void \l+ setAccess ( arg0 : int): void \l+ getName ( ): java.lang.String \l+ getVersion ( ): int \l+ getBaseName ( ): java.lang.String \l+ getAccess ( ): int \l+ printBefore ( ): java.lang.String \l+ printNameBlock ( ): java.lang.String \l+ printFieldBlock ( ): java.lang.String \l+ printMethodBlock ( ): java.lang.String \l+ printEnd ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ Klass -> Object 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  Klass -> IKlass 
+KlassDecorator [ 
+ label = " { KlassDecorator|- baseKlass: asm.api.IKlassPart \l- baseKlassName: java.lang.String \l|+ init ( arg0 : asm.api.IKlassPart): void \l+ getBaseName ( ): java.lang.String \l getAccessStringLevel ( arg0 : java.lang.String): java.lang.String \l getAccessStringLevel ( arg0 : int): java.lang.String \l getAccessLevelString ( arg0 : int): java.lang.String \l stripFilePath ( arg0 : java.lang.String): java.lang.String \l+ printBefore ( ): java.lang.String \l+ printFieldBlock ( ): java.lang.String \l+ printMethodBlock ( ): java.lang.String \l+ printNameBlock ( ): java.lang.String \l+ printEnd ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ KlassDecorator -> Object 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  KlassDecorator -> IKlassPart 
+Argument [ 
+ label = " { Argument|- name: java.lang.String \l- type: java.lang.String \l|+ init ( arg0 : java.lang.String, arg1 : java.lang.String): void \l+ getName ( ): java.lang.String \l+ getType ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ Argument -> Object 
+Method [ 
+ label = " { Method|- baseKlass: asm.api.IKlassPart \l- accessLevel: java.lang.String \l- methodName: java.lang.String \l- returnType: java.lang.String \l- arguments: asm.impl.Argument[] \l- exceptions: java.lang.String[] \l|+ init ( arg0 : asm.api.IKlassPart, arg1 : int, arg2 : java.lang.String, arg3 : java.lang.String, arg4 : asm.impl.Argument[], arg5 : java.lang.String[]): void \l+ getAccessLevel ( ): java.lang.String \l+ getMethodName ( ): java.lang.String \l+ getReturnType ( ): java.lang.String \l+ getArguments ( ): java.lang.Object[] \l+ getExceptions ( ): java.lang.String[] \l+ printMethodBlock ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ Method -> KlassDecorator 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  Method -> IMethod 
+SuperKlass [ 
+ label = " { SuperKlass|- superKlassName: java.lang.String \l- baseKlass: asm.api.IKlassPart \l|+ init ( arg0 : asm.api.IKlassPart, arg1 : java.lang.String): void \l+ getSuperKlass ( ): java.lang.String \l+ printEnd ( ): java.lang.String \l 
+ } " 
+ ]
+ edge [ 
+  arrowhead = "normal" 
+ ] 
+ SuperKlass -> KlassDecorator 
+ edge [ 
+ arrowhead = "empty" 
+ ] 
+  SuperKlass -> ISuperKlass 
+}
