@@ -10,7 +10,8 @@ import org.objectweb.asm.Type;
 
 import java.util.ArrayList;
 
-public class ClassMethodVisitor extends ClassVisitor {
+public class ClassMethodVisitor extends ClassVisitor
+{
 	private KlassStorage klass;
 	public ClassMethodVisitor(int api, KlassStorage klass){
 		super(api);
@@ -20,20 +21,18 @@ public class ClassMethodVisitor extends ClassVisitor {
 	public ClassMethodVisitor(int api, ClassVisitor decorated, KlassStorage klass) {
 		super(api, decorated);
 		this.klass = klass;
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions){
 		MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
 
-		this.klass.setCurrentPart(new Method(this.klass.getCurrentPart(), access, name, this.getReturnType(desc), this.getArguments(desc), exceptions));
-
-		// TODO: create an internal representation of the current method and pass it to the methods below
-		addAccessLevel(access);
-		addReturnType(desc);
-		addArguments(desc);
-		
+		this.klass.setCurrentPart(new Method(this.klass.getCurrentPart(),
+				access,
+				name,
+				this.getReturnType(desc),
+				this.getArguments(desc),
+				exceptions));
 
 		return toDecorate;
 	}
@@ -42,51 +41,22 @@ public class ClassMethodVisitor extends ClassVisitor {
 		return Type.getReturnType(desc).getClassName();
 	}
 
-	Argument[] getArguments(String desc){
+	Argument[] getArguments(String desc)
+	{
 		Type[] args = Type.getArgumentTypes(desc);
 		Argument[] arguments = new Argument[args.length];
-		for(int i=0; i< args.length; i++){
-
-			//String arg=args[i].getClassName();
-			// TODO: delete the next line
-			//System.out.println("		arg "+i+": "+arg);
+		for(int i=0; i< args.length; i++)
+		{
 			arguments[i] = new Argument( ("arg"+i), args[i].getClassName());
-			// TODO: ADD this information to your representation of the current method.
-
 		}
 		return arguments;
-	}
-
-	void addAccessLevel(int access){
-		String level="";
-		if((access&Opcodes.ACC_PUBLIC)!=0){
-			level="public";
-		}else if((access&Opcodes.ACC_PROTECTED)!=0){
-			level="protected";
-		}else if((access&Opcodes.ACC_PRIVATE)!=0){
-			level="private";
-		}else{
-			level="default";
-		}
-		// TODO: delete the next line
-		System.out.println("		access level: "+level);
-		// TODO: ADD this information to your representation of the current method.
-	}
-	
-	void addReturnType(String desc){
-		String returnType = Type.getReturnType(desc).getClassName();
-		// TODO: delete the next line
-		System.out.println("		return type: " + returnType);
-		// TODO: ADD this information to your representation of the current method.
 	}
 	
 	void addArguments(String desc){
 		Type[] args = Type.getArgumentTypes(desc);
-	    for(int i=0; i< args.length; i++){
+	    for(int i=0; i< args.length; i++)
+		{
 	    	String arg=args[i].getClassName();
-	    	// TODO: delete the next line
-	    	System.out.println("		arg "+i+": "+arg);
-	    	// TODO: ADD this information to your representation of the current method.
 	    }
 	}
 }

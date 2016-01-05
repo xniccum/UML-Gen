@@ -18,16 +18,14 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 	}
 
     @Override
-    public void visit(int version, int access, String name, String signature, String superName, String[] interfaces){
-        // TODO: delete the line below
+    public void visit(int version, int access, String name, String signature, String superName, String[] interfaces)
+    {
         System.out.println("Class: "+name+" extends "+superName+" implements "+Arrays.toString(interfaces));
-        // TODO: construct an internal representation of the class for later use by decorators
         IKlassPart part = new Klass(name, version,access);
         if(superName != "")
             part = new SuperKlass(part, superName);
         if(interfaces.length != 0)
             part = new Interphace(interfaces, part);
-
         this.klass.setCurrentPart(part);
 
 
