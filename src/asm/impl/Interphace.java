@@ -6,22 +6,23 @@ import asm.api.IKlassPart;
 /**
  * Created by Steven on 1/4/2016.
  */
-public class Interphace implements IInterphace {
+public class Interphace extends KlassDecorator implements IInterphace {
     private String[] interphaceNames;
     private IKlassPart baseKlass;
-    private String baseClassName;
+    //private String baseClassName;
 
     public Interphace(String[] interphaceNames, IKlassPart baseKlass) {
+        super(baseKlass);
         this.interphaceNames = interphaceNames;
         this.baseKlass = baseKlass;
-        this.baseClassName = baseKlass.getBaseName();
+        //this.baseClassName = baseKlass.getBaseName();
     }
 
     // this.baseClassName = baseKlass.getBaseName();
 
     @Override
     public String getBaseName() {
-        return this.baseClassName;
+        return super.getBaseName();
     }
 
     @Override
@@ -45,7 +46,7 @@ public class Interphace implements IInterphace {
         StringBuilder returnString = new StringBuilder();
         returnString.append(" edge [ \n arrowhead = \"empty\" \n \n ");
         for(String interphaceName : this.interphaceNames) {
-           returnString.append(String.format(" %s -> $s \n", baseClassName, interphaceName));
+           returnString.append(String.format(" %s -> $s \n", super.getBaseName(), interphaceName));
         }
         return returnString.toString();
     }
