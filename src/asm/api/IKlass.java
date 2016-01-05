@@ -4,7 +4,7 @@ package asm.api;
  * Created by Steven on 1/4/2016.
  */
 public interface IKlass extends IKlassPart {
-    public String getName();
-    public int getVersion();
-    public int getAccess();
+    String getName();
+    int getVersion();
+    int getAccess();
 }

@@ -23,6 +23,6 @@ public class ClassFieldVisitor extends ClassVisitor{
 		// TODO: add this field to your internal representation of the current class.
 		// What is a good way to know what the current class is?
 		return toDecorate;
-	};
+	}
 
 }

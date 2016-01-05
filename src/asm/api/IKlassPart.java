@@ -6,9 +6,9 @@ package asm.api;
  * Assumes that the Fields will be attached Before the methods
  */
 public interface IKlassPart {
-    public String getBaseName();
+    String getBaseName();
 
-    public String printBefore();
-    public String printMiddle();
-    public String printEnd();
+    String printBefore();
+    String printMiddle();
+    String printEnd();
 }
