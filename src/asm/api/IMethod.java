@@ -7,7 +7,7 @@ public interface IMethod extends IKlassPart{
     public String getAccessLevel();
     public String getMethodName();
     public String getReturnType();
-    public String[] getArguments();
+    public Object[] getArguments();
     public String[] getExceptions();
 
 }

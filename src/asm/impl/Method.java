@@ -12,10 +12,10 @@ public class Method extends KlassDecorator implements IMethod {
     private String accessLevel;
     private String methodName;
     private String returnType;
-    private String[] arguments;
+    private Argument[] arguments;
     private String[] exceptions;
 
-    public Method(IKlassPart baseClass, String accessLevel, String methodName, String returnType, String[] arguments, String[] exceptions) {
+    public Method(IKlassPart baseClass, String accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
         super(baseClass);
         this.baseKlass = baseClass;
         this.accessLevel = accessLevel;
@@ -41,7 +41,7 @@ public class Method extends KlassDecorator implements IMethod {
     }
 
     @Override
-    public String[] getArguments() {
+    public Object[] getArguments() {
         return this.arguments;
     }
 
@@ -61,7 +61,17 @@ public class Method extends KlassDecorator implements IMethod {
 
     @Override
     public String printMiddle() {
-        return String.format("");
+        StringBuilder returnString = new StringBuilder();
+        returnString.append(String.format("%s %s ( ", super.getAccessStringLevel(this.accessLevel), this.methodName));
+        if(this.arguments.length !=0){
+            returnString.append(String.format("%s : %s", this.arguments[0].getName(), this.arguments[0].getType().toString()));
+        }
+
+        for(int i = 1; i<this.arguments.length; i++){
+            returnString.append(String.format(", %s : %s", this.arguments[i].getName(), this.arguments[i].getType().toString()));
+        }
+        returnString.append(String.format("): %s \\l", this.returnType ));
+        return returnString.toString();
     }
 
     @Override

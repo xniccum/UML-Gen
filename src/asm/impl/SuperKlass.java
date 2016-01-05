@@ -38,7 +38,7 @@ public class SuperKlass extends KlassDecorator implements ISuperKlass{
 
     @Override
     public String printEnd() {
-        //TODO: check Solid
-        return String.format(" edge [ \n  arrowhead = \"solid\" \n \n %s -> $s \n", super.getBaseName() , superKlassName);
+        //TODO: check Filled
+        return String.format(" edge [ \n  arrowhead = \"filled\" \n \n %s -> $s \n", super.getBaseName() , superKlassName);
     }
 }

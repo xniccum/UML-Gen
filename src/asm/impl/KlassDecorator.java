@@ -6,7 +6,7 @@ import asm.api.IKlassPart;
 /**
  * Created by Steven on 1/4/2016.
  */
-public abstract class KlassDecorator {// extends IKlass implements IKlassPart{
+public abstract class KlassDecorator implements IKlassPart{// extends IKlass implements IKlassPart{
     //public KlassDecorator(String name, int version, int access) {
     //    super(name, version, access);
     //}
@@ -34,5 +34,20 @@ public abstract class KlassDecorator {// extends IKlass implements IKlassPart{
             default:
                 return "";
         }
+    }
+
+    @Override
+    public String printBefore() {
+        return baseKlass.printBefore();
+    }
+
+    @Override
+    public String printMiddle() {
+        return baseKlass.printBefore();;
+    }
+
+    @Override
+    public String printEnd() {
+        return baseKlass.printBefore();
     }
 }
