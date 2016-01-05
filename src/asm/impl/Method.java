@@ -19,7 +19,7 @@ public class Method extends KlassDecorator implements IMethod {
         super(baseClass);
         this.baseKlass = baseClass;
         this.accessLevel = super.getAccessStringLevel(accessLevel);
-        this.methodName = methodName;
+        this.methodName = methodName.replaceAll("[\\<\\>\\\"\\'\\|\\;\\\\\\/]","");
         this.returnType = returnType;
         this.arguments = arguments;
         this.exceptions = exceptions;

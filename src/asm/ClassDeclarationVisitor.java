@@ -24,7 +24,7 @@ public class ClassDeclarationVisitor extends ClassVisitor {
         // TODO: construct an internal representation of the class for later use by decorators
         IKlassPart part = new Klass(name, version,access);
         if(superName != "")
-            part = new SuperKlass(part, name);
+            part = new SuperKlass(part, superName);
         if(interfaces.length != 0)
             part = new Interphace(interfaces, part);
 
