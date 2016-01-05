@@ -1,38 +1,62 @@
 package asm;
 
+import asm.impl.Argument;
+import asm.impl.Klass;
+import asm.impl.Method;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 
+import java.util.ArrayList;
+
 public class ClassMethodVisitor extends ClassVisitor {
-	public ClassMethodVisitor(int api){
+	private KlassStorage klass;
+	public ClassMethodVisitor(int api, KlassStorage klass){
 		super(api);
+		this.klass = klass;
 	}
 	
-	public ClassMethodVisitor(int api, ClassVisitor decorated) {
+	public ClassMethodVisitor(int api, ClassVisitor decorated, KlassStorage klass) {
 		super(api, decorated);
+		this.klass = klass;
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions){
 		MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
-		
-		// TODO: delete this line
-		System.out.println("	method " + name);
+
+		this.klass.setCurrentPart(new Method(this.klass.getCurrentPart(), access, name, this.getReturnType(desc), this.getArguments(desc), exceptions));
 
 		// TODO: create an internal representation of the current method and pass it to the methods below
 		addAccessLevel(access);
 		addReturnType(desc);
 		addArguments(desc);
 		
-	    // TODO: add the current method to your internal representation of the current class
-		// What is a good way for the code to remember what the current class is?
 
 		return toDecorate;
 	}
-	
+
+	String getReturnType(String desc){
+		return Type.getReturnType(desc).getClassName();
+	}
+
+	Argument[] getArguments(String desc){
+		Type[] args = Type.getArgumentTypes(desc);
+		Argument[] arguments = new Argument[args.length];
+		for(int i=0; i< args.length; i++){
+
+			//String arg=args[i].getClassName();
+			// TODO: delete the next line
+			//System.out.println("		arg "+i+": "+arg);
+			arguments[i] = new Argument( ("arg"+i), args[i].getClassName());
+			// TODO: ADD this information to your representation of the current method.
+
+		}
+		return arguments;
+	}
+
 	void addAccessLevel(int access){
 		String level="";
 		if((access&Opcodes.ACC_PUBLIC)!=0){
