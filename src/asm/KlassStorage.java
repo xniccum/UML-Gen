@@ -19,4 +19,15 @@ public class KlassStorage {
     public void setCurrentPart(IKlassPart currentPart) {
         this.currentPart = currentPart;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string.append(currentPart.printBefore());
+        string.append(currentPart.getBaseName());
+        string.append(currentPart.printFieldBlock());
+        string.append(currentPart.printMethodBlock());
+        string.append(currentPart.printEnd());
+        return string.toString();
+    }
 }

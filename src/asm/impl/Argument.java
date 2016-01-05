@@ -5,7 +5,7 @@ import java.lang.reflect.Type;
 /**
  * Created by Steven on 1/4/2016.
  */
-class Argument {
+public class Argument {
     private String name;
     private String type;
 

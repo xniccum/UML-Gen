@@ -33,11 +33,12 @@ public class DesignParser {
 
 
 			// TODO: add more DECORATORS here in later milestones to accomplish specific tasks
+
 			
-			
-			
+
 			// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
 			reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
+			string.append(storage.toString());
 		}
 	}
 }

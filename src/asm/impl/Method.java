@@ -15,10 +15,10 @@ public class Method extends KlassDecorator implements IMethod {
     private Argument[] arguments;
     private String[] exceptions;
 
-    public Method(IKlassPart baseClass, String accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
+    public Method(IKlassPart baseClass, int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
         super(baseClass);
         this.baseKlass = baseClass;
-        this.accessLevel = accessLevel;
+        this.accessLevel = super.getAccessStringLevel(accessLevel);
         this.methodName = methodName;
         this.returnType = returnType;
         this.arguments = arguments;
@@ -53,7 +53,7 @@ public class Method extends KlassDecorator implements IMethod {
     public String printMethodBlock() {
         StringBuilder returnString = new StringBuilder();
         returnString.append(super.printMethodBlock());
-        returnString.append(String.format("%s %s ( ", super.getAccessStringLevel(this.accessLevel), this.methodName));
+        returnString.append(String.format("%s %s ( ", this.accessLevel, this.methodName));
         if(this.arguments.length !=0){
             returnString.append(String.format("%s : %s", this.arguments[0].getName(), this.arguments[0].getType().toString()));
         }
