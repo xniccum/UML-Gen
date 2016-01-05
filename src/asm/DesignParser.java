@@ -4,7 +4,9 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 public class DesignParser {
 	/**
@@ -15,7 +17,26 @@ public class DesignParser {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException{
-		StringBuilder string = new StringBuilder();
+		OutputStream dotOut = new FileOutputStream("out/ouput.dot");
+
+		String s ="digraph G {\n" +
+				"    fontname = \"Bitstream Vera Sans\"\n" +
+				"    fontsize = 8\n" +
+				"\n" +
+				"    node [\n" +
+				"    fontname = \"Bitstream Vera Sans\"\n" +
+				"    fontsize = 8\n" +
+				"    shape = \"record\"\n" +
+				"    ]\n" +
+				"\n" +
+				"    edge [\n" +
+				"    fontname = \"Bitstream Vera Sans\"\n" +
+				"    fontsize = 8\n" +
+				"    ]\n";
+		dotOut.write(s.getBytes());
+
+
+		//StringBuilder string = new StringBuilder();
 
 		for(String className: args){
 			KlassStorage storage = new KlassStorage();
@@ -38,8 +59,11 @@ public class DesignParser {
 
 			// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
 			reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
-			string.append(storage.toString());
+			//string.append(storage.toString());
+			dotOut.write(storage.toString().getBytes());
 		}
-		System.out.println(string.toString());
+		//System.out.println(string.toString());
+		dotOut.write("}".getBytes());
+		dotOut.close();
 	}
 }
