@@ -16,9 +16,18 @@ public class Klass implements IKlass {
     private Collection<IKlassPart> klassParts;
 
     public Klass(String name, int version, int access) {
-
         this.name = name;
         this.version = version;
+        this.access = access;
+    }
+
+    @Override
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    @Override
+    public void setAccess(int access) {
         this.access = access;
     }
 

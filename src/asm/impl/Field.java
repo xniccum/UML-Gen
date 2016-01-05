@@ -38,6 +38,6 @@ public class Field extends KlassDecorator implements IField{
 
     @Override
     public String printFieldBlock() {
-        return super.printFieldBlock() + String.format("%s %s:%s", this.accessLevel, this.fieldName, this.fieldType);
+        return super.printFieldBlock() + String.format("%s %s: %s \\1 ", this.accessLevel, this.fieldName, this.fieldType);
     }
 }

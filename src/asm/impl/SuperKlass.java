@@ -23,7 +23,7 @@ public class SuperKlass extends KlassDecorator implements ISuperKlass{
 
     @Override
     public String printEnd() {
-        //TODO: check Filled
-        return super.printEnd() + String.format("\n edge [ \n  arrowhead = \"filled\" \n \n %s -> $s \n", super.getBaseName() , superKlassName);
+        //TODO: check Normal
+        return super.printEnd() + String.format("\n edge [ \n  arrowhead = \"normal\" \n \n %s -> $s \n", super.getBaseName() , superKlassName);
     }
 }
