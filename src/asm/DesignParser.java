@@ -39,6 +39,8 @@ public class DesignParser {
 			// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
 			reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 			string.append(storage.toString());
+
+			System.out.println(string.toString());
 		}
 	}
 }

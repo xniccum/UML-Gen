@@ -67,11 +67,11 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
 
     @Override
     public String printNameBlock() {
-        return baseKlass.printBefore();
+        return baseKlass.printNameBlock();
     }
 
     @Override
     public String printEnd() {
-        return baseKlass.printBefore();
+        return baseKlass.printEnd();
     }
 }

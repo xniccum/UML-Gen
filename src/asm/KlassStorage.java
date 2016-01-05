@@ -24,7 +24,7 @@ public class KlassStorage {
     public String toString() {
         StringBuilder string = new StringBuilder();
         string.append(currentPart.printBefore());
-        string.append(currentPart.getBaseName());
+        string.append(currentPart.printNameBlock());
         string.append(currentPart.printFieldBlock());
         string.append(currentPart.printMethodBlock());
         string.append(currentPart.printEnd());

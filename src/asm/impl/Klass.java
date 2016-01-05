@@ -58,12 +58,13 @@ public class Klass implements IKlass {
 
     @Override
     public String printNameBlock() {
-        return String.format("%s [ \n label = \" { %s |", this.name, this.name);
+        String nameTemp = this.name.split("/")[1];
+        return String.format("%s [ \n label = \" { %s |", nameTemp, nameTemp);
     }
 
     @Override
     public String printFieldBlock() {
-        return "\\l|";
+        return "|";
     }
 
     @Override
