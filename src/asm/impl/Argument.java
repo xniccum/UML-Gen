@@ -7,9 +7,9 @@ import java.lang.reflect.Type;
  */
 class Argument {
     private String name;
-    private Type type;
+    private String type;
 
-    public Argument(String name, Type type) {
+    public Argument(String name, String type) {
         this.name = name;
         this.type = type;
     }
@@ -18,7 +18,7 @@ class Argument {
         return name;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 }

@@ -50,18 +50,9 @@ public class Method extends KlassDecorator implements IMethod {
     }
 
     @Override
-    public String getBaseName() {
-        return super.getBaseName();
-    }
-
-    @Override
-    public String printBefore() {
-        return "";
-    }
-
-    @Override
-    public String printMiddle() {
+    public String printMethodBlock() {
         StringBuilder returnString = new StringBuilder();
+        returnString.append(super.printMethodBlock());
         returnString.append(String.format("%s %s ( ", super.getAccessStringLevel(this.accessLevel), this.methodName));
         if(this.arguments.length !=0){
             returnString.append(String.format("%s : %s", this.arguments[0].getName(), this.arguments[0].getType().toString()));
@@ -74,9 +65,5 @@ public class Method extends KlassDecorator implements IMethod {
         return returnString.toString();
     }
 
-    @Override
-    public String printEnd() {
-        return null;
-    }
 
 }

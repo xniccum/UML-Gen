@@ -48,12 +48,22 @@ public class Klass implements IKlass {
     }
 
     @Override
-    public String printMiddle() {
+    public String printNameBlock() {
         return String.format("%s [ \n label = \" { %s |", this.name, this.name);
     }
 
     @Override
+    public String printFieldBlock() {
+        return "\\l|";
+    }
+
+    @Override
+    public String printMethodBlock() {
+        return "\\l|";
+    }
+
+    @Override
     public String printEnd() {
-        return String.format(" } \" \n ]");
+        return String.format(" \n } \" \n ]");
     }
 }

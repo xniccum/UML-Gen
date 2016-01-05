@@ -2,15 +2,12 @@ package asm.impl;
 
 import asm.api.IKlass;
 import asm.api.IKlassPart;
+import org.objectweb.asm.Opcodes;
 
 /**
  * Created by Steven on 1/4/2016.
  */
 public abstract class KlassDecorator implements IKlassPart{// extends IKlass implements IKlassPart{
-    //public KlassDecorator(String name, int version, int access) {
-    //    super(name, version, access);
-    //}
-
     private IKlassPart baseKlass;
     private String baseKlassName;
 
@@ -19,7 +16,8 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         this.baseKlassName = baseKlass.getBaseName();
     }
 
-    String getBaseName() {
+    @Override
+    public String getBaseName() {
         return this.baseKlassName;
     }
 
@@ -36,14 +34,40 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         }
     }
 
+    String getAccessStringLevel(int accessLevel){
+        return this.getAccessStringLevel(this.getAccessLevelString(accessLevel));
+    }
+
+    String getAccessLevelString(int access){
+        if((access& Opcodes.ACC_PUBLIC)!=0){
+            return "public";
+        }else if((access&Opcodes.ACC_PROTECTED)!=0){
+           return "protected";
+        }else if((access&Opcodes.ACC_PRIVATE)!=0){
+            return "private";
+        }else{
+            return "default";
+        }
+    }
+
     @Override
     public String printBefore() {
         return baseKlass.printBefore();
     }
 
     @Override
-    public String printMiddle() {
-        return baseKlass.printBefore();;
+    public String printFieldBlock() {
+        return baseKlass.printFieldBlock();
+    }
+
+    @Override
+    public String printMethodBlock() {
+        return baseKlass.printMethodBlock();
+    }
+
+    @Override
+    public String printNameBlock() {
+        return baseKlass.printBefore();
     }
 
     @Override

@@ -17,28 +17,13 @@ public class SuperKlass extends KlassDecorator implements ISuperKlass{
     }
 
     @Override
-    public String getBaseName() {
-        return super.getBaseName();
-    }
-
-    @Override
     public String getSuperKlass() {
         return this.superKlassName;
     }
 
     @Override
-    public String printBefore() {
-        return "";
-    }
-
-    @Override
-    public String printMiddle() {
-        return "";
-    }
-
-    @Override
     public String printEnd() {
         //TODO: check Filled
-        return String.format(" edge [ \n  arrowhead = \"filled\" \n \n %s -> $s \n", super.getBaseName() , superKlassName);
+        return super.printEnd() + String.format("\n edge [ \n  arrowhead = \"filled\" \n \n %s -> $s \n", super.getBaseName() , superKlassName);
     }
 }

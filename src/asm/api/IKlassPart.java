@@ -9,6 +9,12 @@ public interface IKlassPart {
     String getBaseName();
 
     String printBefore();
-    String printMiddle();
+
+    String printNameBlock();
+
+    String printFieldBlock();
+
+    String printMethodBlock();
+
     String printEnd();
 }
