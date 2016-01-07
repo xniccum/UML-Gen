@@ -1,0 +1,1 @@
+dot -T png -o output.png output.dot
