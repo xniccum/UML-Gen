@@ -22,7 +22,7 @@ public class ClassFieldVisitor extends ClassVisitor{
 		FieldVisitor toDecorate = super.visitField(access, name, desc, signature, value);
 		String type = Type.getType(desc).getClassName();
 
-		this.klass.setCurrentPart(new Field(this.klass.getCurrentPart(), access, name, type));
+		this.klass.setCurrentPart(new Field(this.klass.getCurrentPart(), access, name, signature, type));
 
 		return toDecorate;
 	}

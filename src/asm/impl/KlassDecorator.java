@@ -56,7 +56,7 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
     }
 
     String stripClassPath(String s){
-        String[] strArr = s.split("[.]");
+        String[] strArr = s.split("[./]");
         return strArr[strArr.length-1];
     }
 

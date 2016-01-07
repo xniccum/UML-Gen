@@ -9,4 +9,5 @@ public interface IField extends IKlassPart{
     public String getFieldName();
     public String getFieldType();
     public String getAccessLevel();
+    public String getfieldSignature();
 }
