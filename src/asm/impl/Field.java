@@ -40,4 +40,14 @@ public class Field extends KlassDecorator implements IField{
     public String printFieldBlock() {
         return super.printFieldBlock() + String.format("%s %s: %s \\l", this.accessLevel, this.fieldName, this.fieldType);
     }
+
+    @Override
+    public String printEnd() {
+        StringBuilder strBuild = new StringBuilder();
+        strBuild.append(super.printEnd());
+        strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
+                super.stripFilePath(super.getBaseName()),
+                super.stripClassPath(super.stripCollection(fieldType))));
+        return strBuild.toString();
+    }
 }

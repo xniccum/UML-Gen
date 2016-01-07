@@ -76,7 +76,7 @@ public class Method extends KlassDecorator implements IMethod {
 
         for(Argument arg : arguments)
         {
-            set.add(arg.getUsedParam());
+            set.add(super.stripCollection(arg.getType()));
         }
 
         StringBuilder strBuild = new StringBuilder();

@@ -22,8 +22,5 @@ public class Argument {
         return type;
     }
 
-    public String getUsedParam(){
-        int startParse = type.indexOf('<');
-        return startParse > -1 ? type.substring(startParse, type.indexOf('>')) :type;
-    }
+
 }

@@ -60,6 +60,11 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         return strArr[strArr.length-1];
     }
 
+    String stripCollection(String type){
+        int startParse = type.indexOf('<');
+        return startParse > -1 ? type.substring(startParse, type.indexOf('>')) :type;
+    }
+
     @Override
     public String printBefore() {
         return baseKlass.printBefore();
