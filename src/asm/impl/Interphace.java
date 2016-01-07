@@ -27,7 +27,7 @@ public class Interphace extends KlassDecorator implements IInterphace {
         //TODO: check empty
         StringBuilder returnString = new StringBuilder();
         returnString.append(super.printEnd());
-        returnString.append(" edge [ \n arrowhead = \"empty\" \n ] \n ");
+        returnString.append(" edge [ \n style=\"solid\", arrowhead = \"empty\" \n ] \n ");
         for(String interphaceName : this.interphaceNames) {
            returnString.append(String.format(" %s -> %s \n", super.stripFilePath(super.getBaseName()), super.stripFilePath(interphaceName)));
         }

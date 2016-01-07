@@ -55,6 +55,11 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         return sArray[sArray.length -1];
     }
 
+    String stripClassPath(String s){
+        String[] strArr = s.split("[.]");
+        return strArr[strArr.length-1];
+    }
+
     @Override
     public String printBefore() {
         return baseKlass.printBefore();

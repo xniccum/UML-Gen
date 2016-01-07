@@ -24,6 +24,6 @@ public class SuperKlass extends KlassDecorator implements ISuperKlass{
     @Override
     public String printEnd() {
         //TODO: check Normal
-        return (super.printEnd() + String.format("\n edge [ \n  arrowhead = \"normal\" \n ] \n %s -> %s \n", super.stripFilePath(super.getBaseName()) , stripFilePath(this.superKlassName)));
+        return (super.printEnd() + String.format("\n edge [ \n  style=\"solid\", arrowhead = \"normal\" \n ] \n %s -> %s \n", super.stripFilePath(super.getBaseName()) , stripFilePath(this.superKlassName)));
     }
 }

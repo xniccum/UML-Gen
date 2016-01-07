@@ -17,9 +17,9 @@ public class DesignParser {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException{
-		OutputStream dotOut = new FileOutputStream("inputOutput/ouput.dot");
+		OutputStream dotOut = new FileOutputStream("inputOutput/output.dot");
 
-		String s ="digraph G {\n" +
+		String s ="strict digraph G {\n" +
 				"    fontname = \"Bitstream Vera Sans\"\n" +
 				"    fontsize = 8\n" +
 				"\n" +
