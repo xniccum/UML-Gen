@@ -1,5 +1,6 @@
 package asm;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
@@ -56,6 +57,7 @@ public class DesignParser {
 			reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 			//string.append(storage.toString());
 			dotOut.write(storage.toString().getBytes());
+			System.out.println(storage.toString());
 		}
 		//System.out.println(string.toString());
 		dotOut.write("}".getBytes());

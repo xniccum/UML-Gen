@@ -9,19 +9,17 @@ import org.objectweb.asm.Opcodes;
  */
 public abstract class KlassDecorator implements IKlassPart{// extends IKlass implements IKlassPart{
     private IKlassPart baseKlass;
-    private String baseKlassName;
 
     public KlassDecorator(IKlassPart baseKlass) {
         this.baseKlass = baseKlass;
-        this.baseKlassName = baseKlass.getBaseName();
     }
 
     @Override
     public String getBaseName() {
-        return this.baseKlassName;
+        return (this.baseKlass!=null)?this.baseKlass.getBaseName():null;
     }
 
-    String getAccessStringLevel(String accessLevel){
+    public String getAccessStringLevel(String accessLevel){
         switch (accessLevel){
             case "public":
                 return "+";
@@ -34,11 +32,11 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         }
     }
 
-    String getAccessStringLevel(int accessLevel){
+    public String getAccessStringLevel(int accessLevel){
         return this.getAccessStringLevel(this.getAccessLevelString(accessLevel));
     }
 
-    String getAccessLevelString(int access){
+    public String getAccessLevelString(int access){
         if((access& Opcodes.ACC_PUBLIC)!=0){
             return "public";
         }else if((access&Opcodes.ACC_PROTECTED)!=0){
@@ -50,43 +48,39 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         }
     }
 
-    String stripFilePath(String s){
+    public String stripFilePath(String s){
         String[] sArray = s.split("/");
         return sArray[sArray.length -1];
     }
 
-    String stripClassPath(String s){
+    public String stripClassPath(String s){
         String[] strArr = s.split("[./]");
         return strArr[strArr.length-1];
     }
 
-    String stripCollection(String type){
+    public String stripCollection(String type){
         int startParse = type.indexOf('<');
         return startParse > -1 ? type.substring(startParse, type.indexOf('>')) :type;
     }
 
     @Override
     public String printBefore() {
-        return baseKlass.printBefore();
+        return (this.baseKlass!=null)?this.baseKlass.printBefore():null;
     }
-
     @Override
     public String printFieldBlock() {
-        return baseKlass.printFieldBlock();
+        return (this.baseKlass!=null)?baseKlass.printFieldBlock():null;
     }
-
     @Override
     public String printMethodBlock() {
-        return baseKlass.printMethodBlock();
+        return (this.baseKlass!=null)?baseKlass.printMethodBlock():null;
     }
-
     @Override
     public String printNameBlock() {
-        return baseKlass.printNameBlock();
+        return (this.baseKlass!=null)?baseKlass.printNameBlock():null;
     }
-
     @Override
     public String printEnd() {
-        return baseKlass.printEnd();
+        return (this.baseKlass!=null)?baseKlass.printEnd():null;
     }
 }

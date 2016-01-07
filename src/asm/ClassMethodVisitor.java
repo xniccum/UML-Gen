@@ -51,12 +51,4 @@ public class ClassMethodVisitor extends ClassVisitor
 		}
 		return arguments;
 	}
-	
-	void addArguments(String desc){
-		Type[] args = Type.getArgumentTypes(desc);
-	    for(int i=0; i< args.length; i++)
-		{
-	    	String arg=args[i].getClassName();
-	    }
-	}
 }

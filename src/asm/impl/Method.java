@@ -54,7 +54,9 @@ public class Method extends KlassDecorator implements IMethod {
     @Override
     public String printMethodBlock() {
         StringBuilder returnString = new StringBuilder();
-        returnString.append(super.printMethodBlock());
+        String parent=super.printMethodBlock();
+        if(parent!=null)
+            returnString.append(super.printMethodBlock());
         returnString.append(String.format("%s %s ( ", this.accessLevel, this.methodName));
         if(this.arguments.length !=0){
             returnString.append(String.format("%s : %s", this.arguments[0].getName(), this.arguments[0].getType().toString()));

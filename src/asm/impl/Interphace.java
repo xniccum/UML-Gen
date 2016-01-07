@@ -24,7 +24,6 @@ public class Interphace extends KlassDecorator implements IInterphace {
 
     @Override
     public String printEnd() {
-        //TODO: check empty
         StringBuilder returnString = new StringBuilder();
         returnString.append(super.printEnd());
         returnString.append(" edge [ \n style=\"solid\", arrowhead = \"empty\" \n ] \n ");
