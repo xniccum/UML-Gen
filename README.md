@@ -8,10 +8,35 @@ We then created a KlassStorage instance to allow each set of interfaces a shared
 
 Our design will be simple to adjust and is flexable at runtime. The only issues is the shared memory is not completely thread safe, nor do we use thread safe datastructures. 
 
-
+======
 
 ## Who Did What
-Everyone alternated pair programming on Doolan's PC for the design and the first part of the implementation. Austin then started working on the automated testing once there was enough working code to test. Doolan and Davis then alternated on Doolan's PC finishing the project implementation and fixing bugs.
+###M1:
+Everyone alternated pair programming on Doolan's Desktop for the design and the first part of the implementation.
+######Austin
+ Started working on the automated testing once there was enough working code to test.
+######Doolan and Davis
+ alternated on Doolan's PC finishing the project implementation and fixing bugs.
+-----
+###M2:
+Doolan's Desktop was used for the bulk of the coding.
+#####Doolan and Davis
+    Doolan took care of the initial method implantation, the RegEx and String parsing.
+    Davis took care of the base field alterations implemtations.
+    Davis and Doolan read through and attempted to trouble shoot the following ASM 5.0 class documents:
+     +MethodVisitor
+        ..+visitLocalVariableAnnotation
+        ..+visitVarInsn
+     +ClassVisitor
+     +ClassReader
+     +CodeReader
+#####Niccum
+    Created tests that established the correct behavior of arrow detection code
+    Visually tested the  Abstract Factory PizzaStore
+    Updated UML diagrams of our code
+
 
 ## Instructions
 The main class is run with the paths to the class names as argument strings. The DOT file result can then be passed into GraphViz to generate the UML image.
+
+
