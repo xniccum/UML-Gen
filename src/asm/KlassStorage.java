@@ -1,6 +1,7 @@
 package asm;
 
 import asm.api.IKlassPart;
+import asm.impl.Klass;
 
 /**
  * Created by Steven on 1/5/2016.
@@ -8,7 +9,11 @@ import asm.api.IKlassPart;
 public class KlassStorage {
     private IKlassPart currentPart;
 
-    public KlassStorage() {
+    public KlassStorage(String className, int version, int access) {
+        this.currentPart = new Klass(className, version, access);
+    }
+
+    public KlassStorage(){
         this.currentPart = null;
     }
 

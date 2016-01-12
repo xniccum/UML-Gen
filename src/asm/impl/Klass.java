@@ -15,12 +15,18 @@ public class Klass implements IKlass {
 
     private Collection<IKlassPart> klassParts;
 
+    public Klass(String name){
+        this.name = name;
+        this.version = 1;
+        this.access = -1;
+    }
+
     public Klass(String name, int version, int access) {
         this.name = name;
         this.version = version;
         this.access = access;
     }
-
+    //region IKlass methods
     @Override
     public void setVersion(int version) {
         this.version = version;
@@ -50,7 +56,9 @@ public class Klass implements IKlass {
     public int getAccess() {
         return this.access;
     }
+    //endregion
 
+    //region PrintMethods
     @Override
     public String printBefore() {
         return "";
@@ -76,4 +84,5 @@ public class Klass implements IKlass {
     public String printEnd() {
         return String.format(" \n } \" \n ]");
     }
+    //endregion
 }

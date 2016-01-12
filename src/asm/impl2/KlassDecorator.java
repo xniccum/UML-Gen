@@ -1,4 +1,4 @@
-package asm.impl;
+package asm.impl2;
 
 import asm.api.IKlass;
 import asm.api.IKlassPart;
@@ -11,17 +11,49 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
     private IKlassPart baseKlass;
     private String baseKlassName;
 
+
+
     public KlassDecorator(IKlassPart baseKlass) {
         this.baseKlass = baseKlass;
-        this.baseKlassName = baseKlass.getBaseName();
+        this.baseKlassName = baseKlass == null? "" : baseKlass.getBaseName();
     }
 
     @Override
     public String getBaseName() {
-        return this.baseKlassName;
+        return baseKlass == null? "" : this.baseKlassName;
     }
 
-    String getAccessStringLevel(String accessLevel){
+    //region Print Overrides
+    @Override
+    public String printBefore() {
+        return baseKlass == null? "" : baseKlass.printBefore();
+    }
+
+    @Override
+    public String printFieldBlock() {
+        return baseKlass == null? "" : baseKlass.printFieldBlock();
+    }
+
+    @Override
+    public String printMethodBlock() {
+        return baseKlass == null? "" : baseKlass.printMethodBlock();
+    }
+
+    @Override
+    public String printNameBlock() {
+        return baseKlass == null? "" : baseKlass.printNameBlock();
+    }
+
+    @Override
+    public String printEnd() {
+        return baseKlass == null ? "" : baseKlass.printEnd();
+    }
+
+    //endregion
+
+    //region Helper Methods
+
+    public String getAccessStringLevel(String accessLevel){
         switch (accessLevel){
             case "public":
                 return "+";
@@ -34,11 +66,11 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         }
     }
 
-    String getAccessStringLevel(int accessLevel){
+    public String getAccessStringLevel(int accessLevel){
         return this.getAccessStringLevel(this.getAccessLevelString(accessLevel));
     }
 
-    String getAccessLevelString(int access){
+    public String getAccessLevelString(int access){
         if((access& Opcodes.ACC_PUBLIC)!=0){
             return "public";
         }else if((access&Opcodes.ACC_PROTECTED)!=0){
@@ -50,43 +82,22 @@ public abstract class KlassDecorator implements IKlassPart{// extends IKlass imp
         }
     }
 
-    String stripFilePath(String s){
+    public String stripFilePath(String s){
         String[] sArray = s.split("/");
         return sArray[sArray.length -1];
     }
 
-    String stripClassPath(String s){
+    public String stripClassPath(String s){
         String[] strArr = s.split("[./]");
         return strArr[strArr.length-1];
     }
 
-    String stripCollection(String type){
+    public String stripCollection(String type){
         int startParse = type.indexOf('<');
         return startParse > -1 ? type.substring(startParse, type.indexOf('>')) :type;
     }
 
-    @Override
-    public String printBefore() {
-        return baseKlass.printBefore();
-    }
+    //endregion
 
-    @Override
-    public String printFieldBlock() {
-        return baseKlass.printFieldBlock();
-    }
 
-    @Override
-    public String printMethodBlock() {
-        return baseKlass.printMethodBlock();
-    }
-
-    @Override
-    public String printNameBlock() {
-        return baseKlass.printNameBlock();
-    }
-
-    @Override
-    public String printEnd() {
-        return baseKlass.printEnd();
-    }
 }

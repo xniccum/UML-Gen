@@ -2,6 +2,7 @@ package asm.impl;
 
 import asm.api.IField;
 import asm.api.IKlassPart;
+import asm.impl2.KlassDecorator;
 
 /**
  * Created by Steven on 1/5/2016.

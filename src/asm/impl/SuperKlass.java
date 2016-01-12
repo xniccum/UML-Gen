@@ -2,6 +2,7 @@ package asm.impl;
 
 import asm.api.IKlassPart;
 import asm.api.ISuperKlass;
+import asm.impl2.KlassDecorator;
 
 /**
  * Created by Steven on 1/4/2016.

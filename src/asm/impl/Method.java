@@ -2,6 +2,7 @@ package asm.impl;
 
 import asm.api.IKlassPart;
 import asm.api.IMethod;
+import asm.impl2.KlassDecorator;
 
 import java.util.HashSet;
 
