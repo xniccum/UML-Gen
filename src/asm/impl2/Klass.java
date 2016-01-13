@@ -1,14 +1,17 @@
-package asm.impl;
+package asm.impl2;
 
-import asm.api.IKlass;
-import asm.api.IKlassPart;
+import asm.StorageApi.IKlass;
+import asm.StorageApi.IKlassPart;
+import asm.impl2.KlassDecorator;
+import asm.visitorApi.ITraverser;
+import asm.visitorApi.IVisitor;
 
 import java.util.Collection;
 
 /**
  * Created by Steven on 1/4/2016.
  */
-public class Klass implements IKlass {
+public class Klass implements IKlass, ITraverser {
     private String name;
     private int version;
     private int access;
@@ -49,7 +52,7 @@ public class Klass implements IKlass {
 
     @Override
     public String getBaseName() {
-        return this.name;
+        return KlassDecorator.stripFilePath(this.name);
     }
 
     @Override
@@ -58,31 +61,13 @@ public class Klass implements IKlass {
     }
     //endregion
 
-    //region PrintMethods
-    @Override
-    public String printBefore() {
-        return "";
-    }
 
     @Override
-    public String printNameBlock() {
-        String[] nameTemp = this.name.split("/");
-        return String.format("%s [ \n label = \" { %s", nameTemp[nameTemp.length -1], nameTemp[nameTemp.length -1]);
+    public void accept(IVisitor v) {
+        v.preVisit(this);
+        v.nameVisit(this);
+        v.fieldVisit(this);
+        v.methodVisit(this);
+        v.postVisit(this);
     }
-
-    @Override
-    public String printFieldBlock() {
-        return "|";
-    }
-
-    @Override
-    public String printMethodBlock() {
-        return "|";
-    }
-
-    @Override
-    public String printEnd() {
-        return String.format(" \n } \" \n ]");
-    }
-    //endregion
 }

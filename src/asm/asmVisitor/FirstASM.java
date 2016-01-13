@@ -1,4 +1,4 @@
-package asm;
+package asm.asmVisitor;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
@@ -12,7 +12,7 @@ public class FirstASM {
 	
 	public static void main(String[] args) throws IOException{
 		// Read in this class
-		ClassReader reader=new ClassReader("problem.asm.FirstASM");
+		ClassReader reader=new ClassReader("problem.asm.asmVisitor.FirstASM");
 
 		// Construct visitor to print out byte code
 		ClassVisitor visitor = new TraceClassVisitor(new PrintWriter(System.out));

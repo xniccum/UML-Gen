@@ -1,7 +1,7 @@
 package asm;
 
-import asm.api.IKlassPart;
-import asm.impl.Klass;
+import asm.StorageApi.IKlassPart;
+import asm.impl2.Klass;
 
 /**
  * Created by Steven on 1/5/2016.
@@ -25,7 +25,10 @@ public class KlassStorage {
         this.currentPart = currentPart;
     }
 
-    @Override
+
+
+
+   /**@Override
     public String toString() {
         StringBuilder string = new StringBuilder();
         string.append(currentPart.printBefore());
@@ -34,5 +37,5 @@ public class KlassStorage {
         string.append(currentPart.printMethodBlock());
         string.append(currentPart.printEnd());
         return string.toString();
-    }
+    }**/
 }

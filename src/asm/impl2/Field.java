@@ -1,7 +1,7 @@
-package asm.impl;
+package asm.impl2;
 
-import asm.api.IField;
-import asm.api.IKlassPart;
+import asm.StorageApi.IField;
+import asm.StorageApi.IKlassPart;
 import asm.impl2.KlassDecorator;
 
 /**
@@ -45,11 +45,7 @@ public class Field extends KlassDecorator implements IField{
         return fieldSignature;
     }
 
-    @Override
-    public String printFieldBlock() {
-        return super.printFieldBlock() + String.format("%s %s: %s \\l", this.accessLevel, this.fieldName, this.fieldType);
-    }
-
+/** BROKEN M@ Stuff
     @Override
     public String printEnd() {
         StringBuilder strBuild = new StringBuilder();
@@ -72,5 +68,5 @@ public class Field extends KlassDecorator implements IField{
         }
         
         return strBuild.toString();
-    }
+    }**/
 }

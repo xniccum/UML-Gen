@@ -1,6 +1,6 @@
 package asm;
 
-import asm.impl.Klass;
+import asm.impl2.Klass;
 import org.junit.Before;
 import org.junit.Test;
 

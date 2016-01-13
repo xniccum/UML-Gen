@@ -1,6 +1,4 @@
-package asm.api;
-
-import org.objectweb.asm.Type;
+package asm.StorageApi;
 
 /**
  * Created by Steven on 1/5/2016.

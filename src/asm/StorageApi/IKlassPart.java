@@ -1,4 +1,4 @@
-package asm.api;
+package asm.StorageApi;
 
 /**
  * Created by Steven on 1/4/2016.
@@ -8,7 +8,7 @@ package asm.api;
 public interface IKlassPart {
     String getBaseName();
 
-    String printBefore();
+    /** String printBefore();
 
     String printNameBlock();
 
@@ -16,5 +16,5 @@ public interface IKlassPart {
 
     String printMethodBlock();
 
-    String printEnd();
+    String printEnd();**/
 }

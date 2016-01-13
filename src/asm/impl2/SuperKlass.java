@@ -1,8 +1,9 @@
-package asm.impl;
+package asm.impl2;
 
-import asm.api.IKlassPart;
-import asm.api.ISuperKlass;
+import asm.StorageApi.IKlassPart;
+import asm.StorageApi.ISuperKlass;
 import asm.impl2.KlassDecorator;
+import asm.visitorApi.ITraverser;
 
 /**
  * Created by Steven on 1/4/2016.
@@ -20,11 +21,5 @@ public class SuperKlass extends KlassDecorator implements ISuperKlass{
     @Override
     public String getSuperKlass() {
         return this.superKlassName;
-    }
-
-    @Override
-    public String printEnd() {
-        //TODO: check Normal
-        return (super.printEnd() + String.format("\n edge [ \n  style=\"solid\", arrowhead = \"normal\" \n ] \n %s -> %s \n", super.stripFilePath(super.getBaseName()) , stripFilePath(this.superKlassName)));
     }
 }

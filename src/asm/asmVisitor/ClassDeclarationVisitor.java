@@ -1,10 +1,10 @@
-package asm;
+package asm.asmVisitor;
 
-import asm.api.IKlass;
-import asm.api.IKlassPart;
-import asm.impl.Interphace;
-import asm.impl.Klass;
-import asm.impl.SuperKlass;
+import asm.KlassStorage;
+import asm.StorageApi.IKlassPart;
+import asm.impl2.Interphace;
+import asm.impl2.Klass;
+import asm.impl2.SuperKlass;
 import org.objectweb.asm.ClassVisitor;
 
 import java.util.Arrays;

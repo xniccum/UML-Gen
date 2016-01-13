@@ -1,5 +1,8 @@
 package asm;
 
+import asm.asmVisitor.ClassDeclarationVisitor;
+import asm.asmVisitor.ClassFieldVisitor;
+import asm.asmVisitor.ClassMethodVisitor;
 import org.junit.Before;
 import org.junit.Test;
 import org.objectweb.asm.ClassReader;
@@ -18,7 +21,7 @@ public class ClassVisitorTest
     public void setUp() throws Exception
     {
         storage = new KlassStorage();
-        reader=new ClassReader("asm.FirstASM");
+        reader=new ClassReader("asm.asmVisitor.FirstASM");
     }
 
     @Test

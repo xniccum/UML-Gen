@@ -1,6 +1,7 @@
-package asm;
+package asm.asmVisitor;
 
-import asm.impl.Field;
+import asm.KlassStorage;
+import asm.impl2.Field;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Type;

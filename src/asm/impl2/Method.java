@@ -1,7 +1,8 @@
-package asm.impl;
+package asm.impl2;
 
-import asm.api.IKlassPart;
-import asm.api.IMethod;
+import asm.StorageApi.IKlassPart;
+import asm.StorageApi.IMethod;
+import asm.impl.Argument;
 import asm.impl2.KlassDecorator;
 
 import java.util.HashSet;
@@ -44,7 +45,7 @@ public class Method extends KlassDecorator implements IMethod {
     }
 
     @Override
-    public Object[] getArguments() {
+    public Argument[] getArguments() {
         return this.arguments;
     }
 
@@ -52,23 +53,8 @@ public class Method extends KlassDecorator implements IMethod {
         return exceptions;
     }
 
-    @Override
-    public String printMethodBlock() {
-        StringBuilder returnString = new StringBuilder();
-        returnString.append(super.printMethodBlock());
-        returnString.append(String.format("%s %s ( ", this.accessLevel, this.methodName));
-        if(this.arguments.length !=0){
-            returnString.append(String.format("%s : %s", this.arguments[0].getName(), this.arguments[0].getType().toString()));
-        }
 
-        for(int i = 1; i<this.arguments.length; i++){
-            returnString.append(String.format(", %s : %s", this.arguments[i].getName(), this.arguments[i].getType().toString()));
-        }
-        returnString.append(String.format("): %s \\l", this.returnType ));
-        return returnString.toString();
-    }
-
-    @Override
+    /**@Override
     public String printEnd() {
         //remove duplicate using types for each method
         HashSet<String> set = new HashSet<>();
@@ -84,11 +70,10 @@ public class Method extends KlassDecorator implements IMethod {
         strBuild.append(super.printEnd());
 
         for(String str: set){
-            strBuild.append(String.format("\n edge [ \n  style=\"dashed\", arrowhead= \"vee\" \n ] \n %s -> %s \n", super.stripFilePath(super.getBaseName()), super.stripClassPath(str)));
+            strBuild.append(String.format("\n edge [ \n  style=\"dashed\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
+                    super.stripFilePath(super.getBaseName()), super.stripClassPath(str)));
         }
 
         return strBuild.toString();
-    }
-
-
+    }**/
 }

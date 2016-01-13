@@ -1,14 +1,11 @@
-package asm;
+package asm.asmVisitor;
 
+import asm.KlassStorage;
 import asm.impl.Argument;
-import asm.impl.Klass;
-import asm.impl.Method;
+import asm.impl2.Method;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
-
-import java.util.ArrayList;
 
 public class ClassMethodVisitor extends ClassVisitor
 {
