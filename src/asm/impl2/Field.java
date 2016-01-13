@@ -44,28 +44,4 @@ public class Field extends KlassDecorator implements IField{
         return fieldSignature;
     }
 
-/** BROKEN M@ Stuff
-    @Override
-    public String printEnd() {
-        StringBuilder strBuild = new StringBuilder();
-        strBuild.append(super.printEnd());
-
-        //fieldSignature is empty: cat the \\ off field type and add to builder
-        if(fieldSignature == null || fieldSignature.equals(""))
-           return strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
-                    super.stripFilePath(super.getBaseName()),
-                    super.stripClassPath(fieldType))).toString();
-        //type is inside of a collection or outer object. Format of style ///<>
-        String carrotedString = fieldSignature.substring(fieldSignature.indexOf('<'), fieldSignature.indexOf('>'));
-        //Look for multiple params broken by semi-colon
-        String[] strArry = carrotedString.split("[;,:]");
-
-        for(String s : strArry){
-            strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
-                    super.stripFilePath(super.getBaseName()),
-                    super.stripClassPath(s)));
-        }
-        
-        return strBuild.toString();
-    }**/
 }

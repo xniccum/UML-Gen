@@ -38,6 +38,7 @@ public class UmlOutputStream extends FilterOutputStream {
         setupMethodVisitKlass();
         setupFieldVisitKlass();
         setupPostVisitKlass();
+        setupPostVisitField();
     }
 
     private void write(String m) {
@@ -139,6 +140,34 @@ public class UmlOutputStream extends FilterOutputStream {
         this.visitor.addVisit(VisitType.PostVisit, IKlass.class, (ITraverser t) -> {
             IKlass k = (IKlass) t;
             this.write(String.format(" \n } \" \n ]"));
+        });
+    }
+
+    private void setupPostVisitField(){
+        this.visitor.addVisit(VisitType.PostVisit, IField.class, (ITraverser t) -> {
+            IField f = (IField) t;
+
+            StringBuilder strBuild = new StringBuilder();
+            String fieldSignature = f.getfieldSignature();
+            //fieldSignature is empty: cat the \\ off field type and add to builder
+            if(fieldSignature == null || fieldSignature.equals("")) {
+                strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
+                        className,
+                        KlassDecorator.stripClassPath(f.getFieldType())));
+            }
+            else {
+                //type is inside of a collection or outer object. Format of style ///<>
+                String carrotedString = KlassDecorator.stripCollection(fieldSignature);
+                //Look for multiple params broken by semi-colon
+                String[] strArry = carrotedString.split("[;,:]");
+
+                for (String s : strArry) {
+                    strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
+                           className,
+                            KlassDecorator.stripClassPath(s)));
+                }
+            }
+            this.write(strBuild.toString());
         });
     }
 
