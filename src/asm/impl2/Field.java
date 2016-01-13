@@ -8,7 +8,7 @@ import asm.impl2.KlassDecorator;
  * Created by Steven on 1/5/2016.
  */
 public class Field extends KlassDecorator implements IField{
-    private IKlassPart baseKlass;
+
 
     private String accessLevel;
     private String fieldName;
@@ -16,9 +16,8 @@ public class Field extends KlassDecorator implements IField{
     private String fieldSignature;
 
 
-    public Field(IKlassPart baseKlass, int accessLevel, String fieldName, String fieldSignature, String fieldType) {
-        super(baseKlass);
-        this.baseKlass = baseKlass;
+    public Field( int accessLevel, String fieldName, String fieldSignature, String fieldType) {
+        super();
         this.accessLevel = super.getAccessStringLevel(accessLevel);
         this.fieldName = fieldName;
         this.fieldType = fieldType;

@@ -9,32 +9,21 @@ import org.objectweb.asm.Opcodes;
  * Created by Steven on 1/4/2016.
  */
 public abstract class KlassDecorator implements IKlassPart, ITraverser{
-    private IKlassPart baseKlass;
-    private String baseKlassName;
+    public KlassDecorator() {
 
-
-
-    public KlassDecorator(IKlassPart baseKlass) {
-        this.baseKlass = baseKlass;
-        this.baseKlassName = baseKlass == null? "" : baseKlass.getBaseName();
-    }
-
-    @Override
-    public String getBaseName() {
-        return baseKlass == null? "" : this.baseKlassName;
     }
 
     @Override
     public void accept(IVisitor v) {
-        v.preVisit((ITraverser)baseKlass);
+       // v.preVisit((ITraverser)baseKlass);
         v.preVisit(this);
-        v.nameVisit((ITraverser)baseKlass);
+        //v.nameVisit((ITraverser)baseKlass);
         v.nameVisit(this);
-        v.fieldVisit((ITraverser)baseKlass);
+        //v.fieldVisit((ITraverser)baseKlass);
         v.fieldVisit(this);
-        v.methodVisit((ITraverser)baseKlass);
+       // v.methodVisit((ITraverser)baseKlass);
         v.methodVisit(this);
-        v.postVisit((ITraverser)baseKlass);
+        //v.postVisit((ITraverser)baseKlass);
         v.postVisit(this);
     }
 

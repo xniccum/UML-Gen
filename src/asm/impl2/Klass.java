@@ -6,7 +6,10 @@ import asm.impl2.KlassDecorator;
 import asm.visitorApi.ITraverser;
 import asm.visitorApi.IVisitor;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Created by Steven on 1/4/2016.
@@ -18,10 +21,11 @@ public class Klass implements IKlass, ITraverser {
 
     private Collection<IKlassPart> klassParts;
 
-    public Klass(String name){
-        this.name = name;
+    public Klass(){
+        this.name = "";
         this.version = 1;
         this.access = -1;
+        klassParts = new HashSet<IKlassPart>();
     }
 
     public Klass(String name, int version, int access) {
@@ -41,6 +45,11 @@ public class Klass implements IKlass, ITraverser {
     }
 
     @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
     public String getName() {
         return this.name;
     }
@@ -51,11 +60,6 @@ public class Klass implements IKlass, ITraverser {
     }
 
     @Override
-    public String getBaseName() {
-        return KlassDecorator.stripFilePath(this.name);
-    }
-
-    @Override
     public int getAccess() {
         return this.access;
     }
@@ -63,11 +67,31 @@ public class Klass implements IKlass, ITraverser {
 
 
     @Override
+    public void addKlassPart(IKlassPart part) {
+        klassParts.add(part);
+    }
+
+    @Override
     public void accept(IVisitor v) {
         v.preVisit(this);
+        for(IKlassPart part: klassParts){
+            v.preVisit((ITraverser) part);
+        }
         v.nameVisit(this);
+        for(IKlassPart part: klassParts){
+            v.nameVisit((ITraverser) part);
+        }
         v.fieldVisit(this);
+        for(IKlassPart part: klassParts){
+            v.fieldVisit((ITraverser) part);
+        }
         v.methodVisit(this);
+        for(IKlassPart part: klassParts){
+            v.methodVisit((ITraverser) part);
+        }
         v.postVisit(this);
+        for(IKlassPart part: klassParts){
+            v.postVisit((ITraverser) part);
+        }
     }
 }

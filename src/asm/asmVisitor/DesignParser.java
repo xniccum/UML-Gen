@@ -2,6 +2,7 @@ package asm.asmVisitor;
 
 import asm.KlassStorage;
 import asm.UmlOutputStream;
+import asm.impl2.Klass;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
@@ -42,24 +43,26 @@ public class DesignParser {
 		//UmlOutputStream umlOut = new UmlOutputStream(uml);
 
 		for(String className: args){
-			KlassStorage storage = new KlassStorage();
+			//KlassStorage storage = new KlassStorage();
+            Klass klass = new Klass();
 			// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
 			ClassReader reader=new ClassReader(className);
-			
+
 			// make class declaration visitor to get superclass and interfaces
-			ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, storage);
+			ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, klass);
 			
 			// DECORATE declaration visitor with field visitor
-			ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, storage);
+			ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, klass);
 			
 			// DECORATE field visitor with method visitor
-			ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, storage);
+			ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, klass);
 
 			// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
 			reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 			//string.append(storage.toString());
 			//dotOut.write(storage.toString().getBytes());
-			umlOut.write(storage.getCurrentPart());
+            umlOut.setClassName(klass.getName());
+			umlOut.write(klass);
 
 		}
 		//System.out.println(string.toString());

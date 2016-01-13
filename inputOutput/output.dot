@@ -12,9 +12,67 @@ strict digraph G {
     fontname = "Bitstream Vera Sans"
     fontsize = 8
     ]
-+ init ( ): void \l+ main ( arg0 : java.lang.String[]): void \l+ shutDown ( ): void \l+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l+ init ( arg0 : java.lang.String): void \l+ execute ( arg0 : java.nio.file.Path): void \l+ init ( arg0 : java.nio.file.Path): void \l+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l+ getFile ( ): java.nio.file.Path \l+ getSource ( ): Lab1_3.problem.IDirectoryMonitorService \l+ removeListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l notifyListeners ( arg0 : Lab1_3.problem.DirectoryEvent): void \l+ init ( arg0 : java.lang.String): void \l+ execute ( arg0 : java.nio.file.Path): void \l+ addRunner ( arg0 : java.lang.String, arg1 : Lab1_3.problem.ProcessRunner): void \l+ shutDown ( ): void \l+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l
+AppLauncherApplication [ 
+ label = " { AppLauncherApplication|LOG_FILE LOG_FILE: java.lang.String \lIN_OUT_DIR IN_OUT_DIR: java.lang.String \l|+ main ( arg0 : java.lang.String[]): void \l+ init ( ): void \l 
+ } " 
+ ]ApplicationLauncher [ 
+ label = " { ApplicationLauncher|extensionToRunnerMap extensionToRunnerMap: java.util.Map \l|+ addRunner ( arg0 : java.lang.String, arg1 : Lab1_3.problem.ProcessRunner): void \l+ init ( ): void \l+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l+ shutDown ( ): void \l+ getRunners ( ): java.util.Collection \l 
+ } " 
+ ] edge [ 
+ style="solid", arrowhead = "empty" 
+ ] 
+  ApplicationLauncher -> IApplicationLauncher 
+DataFileRunner [ 
+ label = " { DataFileRunner||+ init ( arg0 : java.lang.String): void \l+ execute ( arg0 : java.nio.file.Path): void \l 
+ } " 
+ ]
  edge [ 
   style="solid", arrowhead = "normal" 
  ] 
- IDirectoryListener -> Object 
-+ addListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l+ removeListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l+ getCommand ( ): java.lang.String \l+ execute ( arg0 : java.nio.file.Path): void \l}
+ DataFileRunner -> ProcessRunner 
+DirectoryChangeLogger [ 
+ label = " { DirectoryChangeLogger|path path: java.nio.file.Path \l|+ init ( arg0 : java.nio.file.Path): void \l+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l 
+ } " 
+ ] edge [ 
+ style="solid", arrowhead = "empty" 
+ ] 
+  DirectoryChangeLogger -> IDirectoryListener 
+DirectoryEvent [ 
+ label = " { DirectoryEvent|ENTRY_DELETE ENTRY_DELETE: java.lang.String \lENTRY_CREATE ENTRY_CREATE: java.lang.String \lservice service: Lab1_3.problem.IDirectoryMonitorService \leventType eventType: java.lang.String \lENTRY_MODIFY ENTRY_MODIFY: java.lang.String \lfile file: java.nio.file.Path \l|+ getSource ( ): Lab1_3.problem.IDirectoryMonitorService \l+ getFile ( ): java.nio.file.Path \l+ getEventType ( ): java.lang.String \l+ init ( arg0 : java.lang.String, arg1 : java.nio.file.Path, arg2 : Lab1_3.problem.IDirectoryMonitorService): void \l 
+ } " 
+ ]DirectoryMonitorService [ 
+ label = " { DirectoryMonitorService|watcher watcher: java.nio.file.WatchService \lstop stop: boolean \lTEMP_FILE TEMP_FILE: java.lang.String \ldir dir: java.nio.file.Path \llisteners listeners: java.util.List \l|+ run ( ): void \l+ removeListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l+ stopGracefully ( ): void \l notifyListeners ( arg0 : Lab1_3.problem.DirectoryEvent): void \l+ init ( arg0 : java.nio.file.Path): void \l+ isRunning ( ): boolean \l clearEverything ( ): void \l+ addListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l+ getDirectory ( ): java.nio.file.Path \l 
+ } " 
+ ] edge [ 
+ style="solid", arrowhead = "empty" 
+ ] 
+  DirectoryMonitorService -> IDirectoryMonitorService 
+ExecutableFileRunner [ 
+ label = " { ExecutableFileRunner||+ execute ( arg0 : java.nio.file.Path): void \l+ init ( arg0 : java.lang.String): void \l 
+ } " 
+ ]
+ edge [ 
+  style="solid", arrowhead = "normal" 
+ ] 
+ ExecutableFileRunner -> ProcessRunner 
+IApplicationLauncher [ 
+ label = " { IApplicationLauncher||+ addRunner ( arg0 : java.lang.String, arg1 : Lab1_3.problem.ProcessRunner): void \l+ getRunners ( ): java.util.Collection \l+ shutDown ( ): void \l 
+ } " 
+ ] edge [ 
+ style="solid", arrowhead = "empty" 
+ ] 
+  IApplicationLauncher -> IDirectoryListener 
+IDirectoryListener [ 
+ label = " { IDirectoryListener||+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l 
+ } " 
+ ]IDirectoryMonitorService [ 
+ label = " { IDirectoryMonitorService||+ stopGracefully ( ): void \l+ isRunning ( ): boolean \l+ getDirectory ( ): java.nio.file.Path \l+ addListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l+ removeListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l 
+ } " 
+ ] edge [ 
+ style="solid", arrowhead = "empty" 
+ ] 
+  IDirectoryMonitorService -> Runnable 
+ProcessRunner [ 
+ label = " { ProcessRunner|processes processes: java.util.List \lcommand command: java.lang.String \l|+ init ( arg0 : java.lang.String): void \l+ execute ( arg0 : java.nio.file.Path): void \l+ getCommand ( ): java.lang.String \l+ getProcesses ( ): java.util.List \l 
+ } " 
+ ]}

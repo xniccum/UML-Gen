@@ -9,12 +9,11 @@ import asm.impl2.KlassDecorator;
  */
 public class Interphace extends KlassDecorator implements IInterphace {
     private String[] interphaceNames;
-    private IKlassPart baseKlass;
 
-    public Interphace(String[] interphaceNames, IKlassPart baseKlass) {
-        super(baseKlass);
+
+    public Interphace(String[] interphaceNames) {
+        super();
         this.interphaceNames = interphaceNames;
-        this.baseKlass = baseKlass;
     }
 
     @Override

@@ -28,15 +28,15 @@ public class ClassVisitorTest
     public void VisitTest()
     {
         // make class declaration visitor to get superclass and interfaces
-        ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, storage);
+      //  ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, storage);
 
         // DECORATE declaration visitor with field visitor
-        ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, storage);
+       // ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, storage);
 
         // DECORATE field visitor with method visitor
-        ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, storage);
+      //  ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, storage);
 
         // Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
-        reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
+      //  reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
     }
 }

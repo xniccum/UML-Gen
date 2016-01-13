@@ -11,7 +11,6 @@ import java.util.HashSet;
  * Created by Steven on 1/4/2016.
  */
 public class Method extends KlassDecorator implements IMethod {
-    private IKlassPart baseKlass;
 
     private String accessLevel;
     private String methodName;
@@ -19,9 +18,8 @@ public class Method extends KlassDecorator implements IMethod {
     private Argument[] arguments;
     private String[] exceptions;
 
-    public Method(IKlassPart baseClass, int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
-        super(baseClass);
-        this.baseKlass = baseClass;
+    public Method(int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
+        super();
         this.accessLevel = super.getAccessStringLevel(accessLevel);
         this.methodName = methodName.replaceAll("[\\<\\>\\\"\\'\\|\\;\\\\\\/]","");
         this.returnType = returnType;
