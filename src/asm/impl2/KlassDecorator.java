@@ -13,17 +13,12 @@ public abstract class KlassDecorator implements IKlassPart, ITraverser{
 
     }
 
-    @Override
+
     public void accept(IVisitor v) {
-       // v.preVisit((ITraverser)baseKlass);
         v.preVisit(this);
-        //v.nameVisit((ITraverser)baseKlass);
         v.nameVisit(this);
-        //v.fieldVisit((ITraverser)baseKlass);
         v.fieldVisit(this);
-       // v.methodVisit((ITraverser)baseKlass);
         v.methodVisit(this);
-        //v.postVisit((ITraverser)baseKlass);
         v.postVisit(this);
     }
 

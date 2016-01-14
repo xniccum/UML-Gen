@@ -2,9 +2,13 @@ package asm.impl2;
 
 import asm.StorageApi.IKlassPart;
 import asm.StorageApi.IMethod;
+import asm.StorageApi.MethodStorage.IMethodPart;
 import asm.impl.Argument;
 import asm.impl2.KlassDecorator;
+import asm.visitorApi.ITraverser;
+import asm.visitorApi.IVisitor;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -16,16 +20,16 @@ public class Method extends KlassDecorator implements IMethod {
     private String returnType;
     private Argument[] arguments;
     private String[] exceptions;
-    private HashSet<String> usedClasses;
+    private ArrayList<IMethodPart> parts;
 
-    public Method(int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions, HashSet<String> usedClasses) {
+    public Method(int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
         super();
-        this.accessLevel = super.getAccessStringLevel(accessLevel);
-        this.methodName = methodName.replaceAll("[\\<\\>\\\"\\'\\|\\;\\\\\\/]","");
+        this.accessLevel = KlassDecorator.getAccessStringLevel(accessLevel);
+        this.methodName = KlassDecorator.stripSymbols(methodName);
         this.returnType = returnType;
         this.arguments = arguments;
         this.exceptions = exceptions;
-        this.usedClasses = usedClasses;
+        this.parts = new ArrayList<IMethodPart>();
     }
 
     @Override
@@ -54,31 +58,40 @@ public class Method extends KlassDecorator implements IMethod {
     }
 
     @Override
-    public HashSet<String> getUsedClasses() {
-        return usedClasses;
+    public void addMethodPart(IMethodPart part) {
+        parts.add(part);
+    }
+
+    @Override
+    public ArrayList<IMethodPart> getMethodParts() {
+        return parts;
+    }
+
+    @Override
+    public void accept(IVisitor v) {
+        v.preVisit(this);
+        for(IMethodPart part: parts){
+            v.preVisit((ITraverser) part);
+        }
+        v.nameVisit(this);
+        for(IMethodPart part: parts){
+            v.nameVisit((ITraverser) part);
+        }
+        v.fieldVisit(this);
+        for(IMethodPart part: parts){
+            v.fieldVisit((ITraverser) part);
+        }
+        v.methodVisit(this);
+        for(IMethodPart part: parts){
+            v.methodVisit((ITraverser) part);
+        }
+        v.postVisit(this);
+        for(IMethodPart part: parts){
+            v.postVisit((ITraverser) part);
+        }
     }
 
 
-    /**@Override
-    public String printEnd() {
-        //remove duplicate using types for each method
-        HashSet<String> set = new HashSet<>();
-        if(returnType != "void")
-            set.add(returnType);
 
-        for(Argument arg : arguments)
-        {
-            set.add(super.stripCollection(arg.getType()));
-        }
 
-        StringBuilder strBuild = new StringBuilder();
-        strBuild.append(super.printEnd());
-
-        for(String str: set){
-            strBuild.append(String.format("\n edge [ \n  style=\"dashed\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
-                    super.stripFilePath(super.getBaseName()), super.stripClassPath(str)));
-        }
-
-        return strBuild.toString();
-    }**/
 }

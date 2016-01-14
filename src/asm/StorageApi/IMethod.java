@@ -1,7 +1,9 @@
 package asm.StorageApi;
 
+import asm.StorageApi.MethodStorage.IMethodPart;
 import asm.impl.Argument;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -13,6 +15,6 @@ public interface IMethod extends IKlassPart{
     public String getReturnType();
     public Argument[] getArguments();
     public String[] getExceptions();
-    public HashSet<String> getUsedClasses();
-
+    public void addMethodPart(IMethodPart part);
+    public ArrayList<IMethodPart> getMethodParts();
 }

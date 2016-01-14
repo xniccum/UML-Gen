@@ -1,6 +1,8 @@
 package asm;
 
 import asm.StorageApi.*;
+import asm.StorageApi.MethodStorage.IMethodPart;
+import asm.StorageApi.MethodStorage.IMethodUsedKlass;
 import asm.impl.Argument;
 import asm.impl2.Interphace;
 import asm.impl2.KlassDecorator;
@@ -41,6 +43,7 @@ public class UmlOutputStream extends FilterOutputStream {
         setupPostVisitKlass();
         setupPostVisitField();
         setupPostVisitMethod();
+        setupPostVisitMethodUsedKlass();
     }
 
     private void write(String m) {
@@ -65,6 +68,7 @@ public class UmlOutputStream extends FilterOutputStream {
     }
 
     //region Setup Methods
+
     private void setupPostVisitSuperKlass() {
         this.visitor.addVisit(VisitType.PostVisit, ISuperKlass.class, (ITraverser t) -> {
                     ISuperKlass sk = (ISuperKlass) t;
@@ -179,28 +183,48 @@ public class UmlOutputStream extends FilterOutputStream {
         });
     }
 
-    private void setupPostVisitMethod(){
+    private void setupPostVisitMethod() {
         this.visitor.addVisit(VisitType.PostVisit, IMethod.class, (ITraverser t) -> {
             IMethod m = (IMethod) t;
-            HashSet<String> set = m.getUsedClasses();
-            if(m.getReturnType() != "void")
+            HashSet<String> set = new HashSet<String>();
+            if (m.getReturnType() != "void")
                 set.add(m.getReturnType());
 
-            for(Argument arg : m.getArguments())
-            {
-               set.add(KlassDecorator.stripCollection(arg.getType()));
+            for (Argument arg : m.getArguments()) {
+                set.add(KlassDecorator.stripCollection(arg.getType()));
             }
 
-             StringBuilder strBuild = new StringBuilder();
+            StringBuilder strBuild = new StringBuilder();
             strBuild.append("\n" +
                     " edge [ \n" +
                     "  style=\"dashed\", arrowhead= \"vee\" \n" +
                     " ] \n");
-            for(String str: set){
+            for (String str : set) {
                 String s = KlassDecorator.fullStripClean(str);
+                if (KlassDecorator.isDesirableObject(s))
+                    strBuild.append(String.format("%s -> %s \n", className, s));
+            }
+            this.write(strBuild.toString());
+            for(IMethodPart part : m.getMethodParts()){
+                visitor.postVisit((ITraverser)part);
+            }
+        });
+    }
+
+    private void setupPostVisitMethodUsedKlass(){
+        this.visitor.addVisit(VisitType.PostVisit, IMethodUsedKlass.class, (ITraverser t) -> {
+            IMethodUsedKlass m = (IMethodUsedKlass) t;
+
+            StringBuilder strBuild = new StringBuilder();
+            strBuild.append("\n" +
+                    " edge [ \n" +
+                    "  style=\"dashed\", arrowhead= \"vee\" \n" +
+                    " ] \n");
+
+                String s = KlassDecorator.fullStripClean(m.getClassName());
                 if(KlassDecorator.isDesirableObject(s))
                     strBuild.append(String.format("%s -> %s \n",className, s));
-            }
+
             this.write(strBuild.toString());
         });
     }

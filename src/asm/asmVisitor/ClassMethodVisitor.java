@@ -1,7 +1,7 @@
 package asm.asmVisitor;
 
-import asm.KlassStorage;
 import asm.StorageApi.IKlass;
+import asm.asmVisitor.MethodVisitors.MethodInstanceVisitor;
 import asm.impl.Argument;
 import asm.impl2.Method;
 import org.objectweb.asm.ClassVisitor;
@@ -9,7 +9,6 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class ClassMethodVisitor extends ClassVisitor
@@ -30,22 +29,18 @@ public class ClassMethodVisitor extends ClassVisitor
 		MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
         final HashSet<String> classList = new HashSet<>();
 
-        MethodVisitor instantiationDecorator = new MethodVisitor(Opcodes.ASM5, toDecorate) {
-            public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
-                System.out.println("uses: "+owner);
-                classList.add(owner);
-            }
-        };
+        Method method = new Method(
+                access,
+                name,
+                this.getReturnType(desc),
+                this.getArguments(desc),
+                exceptions);
+
+        MethodVisitor instantiationDecorator = new MethodInstanceVisitor(Opcodes.ASM5, toDecorate, method);
 
        // String[] classArray = classList.toArray(new String[classList.size()]);
 
-		this.klass.addKlassPart(new Method(
-				access,
-				name,
-				this.getReturnType(desc),
-				this.getArguments(desc),
-				exceptions,
-				classList));
+		this.klass.addKlassPart(method);
 
 		return instantiationDecorator;
 	}
