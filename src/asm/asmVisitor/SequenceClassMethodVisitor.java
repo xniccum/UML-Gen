@@ -34,9 +34,10 @@ public class SequenceClassMethodVisitor extends ClassVisitor {
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor toDecorate =  super.visitMethod(access, name, desc, signature, exceptions);
         if(name.equals(methodName)){
-            method = new Method(access, name, this.getReturnType(desc), this.getArguments(desc), exceptions);
+            method = new Method(access, name, this.getReturnType(desc), this.getArguments(desc), exceptions, signature);
             toDecorate = new MethodInstanceVisitor(Opcodes.ASM5, toDecorate, method);
         }
+
         return toDecorate;
     }
 

@@ -23,8 +23,10 @@ public class Method extends KlassDecorator implements IMethod {
     private ArrayList<IMethodPart> parts;
     private ArrayList<IMethod> calls;
     private String className;
+    private String signature;
 
-    public Method(int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
+    public Method(int accessLevel, String methodName, String returnType, Argument[] arguments,
+                  String[] exceptions, String signature) {
         super();
         this.accessLevel = KlassDecorator.getAccessStringLevel(accessLevel);
         this.methodName = KlassDecorator.stripSymbols(methodName);
@@ -33,6 +35,7 @@ public class Method extends KlassDecorator implements IMethod {
         this.exceptions = exceptions;
         this.parts = new ArrayList<IMethodPart>();
         this.calls = new ArrayList<>();
+        this.signature = signature;
     }
 
     @Override
@@ -83,45 +86,45 @@ public class Method extends KlassDecorator implements IMethod {
     @Override
     public void accept(IVisitor v) {
         v.preVisit(this);
-        for(IMethodPart part: parts){
+        for (IMethodPart part : parts) {
             v.preVisit((ITraverser) part);
         }
-        for(IMethod call: calls){
+        for (IMethod call : calls) {
             v.preVisit((ITraverser) call);
         }
         v.nameVisit(this);
-        for(IMethodPart part: parts){
+        for (IMethodPart part : parts) {
             v.nameVisit((ITraverser) part);
         }
-        for(IMethod call: calls){
+        for (IMethod call : calls) {
             v.nameVisit((ITraverser) call);
         }
         v.fieldVisit(this);
-        for(IMethodPart part: parts){
+        for (IMethodPart part : parts) {
             v.fieldVisit((ITraverser) part);
         }
-        for(IMethod call: calls){
+        for (IMethod call : calls) {
             v.fieldVisit((ITraverser) call);
         }
         v.methodVisit(this);
-        for(IMethodPart part: parts){
+        for (IMethodPart part : parts) {
             v.methodVisit((ITraverser) part);
         }
-        for(IMethod call: calls){
+        for (IMethod call : calls) {
             v.methodVisit((ITraverser) call);
         }
         v.postVisit(this);
-        for(IMethodPart part: parts){
+        for (IMethodPart part : parts) {
             v.postVisit((ITraverser) part);
         }
-        for(IMethod call: calls){
+        for (IMethod call : calls) {
             v.postVisit((ITraverser) call);
         }
     }
 
     @Override
     public String getClassName() {
-        return className == null? "" :className;
+        return className == null ? "" : className;
     }
 
     @Override

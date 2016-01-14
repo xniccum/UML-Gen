@@ -18,14 +18,15 @@ public class SequenceMain {
     public static void main(String[] args) throws IOException {
         OutputStream sdOut = new FileOutputStream("inputOutput/seqOutput.sd");
         SequenceOutputStream seqOut = new SequenceOutputStream(sdOut);
-        String methodSignature = args[0];
+        //String methodSignature = args[0];
         int maxCallDepth = args.length < 2 ? 5 : Integer.parseInt(args[1]);
         if(maxCallDepth == 0)
             return;
 
 
-        String className;
-        String methodName;
+        String className = "asm.asmVisitor.ClassMethodVisitor"; //TODO actual input
+        String methodName = "visitMethod";
+        maxCallDepth = 1;
 
         Method topMethod = SequenceRunner.run(className,methodName,maxCallDepth);
         seqOut.write(topMethod);

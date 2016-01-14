@@ -12,910 +12,132 @@ strict digraph G {
     fontname = "Bitstream Vera Sans"
     fontsize = 8
     ]
-AppLauncherApplication [ 
- label = " { AppLauncherApplication|IN_OUT_DIR IN_OUT_DIR: String \l LOG_FILE LOG_FILE: String \l |+ main ( arg0 : String[]): void \l + init ( ): void \l  
+ClassMethodVisitor [ 
+ label = " { ClassMethodVisitor|klass klass: IKlass \l |+ init ( arg0 : int, arg1 : ClassVisitor, arg2 : IKlass): void \l + visitMethod ( arg0 : int, arg1 : String, arg2 : String, arg3 : String, arg4 : String[]): MethodVisitor \l  getArguments ( arg0 : String): Argument[] \l  addArguments ( arg0 : String): void \l + init ( arg0 : int, arg1 : IKlass): void \l  getReturnType ( arg0 : String): String \l  
  } " 
  ]
  edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> Paths 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> DirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> ApplicationLauncher 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> ExecutableFileRunner 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> IApplicationLauncher 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> DataFileRunner 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> IApplicationLauncher 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> IApplicationLauncher 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> DataFileRunner 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> IApplicationLauncher 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> IDirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> Paths 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> DirectoryChangeLogger 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> IDirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> Thread 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> Thread 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> PrintStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> InputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> PrintStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> IDirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> Thread 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> PrintStream 
-
- edge [ 
   style="solid", arrowhead= "vee" 
  ] 
-AppLauncherApplication -> AppLauncherApplication 
+ClassMethodVisitor -> ClassMethodVisitor 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> ClassVisitor 
+ClassMethodVisitor -> int 
+ClassMethodVisitor -> IKlass 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-AppLauncherApplication -> AppLauncherApplication 
-ApplicationLauncher [ 
- label = " { ApplicationLauncher|extensionToRunnerMap extensionToRunnerMap: Map \l |+ directoryChanged ( arg0 : DirectoryEvent): void \l + shutDown ( ): void \l + init ( ): void \l + addRunner ( arg0 : String, arg1 : ProcessRunner): void \l + getRunners ( ): Collection \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Map 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> ProcessRunner 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> IOException 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Map 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> ProcessRunner 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Process 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> HashMap 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> ProcessRunner 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Map 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> Map 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
- edge [
- style="solid", arrowhead = "empty"
-]
-ApplicationLauncher -> IApplicationLauncher 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-ApplicationLauncher -> ProcessRunner 
-DataFileRunner [ 
- label = " { DataFileRunner||+ init ( arg0 : String): void \l + execute ( arg0 : Path): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DataFileRunner -> ProcessRunner 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DataFileRunner -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DataFileRunner -> PrintStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DataFileRunner -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DataFileRunner -> ProcessBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DataFileRunner -> ProcessBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
+ClassMethodVisitor -> ClassVisitor 
 
  edge [ 
   style="solid", arrowhead = "normal" 
  ] 
- DataFileRunner -> ProcessRunner 
-DirectoryChangeLogger [ 
- label = " { DirectoryChangeLogger|path path: Path \l |+ directoryChanged ( arg0 : DirectoryEvent): void \l + init ( arg0 : Path): void \l  
- } " 
- ] edge [
- style="solid", arrowhead = "empty"
-]
-DirectoryChangeLogger -> IDirectoryListener 
+ ClassMethodVisitor -> ClassVisitor 
 
  edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> DirectoryChangeLogger 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> FileWriter 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> BufferedWriter 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> PrintWriter 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> Date 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> PrintWriter 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> PrintWriter 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> Throwable 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> PrintWriter 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> PrintWriter 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> Throwable 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> PrintWriter 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> IOException 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryChangeLogger -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryEvent [ 
- label = " { DirectoryEvent|service service: IDirectoryMonitorService \l ENTRY_DELETE ENTRY_DELETE: String \l eventType eventType: String \l ENTRY_MODIFY ENTRY_MODIFY: String \l ENTRY_CREATE ENTRY_CREATE: String \l file file: Path \l |+ getEventType ( ): String \l + getFile ( ): Path \l + getSource ( ): IDirectoryMonitorService \l + init ( arg0 : String, arg1 : Path, arg2 : IDirectoryMonitorService): void \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryEvent -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryEvent -> Path 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryEvent -> DirectoryEvent 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryEvent -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryEvent -> IDirectoryMonitorService 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryEvent -> DirectoryEvent 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryEvent -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryEvent -> IDirectoryMonitorService 
-DirectoryEvent -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryEvent -> DirectoryEvent 
-DirectoryMonitorService [ 
- label = " { DirectoryMonitorService|dir dir: Path \l stop stop: boolean \l listeners listeners: List \l TEMP_FILE TEMP_FILE: String \l watcher watcher: WatchService \l | notifyListeners ( arg0 : DirectoryEvent): void \l + isRunning ( ): boolean \l  clearEverything ( ): void \l + removeListener ( arg0 : IDirectoryListener): void \l + addListener ( arg0 : IDirectoryListener): void \l + run ( ): void \l + getDirectory ( ): Path \l + init ( arg0 : Path): void \l + stopGracefully ( ): void \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> DirectoryMonitorService 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> DirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> IDirectoryListener 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Paths 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Files 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> IDirectoryListener 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> IDirectoryListener 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> IDirectoryListener 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
- edge [
- style="solid", arrowhead = "empty"
-]
-DirectoryMonitorService -> IDirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> PrintStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> WatchService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> WatchKey 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> WatchEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> WatchEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> WatchEventKind 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> DirectoryEvent 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> DirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> WatchKey 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> DirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> IOException 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> PrintStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Path 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> DirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> FileSystems 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> FileSystem 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> Path 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> DirectoryMonitorService 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> StringBuilder 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DirectoryMonitorService -> File 
-
- edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-DirectoryMonitorService -> File 
-ExecutableFileRunner [ 
- label = " { ExecutableFileRunner||+ execute ( arg0 : Path): void \l + init ( arg0 : String): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ExecutableFileRunner -> Path 
+ClassMethodVisitor -> MethodVisitor 
+ClassMethodVisitor -> int 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ExecutableFileRunner -> PrintStream 
+ClassMethodVisitor -> ClassVisitor 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ExecutableFileRunner -> Path 
+ClassMethodVisitor -> ClassMethodVisitor 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ExecutableFileRunner -> ProcessBuilder 
+ClassMethodVisitor -> ClassMethodVisitor 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ExecutableFileRunner -> ProcessBuilder 
+ClassMethodVisitor -> Method 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> MethodInstanceVisitor 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> IKlass 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ExecutableFileRunner -> ProcessRunner 
+ClassMethodVisitor -> Argument 
 
  edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- ExecutableFileRunner -> ProcessRunner 
-IApplicationLauncher [ 
- label = " { IApplicationLauncher||+ getRunners ( ): Collection \l + addRunner ( arg0 : String, arg1 : ProcessRunner): void \l + shutDown ( ): void \l  
- } " 
- ]
- edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> Type 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-IApplicationLauncher -> ProcessRunner 
- edge [
- style="solid", arrowhead = "empty"
-]
-IApplicationLauncher -> IDirectoryListener 
+ClassMethodVisitor -> StringBuilder 
 
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IDirectoryListener [ 
- label = " { IDirectoryListener||+ directoryChanged ( arg0 : DirectoryEvent): void \l  
- } " 
- ]
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-IDirectoryListener -> DirectoryEvent 
-IDirectoryMonitorService [ 
- label = " { IDirectoryMonitorService||+ stopGracefully ( ): void \l + getDirectory ( ): Path \l + isRunning ( ): boolean \l + removeListener ( arg0 : IDirectoryListener): void \l + addListener ( arg0 : IDirectoryListener): void \l  
- } " 
- ] edge [
- style="solid", arrowhead = "empty"
-]
-IDirectoryMonitorService -> Runnable 
+ClassMethodVisitor -> StringBuilder 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> StringBuilder 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-IDirectoryMonitorService -> Path 
+ClassMethodVisitor -> StringBuilder 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> Type 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-IDirectoryMonitorService -> IDirectoryListener 
+ClassMethodVisitor -> Argument 
 
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IDirectoryMonitorService -> IDirectoryListener 
-ProcessRunner [ 
- label = " { ProcessRunner|processes processes: List \l command command: String \l |+ getCommand ( ): String \l + init ( arg0 : String): void \l + getProcesses ( ): List \l + execute ( arg0 : Path): void \l  
- } " 
- ]
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
 
  edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-ProcessRunner -> Process 
-
- edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> Type 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> Type 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> int 
+ClassMethodVisitor -> IKlass 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
  ] 
-ProcessRunner -> ProcessRunner 
+ClassMethodVisitor -> ClassVisitor 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -924,9 +146,10 @@ ProcessRunner -> ProcessRunner
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+ClassMethodVisitor -> Type 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ProcessRunner -> Path 
+ClassMethodVisitor -> Type 
 }

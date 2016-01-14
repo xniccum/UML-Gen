@@ -19,6 +19,7 @@ public class MethodInstanceVisitor extends MethodVisitor {
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
        super.visitMethodInsn(opcode, owner,name,desc,itf);
         //classList.add(owner);
+        System.out.println("OWNER: "+owner+"."+name+"(...)");
         this.method.addMethodPart(new MethodInternalCall(owner, name, desc, itf));
     }
 }

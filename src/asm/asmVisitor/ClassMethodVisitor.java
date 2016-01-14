@@ -22,19 +22,20 @@ public class ClassMethodVisitor extends ClassVisitor
 	public ClassMethodVisitor(int api, ClassVisitor decorated, IKlass klass) {
 		super(api, decorated);
 		this.klass = klass;
-	}
+    }
 	
 	@Override
 	public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions){
 		MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
-        final HashSet<String> classList = new HashSet<>();
+//        final HashSet<String> classList = new HashSet<>();
 
         Method method = new Method(
                 access,
                 name,
                 this.getReturnType(desc),
                 this.getArguments(desc),
-                exceptions);
+                exceptions,
+				signature);
 
         MethodVisitor instantiationDecorator = new MethodInstanceVisitor(Opcodes.ASM5, toDecorate, method);
 

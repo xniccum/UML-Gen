@@ -3,14 +3,12 @@ package asm;
 import asm.StorageApi.IKlassPart;
 import asm.StorageApi.IMethod;
 import asm.impl2.KlassDecorator;
-import asm.visitorApi.ITraverser;
-import asm.visitorApi.IVisitor;
-import asm.visitorApi.VisitType;
-import asm.visitorApi.Visitor;
+import asm.visitorApi.*;
 
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * Created by Steven on 1/12/2016.
@@ -44,10 +42,17 @@ public class SequenceOutputStream extends FilterOutputStream {
         t.accept(this.visitor);
     }
 
-    private void setupMethodVisitMethods(){
-        this.visitor.addVisit(VisitType.MethodVisit, IMethod.class, (ITraverser t)->{
-            IMethod m = (IMethod)t;
-            String s = String.format("");
+    private void setupMethodVisitMethods() { 
+        this.visitor.addVisit(VisitType.MethodVisit, IMethod.class, (ITraverser t) -> {
+            IMethod m = (IMethod) t;
+            ArrayList<IMethod> subMethods = m.getSubMethods();
+            String s = "";
+
+            s = String.format("*VAR*"+ ":" + KlassDecorator.fullStripClean(m.getClassName()) + "\n");
+            for (IMethod subMethod : subMethods) {
+                s += String.format(m.getClassName() + ":" + KlassDecorator.fullStripClean(subMethod.getClassName())
+                        + "." + subMethod.getMethodName() + "(" + subMethod.getArguments() + ")\n");
+            }
             this.write(s);
         });
     }
