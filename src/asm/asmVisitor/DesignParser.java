@@ -10,7 +10,6 @@ import org.objectweb.asm.Opcodes;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PipedOutputStream;
 
 public class DesignParser {
 	/**

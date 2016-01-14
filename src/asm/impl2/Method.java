@@ -11,12 +11,12 @@ import java.util.HashSet;
  * Created by Steven on 1/4/2016.
  */
 public class Method extends KlassDecorator implements IMethod {
-
     private String accessLevel;
     private String methodName;
     private String returnType;
     private Argument[] arguments;
     private String[] exceptions;
+    private String[] usedClasses;
 
     public Method(int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
         super();
@@ -25,6 +25,7 @@ public class Method extends KlassDecorator implements IMethod {
         this.returnType = returnType;
         this.arguments = arguments;
         this.exceptions = exceptions;
+        this.usedClasses = usedClasses;
     }
 
     @Override
@@ -49,6 +50,10 @@ public class Method extends KlassDecorator implements IMethod {
 
     public String[] getExceptions() {
         return exceptions;
+    }
+
+    public String[] getUsedClasses() {
+        return usedClasses;
     }
 
 
