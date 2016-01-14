@@ -16,9 +16,9 @@ public class Method extends KlassDecorator implements IMethod {
     private String returnType;
     private Argument[] arguments;
     private String[] exceptions;
-    private String[] usedClasses;
+    private HashSet<String> usedClasses;
 
-    public Method(int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
+    public Method(int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions, HashSet<String> usedClasses) {
         super();
         this.accessLevel = super.getAccessStringLevel(accessLevel);
         this.methodName = methodName.replaceAll("[\\<\\>\\\"\\'\\|\\;\\\\\\/]","");
@@ -48,11 +48,13 @@ public class Method extends KlassDecorator implements IMethod {
         return this.arguments;
     }
 
+    @Override
     public String[] getExceptions() {
         return exceptions;
     }
 
-    public String[] getUsedClasses() {
+    @Override
+    public HashSet<String> getUsedClasses() {
         return usedClasses;
     }
 

@@ -12,4 +12,387 @@ strict digraph G {
     fontname = "Bitstream Vera Sans"
     fontsize = 8
     ]
-+ init ( arg0 : int, arg1 : asm.KlassStorage): void \l+ visit ( arg0 : int, arg1 : int, arg2 : java.lang.String, arg3 : java.lang.String, arg4 : java.lang.String, arg5 : java.lang.String[]): void \l}
+AppLauncherApplication [ 
+ label = " { AppLauncherApplication|LOG_FILE LOG_FILE: String \l IN_OUT_DIR IN_OUT_DIR: String \l |+ init ( ): void \l + main ( arg0 : String[]): void \l  
+ } " 
+ ]
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+AppLauncherApplication -> AppLauncherApplication 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+AppLauncherApplication -> AppLauncherApplication 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+AppLauncherApplication -> InputStream 
+AppLauncherApplication -> IDirectoryMonitorService 
+AppLauncherApplication -> DataFileRunner 
+AppLauncherApplication -> ExecutableFileRunner 
+AppLauncherApplication -> DirectoryMonitorService 
+AppLauncherApplication -> ApplicationLauncher 
+AppLauncherApplication -> DirectoryChangeLogger 
+AppLauncherApplication -> Paths 
+AppLauncherApplication -> IApplicationLauncher 
+AppLauncherApplication -> Thread 
+AppLauncherApplication -> PrintStream 
+ApplicationLauncher [ 
+ label = " { ApplicationLauncher|extensionToRunnerMap extensionToRunnerMap: Map \l |+ directoryChanged ( arg0 : DirectoryEvent): void \l + getRunners ( ): Collection \l + shutDown ( ): void \l + addRunner ( arg0 : String, arg1 : ProcessRunner): void \l + init ( ): void \l  
+ } " 
+ ]
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ApplicationLauncher -> Path 
+ApplicationLauncher -> ProcessRunner 
+ApplicationLauncher -> IOException 
+ApplicationLauncher -> Map 
+ApplicationLauncher -> DirectoryEvent 
+ApplicationLauncher -> DirectoryEvent 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ApplicationLauncher -> Map 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ApplicationLauncher -> Iterator 
+ApplicationLauncher -> ProcessRunner 
+ApplicationLauncher -> Process 
+ApplicationLauncher -> Map 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ApplicationLauncher -> ProcessRunner 
+ApplicationLauncher -> Map 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+ApplicationLauncher -> ProcessRunner 
+ edge [
+ style="solid", arrowhead = "empty"
+]
+ApplicationLauncher -> IApplicationLauncher 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ApplicationLauncher -> HashMap 
+DataFileRunner [ 
+ label = " { DataFileRunner||+ execute ( arg0 : Path): void \l + init ( arg0 : String): void \l  
+ } " 
+ ]
+ edge [ 
+  style="solid", arrowhead = "normal" 
+ ] 
+ DataFileRunner -> ProcessRunner 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DataFileRunner -> Path 
+DataFileRunner -> ProcessBuilder 
+DataFileRunner -> Path 
+DataFileRunner -> PrintStream 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DataFileRunner -> ProcessRunner 
+DirectoryChangeLogger [ 
+ label = " { DirectoryChangeLogger|path path: Path \l |+ init ( arg0 : Path): void \l + directoryChanged ( arg0 : DirectoryEvent): void \l  
+ } " 
+ ]
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryChangeLogger -> DirectoryChangeLogger 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryChangeLogger -> Path 
+ edge [
+ style="solid", arrowhead = "empty"
+]
+DirectoryChangeLogger -> IDirectoryListener 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryChangeLogger -> Path 
+DirectoryChangeLogger -> PrintWriter 
+DirectoryChangeLogger -> IOException 
+DirectoryChangeLogger -> BufferedWriter 
+DirectoryChangeLogger -> DirectoryEvent 
+DirectoryChangeLogger -> Throwable 
+DirectoryChangeLogger -> FileWriter 
+DirectoryChangeLogger -> Date 
+DirectoryChangeLogger -> DirectoryEvent 
+DirectoryEvent [ 
+ label = " { DirectoryEvent|ENTRY_CREATE ENTRY_CREATE: String \l ENTRY_MODIFY ENTRY_MODIFY: String \l file file: Path \l eventType eventType: String \l ENTRY_DELETE ENTRY_DELETE: String \l service service: IDirectoryMonitorService \l |+ init ( arg0 : String, arg1 : Path, arg2 : IDirectoryMonitorService): void \l + getFile ( ): Path \l + getSource ( ): IDirectoryMonitorService \l + getEventType ( ): String \l  
+ } " 
+ ]
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> IDirectoryMonitorService 
+DirectoryEvent -> Path 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> Path 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> IDirectoryMonitorService 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> DirectoryEvent 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> DirectoryEvent 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> DirectoryEvent 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> DirectoryEvent 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> DirectoryEvent 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryEvent -> DirectoryEvent 
+DirectoryMonitorService [ 
+ label = " { DirectoryMonitorService|stop stop: boolean \l watcher watcher: WatchService \l TEMP_FILE TEMP_FILE: String \l dir dir: Path \l listeners listeners: List \l |+ stopGracefully ( ): void \l + addListener ( arg0 : IDirectoryListener): void \l  notifyListeners ( arg0 : DirectoryEvent): void \l + init ( arg0 : Path): void \l + removeListener ( arg0 : IDirectoryListener): void \l + isRunning ( ): boolean \l + run ( ): void \l + getDirectory ( ): Path \l  clearEverything ( ): void \l  
+ } " 
+ ]
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> DirectoryMonitorService 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> DirectoryMonitorService 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> StringBuilder 
+DirectoryMonitorService -> File 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> IDirectoryListener 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> Iterator 
+DirectoryMonitorService -> IDirectoryListener 
+DirectoryMonitorService -> DirectoryEvent 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> Path 
+DirectoryMonitorService -> FileSystem 
+DirectoryMonitorService -> FileSystems 
+DirectoryMonitorService -> Path 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> IDirectoryListener 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> DirectoryMonitorService 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ edge [
+ style="solid", arrowhead = "empty"
+]
+DirectoryMonitorService -> IDirectoryMonitorService 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> Path 
+DirectoryMonitorService -> WatchEventKind 
+DirectoryMonitorService -> DirectoryMonitorService 
+DirectoryMonitorService -> IOException 
+DirectoryMonitorService -> WatchService 
+DirectoryMonitorService -> WatchKey 
+DirectoryMonitorService -> DirectoryEvent 
+DirectoryMonitorService -> WatchEvent 
+DirectoryMonitorService -> PrintStream 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> DirectoryMonitorService 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> Path 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> IDirectoryListener 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DirectoryMonitorService -> StringBuilder 
+DirectoryMonitorService -> Paths 
+DirectoryMonitorService -> Files 
+ExecutableFileRunner [ 
+ label = " { ExecutableFileRunner||+ execute ( arg0 : Path): void \l + init ( arg0 : String): void \l  
+ } " 
+ ]
+ edge [ 
+  style="solid", arrowhead = "normal" 
+ ] 
+ ExecutableFileRunner -> ProcessRunner 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ExecutableFileRunner -> Path 
+ExecutableFileRunner -> ProcessBuilder 
+ExecutableFileRunner -> Path 
+ExecutableFileRunner -> PrintStream 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ExecutableFileRunner -> ProcessRunner 
+IApplicationLauncher [ 
+ label = " { IApplicationLauncher||+ addRunner ( arg0 : String, arg1 : ProcessRunner): void \l + shutDown ( ): void \l + getRunners ( ): Collection \l  
+ } " 
+ ]
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+IApplicationLauncher -> ProcessRunner 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ edge [
+ style="solid", arrowhead = "empty"
+]
+IApplicationLauncher -> IDirectoryListener 
+IDirectoryListener [ 
+ label = " { IDirectoryListener||+ directoryChanged ( arg0 : DirectoryEvent): void \l  
+ } " 
+ ]
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+IDirectoryListener -> DirectoryEvent 
+IDirectoryMonitorService [ 
+ label = " { IDirectoryMonitorService||+ getDirectory ( ): Path \l + addListener ( arg0 : IDirectoryListener): void \l + isRunning ( ): boolean \l + stopGracefully ( ): void \l + removeListener ( arg0 : IDirectoryListener): void \l  
+ } " 
+ ]
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+IDirectoryMonitorService -> Path 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+IDirectoryMonitorService -> IDirectoryListener 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ edge [
+ style="solid", arrowhead = "empty"
+]
+IDirectoryMonitorService -> Runnable 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+IDirectoryMonitorService -> IDirectoryListener 
+ProcessRunner [ 
+ label = " { ProcessRunner|command command: String \l processes processes: List \l |+ execute ( arg0 : Path): void \l + getProcesses ( ): List \l + init ( arg0 : String): void \l + getCommand ( ): String \l  
+ } " 
+ ]
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ProcessRunner -> Path 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+ProcessRunner -> ProcessRunner 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+ProcessRunner -> Process 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+}

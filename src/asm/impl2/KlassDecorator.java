@@ -98,9 +98,29 @@ public abstract class KlassDecorator implements IKlassPart, ITraverser{
 
     public static String stripCollection(String type){
         int startParse = type.indexOf('<');
-        return startParse > -1 ? type.substring(startParse, type.indexOf('>')) :type;
+        int endParse =  type.indexOf('>');
+        return startParse > -1 && endParse > -1 ?type.substring(startParse,endParse):type;
     }
 
+    public static String stripSymbols(String s){
+       return s.replaceAll("[!@#$%^&*():\"<>;\"'/\\\\+--_.\\[\\]]","");
+    }
+
+    public static String fullStripClean(String s){
+        s = stripCollection(s);
+        s = stripFilePath(s);
+        s = stripClassPath(s);
+        return stripSymbols(s);
+    }
+
+    public static boolean isDesirableObject(String s){
+        String[] string = {"String", "Object","boolean","","Collection","Collections","List","ArrayList"};
+        for(String s1: string){
+            if(s1.equals(s))
+                return false;
+        }
+        return true;
+    }
     //endregion
 
 

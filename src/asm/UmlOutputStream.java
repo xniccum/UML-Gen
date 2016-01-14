@@ -12,6 +12,7 @@ import asm.visitorApi.Visitor;
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashSet;
 
 /**
  * Created by Steven on 1/12/2016.
@@ -32,13 +33,14 @@ public class UmlOutputStream extends FilterOutputStream {
         this.visitor = new Visitor();
         setupPostVisitSuperKlass();
         setupFieldVisitField();
-        setupVisitMethodBlock();
+        setupMethodVisitMethod();
         setupPostVisitInterphase();
         setupNameVistKlass();
         setupMethodVisitKlass();
         setupFieldVisitKlass();
         setupPostVisitKlass();
         setupPostVisitField();
+        setupPostVisitMethod();
     }
 
     private void write(String m) {
@@ -62,6 +64,7 @@ public class UmlOutputStream extends FilterOutputStream {
         this.className =  KlassDecorator.stripFilePath(className);
     }
 
+    //region Setup Methods
     private void setupPostVisitSuperKlass() {
         this.visitor.addVisit(VisitType.PostVisit, ISuperKlass.class, (ITraverser t) -> {
                     ISuperKlass sk = (ISuperKlass) t;
@@ -78,25 +81,25 @@ public class UmlOutputStream extends FilterOutputStream {
     private void setupFieldVisitField() {
         this.visitor.addVisit(VisitType.FieldVisit, IField.class, (ITraverser t) -> {
             IField f = (IField) t;
-            String line = String.format("%s %s: %s \\l", f.getAccessLevel(), f.getFieldName(), f.getFieldType());
+            String line = String.format("%s %s: %s \\l ", f.getAccessLevel(), f.getFieldName(), KlassDecorator.stripClassPath(f.getFieldType()));
             this.write(line);
         });
     }
 
-    private void setupVisitMethodBlock() {
+    private void setupMethodVisitMethod() {
         this.visitor.addVisit(VisitType.MethodVisit, IMethod.class, (ITraverser t) -> {
             IMethod m = (IMethod) t;
             Argument[] args = m.getArguments();
             StringBuilder returnString = new StringBuilder();
             returnString.append(String.format("%s %s ( ", m.getAccessLevel(), m.getMethodName()));
             if (args.length != 0) {
-                returnString.append(String.format("%s : %s", args[0].getName(), args[0].getType().toString()));
+                returnString.append(String.format("%s : %s", args[0].getName(), KlassDecorator.stripClassPath(args[0].getType().toString())));
             }
 
             for (int i = 1; i < args.length; i++) {
-                returnString.append(String.format(", %s : %s", args[i].getName(), args[i].getType().toString()));
+                returnString.append(String.format(", %s : %s", args[i].getName(), KlassDecorator.stripClassPath(args[i].getType().toString())));
             }
-            returnString.append(String.format("): %s \\l", m.getReturnType()));
+            returnString.append(String.format("): %s \\l ", KlassDecorator.stripClassPath(m.getReturnType())));
             this.write(returnString.toString());
         });
     }
@@ -106,9 +109,9 @@ public class UmlOutputStream extends FilterOutputStream {
             IInterphace phace = (Interphace) t;
 
             StringBuilder outString = new StringBuilder();
-            outString.append(" edge [ \n style=\"solid\", arrowhead = \"empty\" \n ] \n ");
+            outString.append(" edge [\n style=\"solid\", arrowhead = \"empty\"\n]\n");
             for (String interphaceName : phace.getInterphase()) {
-                outString.append(String.format(" %s -> %s \n", this.className, KlassDecorator.stripFilePath(interphaceName)));
+                outString.append(String.format("%s -> %s \n", this.className, KlassDecorator.stripFilePath(interphaceName)));
             }
             this.write(outString.toString());
         });
@@ -150,25 +153,58 @@ public class UmlOutputStream extends FilterOutputStream {
             StringBuilder strBuild = new StringBuilder();
             String fieldSignature = f.getfieldSignature();
             //fieldSignature is empty: cat the \\ off field type and add to builder
+            strBuild.append("\n" +
+                    " edge [ \n" +
+                    "  style=\"solid\", arrowhead= \"vee\" \n" +
+                    " ] \n");
             if(fieldSignature == null || fieldSignature.equals("")) {
-                strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
-                        className,
-                        KlassDecorator.stripClassPath(f.getFieldType())));
-            }
-            else {
-                //type is inside of a collection or outer object. Format of style ///<>
-                String carrotedString = KlassDecorator.stripCollection(fieldSignature);
-                //Look for multiple params broken by semi-colon
-                String[] strArry = carrotedString.split("[;,:]");
+                if(className =="")
+                    return;
+                fieldSignature = className;
 
-                for (String s : strArry) {
-                    strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
-                           className,
-                            KlassDecorator.stripClassPath(s)));
+            }
+
+                //type is inside of a collection or outer object. Format of style ///<>
+                //String carrotedString = KlassDecorator.stripCollection(fieldSignature);
+                //Look for multiple params broken by semi-colon
+                String[] strArry = fieldSignature.split("[;,:]");
+
+                for (String str : strArry) {
+                    String s = KlassDecorator.fullStripClean(str);
+                    if(KlassDecorator.isDesirableObject(s))
+                        strBuild.append(String.format("%s -> %s \n",className,s));
                 }
+
+            this.write(strBuild.toString());
+        });
+    }
+
+    private void setupPostVisitMethod(){
+        this.visitor.addVisit(VisitType.PostVisit, IMethod.class, (ITraverser t) -> {
+            IMethod m = (IMethod) t;
+            HashSet<String> set = m.getUsedClasses();
+            if(m.getReturnType() != "void")
+                set.add(m.getReturnType());
+
+            for(Argument arg : m.getArguments())
+            {
+               set.add(KlassDecorator.stripCollection(arg.getType()));
+            }
+
+             StringBuilder strBuild = new StringBuilder();
+            strBuild.append("\n" +
+                    " edge [ \n" +
+                    "  style=\"dashed\", arrowhead= \"vee\" \n" +
+                    " ] \n");
+            for(String str: set){
+                String s = KlassDecorator.fullStripClean(str);
+                if(KlassDecorator.isDesirableObject(s))
+                    strBuild.append(String.format("%s -> %s \n",className, s));
             }
             this.write(strBuild.toString());
         });
     }
+
+    //endregion
 
 }

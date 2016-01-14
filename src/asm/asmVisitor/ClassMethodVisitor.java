@@ -10,6 +10,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ClassMethodVisitor extends ClassVisitor
 {
@@ -27,7 +28,7 @@ public class ClassMethodVisitor extends ClassVisitor
 	@Override
 	public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions){
 		MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
-        final ArrayList<String> classList = new ArrayList<>();
+        final HashSet<String> classList = new HashSet<>();
 
         MethodVisitor instantiationDecorator = new MethodVisitor(Opcodes.ASM5, toDecorate) {
             public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
@@ -36,7 +37,7 @@ public class ClassMethodVisitor extends ClassVisitor
             }
         };
 
-        String[] classArray = classList.toArray(new String[classList.size()]);
+       // String[] classArray = classList.toArray(new String[classList.size()]);
 
 		this.klass.addKlassPart(new Method(
 				access,
@@ -44,7 +45,7 @@ public class ClassMethodVisitor extends ClassVisitor
 				this.getReturnType(desc),
 				this.getArguments(desc),
 				exceptions,
-                classArray));
+				classList));
 
 		return instantiationDecorator;
 	}
