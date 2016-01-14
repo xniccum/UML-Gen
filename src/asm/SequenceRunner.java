@@ -29,6 +29,7 @@ public class SequenceRunner {
         SequenceClassMethodVisitor methodVisitor = new SequenceClassMethodVisitor(Opcodes.ASM5, methodName);
         reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
         Method method = methodVisitor.getMethod();
+        method.setClassName(className);
         System.out.println("METHOD IN SQRUNNER: "+reader.getClassName()+"."+method.getMethodName());
         if(maxDepthCount >0){
             for(IMethodPart part : method.getMethodParts()){
@@ -36,6 +37,7 @@ public class SequenceRunner {
                 Method localm = run(call.getClassName(), call.getCallName(), (maxDepthCount - 1));
                 localm.setClassName(call.getClassName());
                 method.addSubMethod(localm);
+                localm.setTopLevel(false);
             }
         }
         System.out.println("SUB_METHODS: "+method.getSubMethods());

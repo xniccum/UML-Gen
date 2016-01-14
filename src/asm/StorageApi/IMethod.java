@@ -21,4 +21,6 @@ public interface IMethod extends IKlassPart{
     public ArrayList<IMethod> getSubMethods();
     public String getClassName();
     public void setClassName(String className);
+    public boolean isTopLevel();
+    public void setTopLevel(boolean val);
 }

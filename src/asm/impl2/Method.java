@@ -24,6 +24,7 @@ public class Method extends KlassDecorator implements IMethod {
     private ArrayList<IMethod> calls;
     private String className;
     private String signature;
+    private boolean isTopLevel = true;
 
     public Method(int accessLevel, String methodName, String returnType, Argument[] arguments,
                   String[] exceptions, String signature) {
@@ -84,28 +85,32 @@ public class Method extends KlassDecorator implements IMethod {
     }
 
     @Override
+    public boolean isTopLevel() {
+        return isTopLevel;
+    }
+
+    @Override
+    public void setTopLevel(boolean val) {
+        isTopLevel = val;
+    }
+
+    @Override
     public void accept(IVisitor v) {
         v.preVisit(this);
         for (IMethodPart part : parts) {
             v.preVisit((ITraverser) part);
         }
+
         for (IMethod call : calls) {
             v.preVisit((ITraverser) call);
         }
         v.nameVisit(this);
-        for (IMethodPart part : parts) {
-            v.nameVisit((ITraverser) part);
-        }
+
         for (IMethod call : calls) {
             v.nameVisit((ITraverser) call);
         }
         v.fieldVisit(this);
-        for (IMethodPart part : parts) {
-            v.fieldVisit((ITraverser) part);
-        }
-        for (IMethod call : calls) {
-            v.fieldVisit((ITraverser) call);
-        }
+
         v.methodVisit(this);
         for (IMethodPart part : parts) {
             v.methodVisit((ITraverser) part);

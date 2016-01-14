@@ -26,9 +26,10 @@ public class SequenceMain {
 
         String className = "asm.asmVisitor.ClassMethodVisitor"; //TODO actual input
         String methodName = "visitMethod";
-        maxCallDepth = 1;
+        maxCallDepth = 2;
 
         Method topMethod = SequenceRunner.run(className,methodName,maxCallDepth);
+
         seqOut.write(topMethod);
 
 
