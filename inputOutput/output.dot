@@ -12,9 +12,4 @@ strict digraph G {
     fontname = "Bitstream Vera Sans"
     fontsize = 8
     ]
-+ init ( ): void \l+ main ( arg0 : java.lang.String[]): void \l+ shutDown ( ): void \l+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l+ init ( arg0 : java.lang.String): void \l+ execute ( arg0 : java.nio.file.Path): void \l+ init ( arg0 : java.nio.file.Path): void \l+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l+ getFile ( ): java.nio.file.Path \l+ getSource ( ): Lab1_3.problem.IDirectoryMonitorService \l+ removeListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l notifyListeners ( arg0 : Lab1_3.problem.DirectoryEvent): void \l+ init ( arg0 : java.lang.String): void \l+ execute ( arg0 : java.nio.file.Path): void \l+ addRunner ( arg0 : java.lang.String, arg1 : Lab1_3.problem.ProcessRunner): void \l+ shutDown ( ): void \l+ directoryChanged ( arg0 : Lab1_3.problem.DirectoryEvent): void \l
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- IDirectoryListener -> Object 
-+ addListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l+ removeListener ( arg0 : Lab1_3.problem.IDirectoryListener): void \l+ getCommand ( ): java.lang.String \l+ execute ( arg0 : java.nio.file.Path): void \l}
++ init ( arg0 : int, arg1 : asm.KlassStorage): void \l+ visit ( arg0 : int, arg1 : int, arg2 : java.lang.String, arg3 : java.lang.String, arg4 : java.lang.String, arg5 : java.lang.String[]): void \l}

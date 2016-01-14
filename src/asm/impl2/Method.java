@@ -18,8 +18,9 @@ public class Method extends KlassDecorator implements IMethod {
     private String returnType;
     private Argument[] arguments;
     private String[] exceptions;
+    private String[] usedClasses;
 
-    public Method(IKlassPart baseClass, int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions) {
+    public Method(IKlassPart baseClass, int accessLevel, String methodName, String returnType, Argument[] arguments, String[] exceptions, String[] usedClasses) {
         super(baseClass);
         this.baseKlass = baseClass;
         this.accessLevel = super.getAccessStringLevel(accessLevel);
@@ -27,6 +28,7 @@ public class Method extends KlassDecorator implements IMethod {
         this.returnType = returnType;
         this.arguments = arguments;
         this.exceptions = exceptions;
+        this.usedClasses = usedClasses;
     }
 
     @Override
@@ -51,6 +53,10 @@ public class Method extends KlassDecorator implements IMethod {
 
     public String[] getExceptions() {
         return exceptions;
+    }
+
+    public String[] getUsedClasses() {
+        return usedClasses;
     }
 
 
