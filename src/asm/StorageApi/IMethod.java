@@ -17,4 +17,8 @@ public interface IMethod extends IKlassPart{
     public String[] getExceptions();
     public void addMethodPart(IMethodPart part);
     public ArrayList<IMethodPart> getMethodParts();
+    public void addSubMethod(IMethod method);
+    public ArrayList<IMethod> getSubMethods();
+    public String getClassName();
+    public void setClassName(String className);
 }

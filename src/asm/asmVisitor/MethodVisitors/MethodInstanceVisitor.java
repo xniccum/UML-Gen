@@ -1,7 +1,7 @@
 package asm.asmVisitor.MethodVisitors;
 
 import asm.StorageApi.IMethod;
-import asm.impl2.Methodimp.MethodUsedKlass;
+import asm.impl2.Methodimp.MethodInternalCall;
 import org.objectweb.asm.MethodVisitor;
 
 /**
@@ -19,6 +19,6 @@ public class MethodInstanceVisitor extends MethodVisitor {
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
        super.visitMethodInsn(opcode, owner,name,desc,itf);
         //classList.add(owner);
-        this.method.addMethodPart(new MethodUsedKlass(owner));
+        this.method.addMethodPart(new MethodInternalCall(owner, name, desc, itf));
     }
 }

@@ -2,7 +2,7 @@ package asm;
 
 import asm.StorageApi.*;
 import asm.StorageApi.MethodStorage.IMethodPart;
-import asm.StorageApi.MethodStorage.IMethodUsedKlass;
+import asm.StorageApi.MethodStorage.IMethodInternalCall;
 import asm.impl.Argument;
 import asm.impl2.Interphace;
 import asm.impl2.KlassDecorator;
@@ -212,8 +212,8 @@ public class UmlOutputStream extends FilterOutputStream {
     }
 
     private void setupPostVisitMethodUsedKlass(){
-        this.visitor.addVisit(VisitType.PostVisit, IMethodUsedKlass.class, (ITraverser t) -> {
-            IMethodUsedKlass m = (IMethodUsedKlass) t;
+        this.visitor.addVisit(VisitType.PostVisit, IMethodInternalCall.class, (ITraverser t) -> {
+            IMethodInternalCall m = (IMethodInternalCall) t;
 
             StringBuilder strBuild = new StringBuilder();
             strBuild.append("\n" +

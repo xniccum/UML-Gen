@@ -1,9 +1,11 @@
 package asm;
 
 import asm.StorageApi.IKlassPart;
+import asm.StorageApi.IMethod;
 import asm.impl2.KlassDecorator;
 import asm.visitorApi.ITraverser;
 import asm.visitorApi.IVisitor;
+import asm.visitorApi.VisitType;
 import asm.visitorApi.Visitor;
 
 import java.io.FilterOutputStream;
@@ -15,8 +17,6 @@ import java.io.OutputStream;
  */
 public class SequenceOutputStream extends FilterOutputStream {
     private final IVisitor visitor;
-    private String className;
-    //private final String className;
 
     /**
      * Depends on Klass being the very base object
@@ -27,6 +27,7 @@ public class SequenceOutputStream extends FilterOutputStream {
     public SequenceOutputStream(OutputStream out) throws IOException {
         super(out);
         this.visitor = new Visitor();
+        setupMethodVisitMethods();
 
     }
 
@@ -38,18 +39,16 @@ public class SequenceOutputStream extends FilterOutputStream {
         }
     }
 
-    public void write(IKlassPart part) {
-        ITraverser t = (ITraverser) part;
+    public void write(IMethod method) {
+        ITraverser t = (ITraverser) method;
         t.accept(this.visitor);
     }
 
-    public String getClassName() {
-        return className;
+    private void setupMethodVisitMethods(){
+        this.visitor.addVisit(VisitType.MethodVisit, IMethod.class, (ITraverser t)->{
+            IMethod m = (IMethod)t;
+            String s = String.format("");
+            this.write(s);
+        });
     }
-
-    public void setClassName(String className) {
-        this.className =  KlassDecorator.stripFilePath(className);
-    }
-
-    // listners
 }
