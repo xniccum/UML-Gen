@@ -1,6 +1,7 @@
 package asm.asmVisitor;
 
 import asm.KlassStorage;
+import asm.StorageApi.IKlass;
 import asm.impl.Argument;
 import asm.impl2.Method;
 import org.objectweb.asm.ClassVisitor;
@@ -12,13 +13,13 @@ import java.util.ArrayList;
 
 public class ClassMethodVisitor extends ClassVisitor
 {
-	private KlassStorage klass;
-	public ClassMethodVisitor(int api, KlassStorage klass){
+	private IKlass klass;
+	public ClassMethodVisitor(int api, IKlass klass){
 		super(api);
 		this.klass = klass;
 	}
 	
-	public ClassMethodVisitor(int api, ClassVisitor decorated, KlassStorage klass) {
+	public ClassMethodVisitor(int api, ClassVisitor decorated, IKlass klass) {
 		super(api, decorated);
 		this.klass = klass;
 	}
@@ -37,7 +38,7 @@ public class ClassMethodVisitor extends ClassVisitor
 
         String[] classArray = classList.toArray(new String[classList.size()]);
 
-		this.klass.setCurrentPart(new Method(this.klass.getCurrentPart(),
+		this.klass.addKlassPart(new Method(
 				access,
 				name,
 				this.getReturnType(desc),

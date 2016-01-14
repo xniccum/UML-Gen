@@ -18,6 +18,7 @@ import java.io.OutputStream;
  */
 public class UmlOutputStream extends FilterOutputStream {
     private final IVisitor visitor;
+    private String className;
     //private final String className;
 
     /**
@@ -37,6 +38,7 @@ public class UmlOutputStream extends FilterOutputStream {
         setupMethodVisitKlass();
         setupFieldVisitKlass();
         setupPostVisitKlass();
+        setupPostVisitField();
     }
 
     private void write(String m) {
@@ -52,12 +54,23 @@ public class UmlOutputStream extends FilterOutputStream {
         t.accept(this.visitor);
     }
 
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className =  KlassDecorator.stripFilePath(className);
+    }
+
     private void setupPostVisitSuperKlass() {
         this.visitor.addVisit(VisitType.PostVisit, ISuperKlass.class, (ITraverser t) -> {
                     ISuperKlass sk = (ISuperKlass) t;
-                    String line = String.format("\n edge [ \n  style=\"solid\", arrowhead = \"normal\" \n ] \n %s -> %s \n",
-                            KlassDecorator.stripFilePath(sk.getBaseName()), KlassDecorator.stripFilePath(sk.getSuperKlass()));
-                    this.write(line);
+                    String superName = KlassDecorator.stripFilePath(sk.getSuperKlass());
+                    if(!superName.equals("Object")) {
+                        String line = String.format("\n edge [ \n  style=\"solid\", arrowhead = \"normal\" \n ] \n %s -> %s \n",
+                                this.className, superName);
+                        this.write(line);
+                    }
                 }
         );
     }
@@ -95,7 +108,7 @@ public class UmlOutputStream extends FilterOutputStream {
             StringBuilder outString = new StringBuilder();
             outString.append(" edge [ \n style=\"solid\", arrowhead = \"empty\" \n ] \n ");
             for (String interphaceName : phace.getInterphase()) {
-                outString.append(String.format(" %s -> %s \n", KlassDecorator.stripFilePath(phace.getBaseName()), KlassDecorator.stripFilePath(interphaceName)));
+                outString.append(String.format(" %s -> %s \n", this.className, KlassDecorator.stripFilePath(interphaceName)));
             }
             this.write(outString.toString());
         });
@@ -127,6 +140,34 @@ public class UmlOutputStream extends FilterOutputStream {
         this.visitor.addVisit(VisitType.PostVisit, IKlass.class, (ITraverser t) -> {
             IKlass k = (IKlass) t;
             this.write(String.format(" \n } \" \n ]"));
+        });
+    }
+
+    private void setupPostVisitField(){
+        this.visitor.addVisit(VisitType.PostVisit, IField.class, (ITraverser t) -> {
+            IField f = (IField) t;
+
+            StringBuilder strBuild = new StringBuilder();
+            String fieldSignature = f.getfieldSignature();
+            //fieldSignature is empty: cat the \\ off field type and add to builder
+            if(fieldSignature == null || fieldSignature.equals("")) {
+                strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
+                        className,
+                        KlassDecorator.stripClassPath(f.getFieldType())));
+            }
+            else {
+                //type is inside of a collection or outer object. Format of style ///<>
+                String carrotedString = KlassDecorator.stripCollection(fieldSignature);
+                //Look for multiple params broken by semi-colon
+                String[] strArry = carrotedString.split("[;,:]");
+
+                for (String s : strArry) {
+                    strBuild.append(String.format("\n edge [ \n  style=\"solid\", arrowhead= \"vee\" \n ] \n %s -> %s \n",
+                           className,
+                            KlassDecorator.stripClassPath(s)));
+                }
+            }
+            this.write(strBuild.toString());
         });
     }
 

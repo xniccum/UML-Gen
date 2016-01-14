@@ -1,19 +1,20 @@
 package asm.asmVisitor;
 
 import asm.KlassStorage;
+import asm.StorageApi.IKlass;
 import asm.impl2.Field;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Type;
 
 public class ClassFieldVisitor extends ClassVisitor{
-	private KlassStorage klass;
-	public ClassFieldVisitor(int api, KlassStorage klass){
+	private IKlass klass;
+	public ClassFieldVisitor(int api, IKlass klass){
 		super(api);
 		this.klass = klass;
 	}
 	
-	public ClassFieldVisitor(int api, ClassVisitor decorated, KlassStorage klass) {
+	public ClassFieldVisitor(int api, ClassVisitor decorated, IKlass klass) {
 		super(api, decorated);
 		this.klass = klass;
 		// TODO Auto-generated constructor stub
@@ -23,7 +24,7 @@ public class ClassFieldVisitor extends ClassVisitor{
 		FieldVisitor toDecorate = super.visitField(access, name, desc, signature, value);
 		String type = Type.getType(desc).getClassName();
 
-		this.klass.setCurrentPart(new Field(this.klass.getCurrentPart(), access, name, signature, type));
+		this.klass.addKlassPart(new Field(access, name, signature, type));
 
 		return toDecorate;
 	}

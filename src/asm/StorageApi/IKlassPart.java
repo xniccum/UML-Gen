@@ -6,7 +6,7 @@ package asm.StorageApi;
  * Assumes that the Fields will be attached Before the methods
  */
 public interface IKlassPart {
-    String getBaseName();
+    //String getBaseName();
 
     /** String printBefore();
 

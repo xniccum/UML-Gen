@@ -10,11 +10,9 @@ import asm.visitorApi.ITraverser;
  */
 public class SuperKlass extends KlassDecorator implements ISuperKlass{
     private String superKlassName;
-    private IKlassPart baseKlass;
 
-    public SuperKlass(IKlassPart baseKlass, String superKlassName) {
-        super(baseKlass);
-        this.baseKlass = baseKlass;
+    public SuperKlass( String superKlassName) {
+        super();
         this.superKlassName = superKlassName;
     }
 
