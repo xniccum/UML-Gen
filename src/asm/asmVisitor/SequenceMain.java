@@ -24,15 +24,12 @@ public class SequenceMain {
             return;
 
 
-        String className = "asm.asmVisitor.ClassMethodVisitor"; //TODO actual input
-        String methodName = "visitMethod";
-//        maxCallDepth = 2;
+        String className;
+        String methodName;
 
-//        String methodSignature = "asm.asmVisitor.ClassMethodVisitor.visitMethod(String arg1, int arg2)";
         String[] split = methodSignature.split("[.]");
         methodName = split[split.length-1].split("[(]")[0];
-//        System.out.println(split[split.length-2]);
-//        System.out.println(methodSignature.substring(0, methodSignature.charAt('.')));
+
         className=split[0];
         for(int i=1; i<split.length-1; i++) {
             className+="."+split[i];
