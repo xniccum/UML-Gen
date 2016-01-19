@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Created by Steven on 1/14/2016.
  */
 public class SequenceMain {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         OutputStream sdOut = new FileOutputStream("inputOutput/seqOutput.sd");
         SequenceOutputStream seqOut = new SequenceOutputStream(sdOut);
         String methodSignature = args[0];
@@ -40,6 +40,7 @@ public class SequenceMain {
 
         seqOut.write(topMethod);
 
-
     }
+
+
 }

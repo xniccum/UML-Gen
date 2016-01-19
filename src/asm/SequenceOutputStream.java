@@ -64,6 +64,14 @@ public class SequenceOutputStream extends FilterOutputStream {
             //use hashset to remove duplicates
             usedClassNames.add(KlassDecorator.fullStripClean(m.getClassName()));
 
+
+            //add used classes from submethods
+            ArrayList<IMethodPart> subMethods = m.getMethodParts();
+            for (IMethodPart subMethod : subMethods) {
+                IMethodInternalCall call = (IMethodInternalCall) subMethod;
+                usedClassNames.add(KlassDecorator.fullStripClean(call.getClassName()));
+            }
+
            // if(m.isTopLevel()) {
             //    s = KlassDecorator.fullStripClean(m.getClassName())+":"+KlassDecorator.fullStripClean(m.getClassName())+"\n";
             //} else {//add to hashset
@@ -106,10 +114,17 @@ public class SequenceOutputStream extends FilterOutputStream {
             String s = "";
 
 //            s = String.format(callingClass+ ":" + KlassDecorator.fullStripClean(m.getClassName()) + "\n\n");
+            String callName;
             for (IMethodPart subMethod : subMethods) {
                 IMethodInternalCall call = (IMethodInternalCall) subMethod;
+                callName = call.getCallName();
+                if(callName.equals("<init>")) {
+                    callName = "new";
+                }
+
+
                 s += String.format(KlassDecorator.fullStripClean(m.getClassName()) + ":" + KlassDecorator.fullStripClean(call.getClassName())
-                        + "." + call.getCallName() + "(...)\n");
+                        + "." + callName + "(...)\n");
             }
             this.write(s);
         });

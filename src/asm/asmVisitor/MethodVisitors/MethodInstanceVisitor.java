@@ -20,6 +20,9 @@ public class MethodInstanceVisitor extends MethodVisitor {
        super.visitMethodInsn(opcode, owner,name,desc,itf);
         //classList.add(owner);
         System.out.println("OWNER: "+owner+"."+name+"(...)");
-        this.method.addMethodPart(new MethodInternalCall(owner, name, desc, itf));
+
+        if(!(name.equals("") && name!=null)) {
+            this.method.addMethodPart(new MethodInternalCall(owner, name, desc, itf));
+        }
     }
 }

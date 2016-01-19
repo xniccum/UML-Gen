@@ -18,29 +18,33 @@ import java.io.IOException;
  */
 public class SequenceRunner {
 
-    private  SequenceRunner() {
+    private SequenceRunner() {
 
     }
 
 
-
-    public static Method run(String className, String methodName, int maxDepthCount) throws IOException {
+    public static Method run(String className, String methodName, int maxDepthCount) throws Exception {
         ClassReader reader = new ClassReader(className);
         SequenceClassMethodVisitor methodVisitor = new SequenceClassMethodVisitor(Opcodes.ASM5, methodName);
         reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
+//        System.out.println("class: "+className+" method: "+methodName);
         Method method = methodVisitor.getMethod();
         method.setClassName(className);
-        System.out.println("METHOD IN SQRUNNER: "+reader.getClassName()+"."+method.getMethodName());
-        if(maxDepthCount >0){
-            for(IMethodPart part : method.getMethodParts()){
-                IMethodInternalCall call = (IMethodInternalCall) part;
-                Method localm = run(call.getClassName(), call.getCallName(), (maxDepthCount - 1));
-                localm.setClassName(call.getClassName());
-                method.addSubMethod(localm);
-                localm.setTopLevel(false);
+
+        if (!className.startsWith("java/")) {
+            System.out.println("METHOD IN SQRUNNER: " + reader.getClassName() + "." + method.getMethodName());
+            if (maxDepthCount > 0) {
+                for (IMethodPart part : method.getMethodParts()) {
+                    IMethodInternalCall call = (IMethodInternalCall) part;
+                    Method localm = run(call.getClassName(), call.getCallName(), (maxDepthCount - 1));
+                    localm.setClassName(call.getClassName());
+                    method.addSubMethod(localm);
+                    localm.setTopLevel(false);
+                }
             }
+            System.out.println("SUB_METHODS: " + method.getSubMethods());
         }
-        System.out.println("SUB_METHODS: "+method.getSubMethods());
+
         return method;
     }
 }
