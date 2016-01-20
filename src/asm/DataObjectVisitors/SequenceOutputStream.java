@@ -1,4 +1,4 @@
-package asm;
+package asm.DataObjectVisitors;
 
 import asm.StorageApi.IKlassPart;
 import asm.StorageApi.IMethod;

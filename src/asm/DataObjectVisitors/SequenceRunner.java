@@ -1,4 +1,4 @@
-package asm;
+package asm.DataObjectVisitors;
 
 import asm.StorageApi.MethodStorage.IMethodInternalCall;
 import asm.StorageApi.MethodStorage.IMethodPart;

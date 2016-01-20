@@ -1,4 +1,4 @@
-package asm.asmVisitor;
+package asm.mainRunners;
 
 import asm.UmlOutputStream;
 import asm.asmVisitor.StandardVisitors.ClassDeclarationVisitor;
