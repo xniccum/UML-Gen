@@ -2,6 +2,7 @@ package asm.asmVisitor.DesignVisitors;
 
 import asm.StorageApi.IKlass;
 import asm.impl2.DesignParts.SingletonDesign;
+import asm.impl2.KlassDecorator;
 import jdk.internal.org.objectweb.asm.Opcodes;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
@@ -91,7 +92,10 @@ public class SingletonClassVisitor extends ClassVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         // TODO Check for a public method that returns the class type
-        if(access == Opcodes.ACC_PUBLIC && desc.equals(klass.getName()) && !name.equals(klass.getName())) {
+
+        System.out.println(desc);
+        System.out.println(klass.getName());
+        if(access == Opcodes.ACC_PUBLIC && KlassDecorator.stripClassPath(desc).equals(KlassDecorator.stripClassPath(klass.getName())) && !name.equals(klass.getName())) {
             flagPrivateConstructorExists = true;
             System.out.println("FLAG SET: flagPrivateConstructorExists = " + flagPrivateConstructorExists);
         }
