@@ -1,6 +1,7 @@
 package asm.asmVisitor.DesignVisitors;
 
 import asm.StorageApi.IKlass;
+import jdk.internal.org.objectweb.asm.Opcodes;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
@@ -8,11 +9,11 @@ import org.objectweb.asm.MethodVisitor;
 /**
  * Created by Steven on 1/19/2016.
  */
-public class SingletonClassVisitor extends ClassVisitor{
+public class SingletonClassVisitor extends ClassVisitor {
     private IKlass klass;
-    private boolean privateStaticOwnClass = false;
-    private boolean methodReturnTypeofClassType = false;
-    private boolean publicConstructorExists = false;
+    private boolean flagPrivateStaticOwnClass = false;
+    private boolean flagMethodReturnTypeofClassType = false;
+    private boolean flagPrivateConstructorExists = false;
 
     public SingletonClassVisitor(int i, IKlass klass) {
         super(i);
@@ -26,43 +27,66 @@ public class SingletonClassVisitor extends ClassVisitor{
 
     /**
      * Used for Class Declaration Visitor
-     * @param i version
-     * @param i1 access
-     * @param s name
-     * @param s1 signature
-     * @param s2 superName
-     * @param strings interfaces
+     *
+     * @param version    version
+     * @param access     access
+     * @param name       name
+     * @param signature  signature
+     * @param superName  superName
+     * @param interfaces interfaces
      */
     @Override
-    public void visit(int i, int i1, String s, String s1, String s2, String[] strings) {
-        super.visit(i, i1, s, s1, s2, strings);
+    public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+        super.visit(version, access, name, signature, superName, interfaces);
+
     }
 
     /**
-     *  Used to check fields for self
-     * @param i access
-     * @param s name
-     * @param s1 desc
-     * @param s2 signature
-     * @param o value
+     * Used to check fields for self
+     *
+     * @param access    access
+     * @param name      name
+     * @param desc      desc
+     * @param signature signature
+     * @param value     value
      * @return
      */
     @Override
-    public FieldVisitor visitField(int i, String s, String s1, String s2, Object o) {
-        return super.visitField(i, s, s1, s2, o);
+    public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
+        if (access == Opcodes.ACC_PRIVATE && desc.equals(klass.getName())) {
+            flagPrivateStaticOwnClass = true;
+            System.out.println("FLAG SET: flagPrivateStaticOwnClass = " + flagPrivateStaticOwnClass);
+        }
+        // TODO private static field of ClassType
+
+        return super.visitField(access, name, desc, signature, value);
     }
 
     /**
-     *  Used to check for method return
-     * @param i access
-     * @param s name
-      * @param s1 desc
-     * @param s2 signature
-     * @param strings exceptions
+     * Used to check for method return
+     *
+     * @param access     access
+     * @param name       name
+     * @param desc       desc
+     * @param signature  signature
+     * @param exceptions exceptions
      * @return
      */
     @Override
-    public MethodVisitor visitMethod(int i, String s, String s1, String s2, String[] strings) {
-        return super.visitMethod(i, s, s1, s2, strings);
+    public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+        // TODO Check for a public method that returns the class type
+        if(access == Opcodes.ACC_PUBLIC && desc.equals(klass.getName()) && !name.equals(klass.getName())) {
+            flagPrivateConstructorExists = true;
+            System.out.println("FLAG SET: flagPrivateConstructorExists = " + flagPrivateConstructorExists);
+        }
+
+        // TODO Check for a private constructor
+        if(access == Opcodes.ACC_PRIVATE && desc.equals(klass.getName()) && name.equals(klass.getName())) {
+            flagPrivateConstructorExists = true;
+            System.out.println("FLAG SET: flagPrivateConstructorExists = " + flagPrivateConstructorExists);
+        }
+        
+        return super.visitMethod(access, name, desc, signature, exceptions);
+
     }
 }
