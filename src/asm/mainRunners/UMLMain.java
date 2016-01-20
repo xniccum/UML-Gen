@@ -2,6 +2,7 @@ package asm.mainRunners;
 
 //import asm.UmlOutputStream;
 import asm.DataObjectVisitors.UmlOutputStream;
+import asm.asmVisitor.DesignVisitors.SingletonClassVisitor;
 import asm.asmVisitor.StandardVisitors.ClassDeclarationVisitor;
 import asm.asmVisitor.StandardVisitors.ClassFieldVisitor;
 import asm.asmVisitor.StandardVisitors.ClassMethodVisitor;
@@ -111,9 +112,9 @@ public class UMLMain {
 			
 			// DECORATE field visitor with method visitor
 			ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, klass);
-
+			SingletonClassVisitor scv = new SingletonClassVisitor(Opcodes.ASM5, methodVisitor, klass);
 			// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
-			reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
+			reader.accept(scv, ClassReader.EXPAND_FRAMES);
 			//string.append(storage.toString());
 			//dotOut.write(storage.toString().getBytes());
             umlOut.setClassName(klass.getName());
