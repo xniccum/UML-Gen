@@ -25,8 +25,16 @@ Everyone alternated pair programming on Doolan's Desktop for the design and the 
 ######Austin
     Started working on the automated testing once there was enough working code to test.
 ######Doolan and Davis
+<<<<<<< Updated upstream
     alternated on Doolan's PC finishing the project implementation and fixing bugs.
 
+=======
+ alternated on Doolan's PC finishing the project implementation and fixing bugs.
+ 
+ ![ProjectUML](./projectUMLgenerated.png)
+ 
+-----
+>>>>>>> Stashed changes
 ###M2:
 Doolan's Desktop was used for the bulk of the coding.
 #####Doolan and Davis

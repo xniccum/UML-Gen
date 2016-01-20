@@ -1,0 +1,44 @@
+FirstASM [ 
+ label = " { FirstASM|myField myField: String \l |+ init ( ): void \l + main ( arg0 : String[]): void \l  clinit ( ): void \l  
+ } " 
+ ]
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+FirstASM -> ClassReader 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+FirstASM -> PrintWriter 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+FirstASM -> TraceClassVisitor 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+FirstASM -> ClassReader 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+FirstASM -> FirstASM 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 

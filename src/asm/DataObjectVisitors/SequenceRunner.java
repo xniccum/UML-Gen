@@ -7,6 +7,8 @@ import asm.impl2.StandardDataObjects.Method;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Opcodes;
 
+import java.io.IOException;
+
 /**
  * Created by Steven on 1/14/2016.
  */
