@@ -78,21 +78,7 @@ public class UMLMain {
 					"asm.visitorApi.Visitor",
 					"asm.visitorApi.VisitType"*/
 				classNames = new String[]{
-						"pizzafm.ChicagoPizzaStore",
-						"pizzafm.ChicagoStyleCheesePizza",
-						"pizzafm.ChicagoStyleClamPizza",
-						"pizzafm.ChicagoStylePepperoniPizza",
-						"pizzafm.ChicagoStyleVeggiePizza",
-						"pizzafm.DependentPizzaStore",
-						"pizzafm.NYPizzaStore",
-						"pizzafm.NYStyleCheesePizza",
-						"pizzafm.NYStyleClamPizza",
-						"pizzafm.NYStylePepperoniPizza",
-						"pizzafm.NYStyleVeggiePizza",
-						"pizzafm.Pizza",
-						"pizzafm.PizzaStore",
-						"pizzafm.PizzaTestDrive"
-
+						"asm.mainRunners.Singleton"
 				};
 		}
 		else {
