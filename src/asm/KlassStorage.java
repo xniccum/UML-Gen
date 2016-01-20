@@ -25,17 +25,4 @@ public class KlassStorage {
         this.currentPart = currentPart;
     }
 
-
-
-
-   /**@Override
-    public String toString() {
-        StringBuilder string = new StringBuilder();
-        string.append(currentPart.printBefore());
-        string.append(currentPart.printNameBlock());
-        string.append(currentPart.printFieldBlock());
-        string.append(currentPart.printMethodBlock());
-        string.append(currentPart.printEnd());
-        return string.toString();
-    }**/
 }

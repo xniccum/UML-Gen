@@ -1,7 +1,7 @@
 package asm.mainRunners;
 
-import asm.SequenceOutputStream;
-import asm.SequenceRunner;
+import asm.DataObjectVisitors.SequenceOutputStream;
+import asm.DataObjectVisitors.SequenceRunner;
 import asm.impl2.StandardDataObjects.Method;
 
 import java.io.FileOutputStream;

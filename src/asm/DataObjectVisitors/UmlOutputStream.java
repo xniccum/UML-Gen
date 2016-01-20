@@ -3,7 +3,9 @@ package asm.DataObjectVisitors;
 import asm.StorageApi.*;
 import asm.StorageApi.MethodStorage.IMethodPart;
 import asm.StorageApi.MethodStorage.IMethodInternalCall;
+import asm.asmVisitor.DesignVisitors.SingletonClassVisitor;
 import asm.impl.Argument;
+import asm.impl2.DesignParts.SingletonDesign;
 import asm.impl2.StandardDataObjects.Interphace;
 import asm.impl2.KlassDecorator;
 import asm.visitorApi.ITraverser;
@@ -44,6 +46,8 @@ public class UmlOutputStream extends FilterOutputStream {
         setupPostVisitField();
         setupPostVisitMethod();
         setupPostVisitMethodUsedKlass();
+        setupNameVisitDesignType();
+        setupPostVisitSingletonClass();
     }
 
     private void write(String m) {
@@ -226,6 +230,24 @@ public class UmlOutputStream extends FilterOutputStream {
                     strBuild.append(String.format("%s -> %s \n",className, s));
 
             this.write(strBuild.toString());
+        });
+    }
+
+    //SingletonPatten
+    private void setupNameVisitDesignType(){
+        this.visitor.addVisit(VisitType.NameVisit, DesignType.class, (ITraverser t) -> {
+            DesignType des = (DesignType) t;
+            this.write(String.format("\\l<<%s>>", des));
+        });
+    }
+
+    private void setupPostVisitSingletonClass(){
+        this.visitor.addVisit(VisitType.PostVisit, SingletonDesign.class, (ITraverser t) -> {
+            SingletonDesign s = (SingletonDesign) t;
+
+            String str = String.format("\n edge [ \n  style=\"solid\", arrowhead = \"normal\" \n ] \n %s -> %s \n",
+                    this.className, this.className);
+            this.write(str);
         });
     }
 

@@ -18,7 +18,7 @@ public class ClassVisitorTest
     public void setUp() throws Exception
     {
         storage = new KlassStorage();
-        reader=new ClassReader("asm.asmVisitor.FirstASM");
+        reader=new ClassReader("asm.mainRunners.FirstASM");
     }
 
     @Test
