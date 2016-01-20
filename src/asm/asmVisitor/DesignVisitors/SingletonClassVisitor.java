@@ -2,6 +2,7 @@ package asm.asmVisitor.DesignVisitors;
 
 import asm.StorageApi.IKlass;
 import asm.impl2.DesignParts.SingletonDesign;
+import asm.impl2.Klass;
 import asm.impl2.KlassDecorator;
 import jdk.internal.org.objectweb.asm.Opcodes;
 import org.objectweb.asm.ClassVisitor;
@@ -36,6 +37,7 @@ public class SingletonClassVisitor extends ClassVisitor {
         if(conditionsMet()  && !designAdded){
             designAdded = true;
             klass.addKlassPart(new SingletonDesign());
+
         }
         else if(!conditionsMet() && designAdded){
             //remove klassPart
@@ -70,7 +72,13 @@ public class SingletonClassVisitor extends ClassVisitor {
      */
     @Override
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
-        if (access == Opcodes.ACC_PRIVATE && desc.equals(klass.getName())) {
+        String sClassName = KlassDecorator.stripClassPath(klass.getName());
+        String varType = KlassDecorator.fullStripClean(desc);
+
+        int privateStatic = (Opcodes.ACC_PRIVATE | Opcodes.ACC_STATIC);
+        int privateStaticFinal = (Opcodes.ACC_PRIVATE | Opcodes.ACC_STATIC | Opcodes.ACC_FINAL);
+
+        if ((access == privateStatic || access == privateStaticFinal) && sClassName.equals(varType)) {
             flagPrivateStaticOwnClass = true;
             System.out.println("FLAG SET: flagPrivateStaticOwnClass = " + flagPrivateStaticOwnClass);
         }
@@ -91,12 +99,15 @@ public class SingletonClassVisitor extends ClassVisitor {
      */
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-        // TODO Check for a public method that returns the class type
 
-        System.out.println(desc);
-        System.out.println(name);
-        System.out.println(klass.getName());
-        if(access == Opcodes.ACC_PUBLIC && !name.equals("<init>")) {
+
+
+        String sClassName = KlassDecorator.stripClassPath(klass.getName());
+        String mName = KlassDecorator.stripClassPath(name);
+        String returnType = KlassDecorator.fullStripClean(desc);
+//        System.out.println(String.format("Class Name: %s, Return Type: %s, Method Name: %s, Desc Field: %s, Name field: %s", sClassName, returnType, mName, desc, name));
+        // TODO Check for a public method that returns the class type
+        if(access == (Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC) && sClassName.equals(returnType)) {
             flagMethodReturnTypeofClassType = true;
             System.out.println("FLAG SET: flagMethodReturnTypeofClassType = " + flagMethodReturnTypeofClassType);
         }

@@ -235,7 +235,7 @@ public class UmlOutputStream extends FilterOutputStream {
     private void setupNameVisitDesignType(){
         this.visitor.addVisit(VisitType.NameVisit, DesignType.class, (ITraverser t) -> {
             DesignType des = (DesignType) t;
-            this.write(String.format("\\l<<%s>>", des));
+            this.write(String.format("\\l\\<\\<%s\\>\\>", des.getDesignName()));
         });
     }
 
