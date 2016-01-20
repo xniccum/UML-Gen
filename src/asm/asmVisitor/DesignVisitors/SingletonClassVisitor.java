@@ -1,6 +1,7 @@
 package asm.asmVisitor.DesignVisitors;
 
 import asm.StorageApi.IKlass;
+import asm.impl2.DesignParts.SingletonDesign;
 import jdk.internal.org.objectweb.asm.Opcodes;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
@@ -14,6 +15,7 @@ public class SingletonClassVisitor extends ClassVisitor {
     private boolean flagPrivateStaticOwnClass = false;
     private boolean flagMethodReturnTypeofClassType = false;
     private boolean flagPrivateConstructorExists = false;
+    private boolean designAdded = false;
 
     public SingletonClassVisitor(int i, IKlass klass) {
         super(i);
@@ -23,6 +25,20 @@ public class SingletonClassVisitor extends ClassVisitor {
     public SingletonClassVisitor(int i, ClassVisitor classVisitor, IKlass klass) {
         super(i, classVisitor);
         this.klass = klass;
+    }
+
+    private boolean conditionsMet(){
+        return flagPrivateStaticOwnClass && flagMethodReturnTypeofClassType && flagPrivateConstructorExists;
+    }
+
+    private void UpdateKlass(){
+        if(conditionsMet()  && !designAdded){
+            designAdded = true;
+            klass.addKlassPart(new SingletonDesign());
+        }
+        else if(!conditionsMet() && designAdded){
+            //remove klassPart
+        }
     }
 
     /**
@@ -58,7 +74,7 @@ public class SingletonClassVisitor extends ClassVisitor {
             System.out.println("FLAG SET: flagPrivateStaticOwnClass = " + flagPrivateStaticOwnClass);
         }
         // TODO private static field of ClassType
-
+        UpdateKlass();
         return super.visitField(access, name, desc, signature, value);
     }
 
@@ -85,8 +101,7 @@ public class SingletonClassVisitor extends ClassVisitor {
             flagPrivateConstructorExists = true;
             System.out.println("FLAG SET: flagPrivateConstructorExists = " + flagPrivateConstructorExists);
         }
-        
+        UpdateKlass();
         return super.visitMethod(access, name, desc, signature, exceptions);
-
     }
 }
