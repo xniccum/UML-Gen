@@ -1,5 +1,6 @@
 package asm;
 
+import asm.DataObjectVisitors.UmlOutputStream;
 import asm.asmVisitor.StandardVisitors.ClassDeclarationVisitor;
 import asm.asmVisitor.StandardVisitors.ClassFieldVisitor;
 import asm.asmVisitor.StandardVisitors.ClassMethodVisitor;

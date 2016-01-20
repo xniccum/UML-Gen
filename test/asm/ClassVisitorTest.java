@@ -26,12 +26,11 @@ public class ClassVisitorTest
     @Before
     public void setUp() throws Exception
     {
-<<<<<<< HEAD
-        storage = new KlassStorage();
-        reader=new ClassReader("asm.mainRunners.FirstASM");
-=======
+
+//        storage = new KlassStorage();
+//        reader=new ClassReader("asm.mainRunners.FirstASM");
         klass = new Klass();
->>>>>>> 730cab4f50d7cfc2983c5b6249f75eed5fb8b48d
+
     }
 
     @Test
