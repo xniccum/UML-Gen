@@ -94,14 +94,15 @@ public class SingletonClassVisitor extends ClassVisitor {
         // TODO Check for a public method that returns the class type
 
         System.out.println(desc);
+        System.out.println(name);
         System.out.println(klass.getName());
-        if(access == Opcodes.ACC_PUBLIC && KlassDecorator.stripClassPath(desc).equals(KlassDecorator.stripClassPath(klass.getName())) && !name.equals(klass.getName())) {
-            flagPrivateConstructorExists = true;
-            System.out.println("FLAG SET: flagPrivateConstructorExists = " + flagPrivateConstructorExists);
+        if(access == Opcodes.ACC_PUBLIC && !name.equals("<init>")) {
+            flagMethodReturnTypeofClassType = true;
+            System.out.println("FLAG SET: flagMethodReturnTypeofClassType = " + flagMethodReturnTypeofClassType);
         }
 
         // TODO Check for a private constructor
-        if(access == Opcodes.ACC_PRIVATE && desc.equals(klass.getName()) && name.equals(klass.getName())) {
+        if(access == Opcodes.ACC_PRIVATE && name.equals("<init>")) {
             flagPrivateConstructorExists = true;
             System.out.println("FLAG SET: flagPrivateConstructorExists = " + flagPrivateConstructorExists);
         }

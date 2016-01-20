@@ -12,14 +12,43 @@ strict digraph G {
     fontname = "Bitstream Vera Sans"
     fontsize = 8
     ]
-Singleton [ 
- label = " { Singleton|uniqueInstance uniqueInstance: Singleton \l |- init ( ): void \l + getInstance ( ): Singleton \l  
+ChocolateBoiler [ 
+ label = " { ChocolateBoiler|empty empty: boolean \l uniqueInstance uniqueInstance: ChocolateBoiler \l boiled boiled: boolean \l |+ getInstance ( ): ChocolateBoiler \l + isEmpty ( ): boolean \l + isBoiled ( ): boolean \l - init ( ): void \l + drain ( ): void \l + fill ( ): void \l + boil ( ): void \l  
  } " 
  ]
  edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> PrintStream 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> PrintStream 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
   style="solid", arrowhead= "vee" 
  ] 
-Singleton -> Singleton 
+ChocolateBoiler -> ChocolateBoiler 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -32,10 +61,46 @@ Singleton -> Singleton
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Singleton -> Singleton 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Singleton -> Singleton 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+ChocolateBoiler -> ChocolateBoiler 
 }
