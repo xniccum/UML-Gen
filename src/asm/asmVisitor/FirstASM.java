@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 public class FirstASM {
 	public static String myField = "Hello World!";
 	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException {
 		// Read in this class
 		ClassReader reader=new ClassReader("problem.asm.asmVisitor.FirstASM");
 

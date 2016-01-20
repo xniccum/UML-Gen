@@ -8,11 +8,10 @@ import asm.visitorApi.ITraverser;
 /**
  * Created by Steven on 1/4/2016.
  */
-public class SuperKlass extends KlassDecorator implements ISuperKlass{
+public class SuperKlass extends KlassDecorator implements ISuperKlass {
     private String superKlassName;
 
-    public SuperKlass( String superKlassName) {
-        super();
+    public SuperKlass(String superKlassName) {
         this.superKlassName = superKlassName;
     }
 

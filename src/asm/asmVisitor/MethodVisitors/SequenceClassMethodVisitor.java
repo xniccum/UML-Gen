@@ -19,13 +19,11 @@ public class SequenceClassMethodVisitor extends ClassVisitor {
     public SequenceClassMethodVisitor(int api, String methodName) {
         super(api);
         this.methodName = methodName;
-
     }
 
     public SequenceClassMethodVisitor(int api, ClassVisitor cv, String methodName) {
         super(api, cv);
         this.methodName = methodName;
-
     }
 
     @Override

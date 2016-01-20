@@ -19,9 +19,11 @@ public class SequenceMain {
         if(maxCallDepth == 0)
             return;
 
-
-        String className;
-        String methodName;
+        //Command-line version
+        //String className=args[2];
+        //String methodName=args[3];
+        String className="SequenceMain";
+        String methodName="main";
 
         String[] split = methodSignature.split("[.]");
         methodName = split[split.length-1].split("[(]")[0];

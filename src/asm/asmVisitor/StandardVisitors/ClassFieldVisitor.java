@@ -16,7 +16,6 @@ public class ClassFieldVisitor extends ClassVisitor{
 	public ClassFieldVisitor(int api, ClassVisitor decorated, IKlass klass) {
 		super(api, decorated);
 		this.klass = klass;
-		// TODO Auto-generated constructor stub
 	}
 	
 	public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {

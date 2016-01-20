@@ -22,7 +22,6 @@ import java.util.HashSet;
 public class UmlOutputStream extends FilterOutputStream {
     private final IVisitor visitor;
     private String className;
-    //private final String className;
 
     /**
      * Depends on Klass being the very base object
@@ -68,7 +67,6 @@ public class UmlOutputStream extends FilterOutputStream {
     }
 
     //region Setup Methods
-
     private void setupPostVisitSuperKlass() {
         this.visitor.addVisit(VisitType.PostVisit, ISuperKlass.class, (ITraverser t) -> {
                     ISuperKlass sk = (ISuperKlass) t;
@@ -228,7 +226,6 @@ public class UmlOutputStream extends FilterOutputStream {
             this.write(strBuild.toString());
         });
     }
-
     //endregion
 
 }

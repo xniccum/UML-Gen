@@ -13,12 +13,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class DesignParser {
+public class UMLMain {
 	/**
 	 * Reads in a list of Java Classes and reverse engineers their design.
 	 * 
 	 * @param args: the names of the classes, separated by spaces. 
-	 * 		For example: java DesignParser java.lang.String edu.rosehulman.csse374.ClassFieldVisitor java.lang.Math
+	 * 		For example: java UMLMain java.lang.String edu.rosehulman.csse374.ClassFieldVisitor java.lang.Math
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException{
@@ -43,7 +43,60 @@ public class DesignParser {
         //OutputStream uml = new PipedOutputStream();
 		//UmlOutputStream umlOut = new UmlOutputStream(uml);
 
-		for(String className: args){
+		String[] classNames;
+		if(args.length < 2) {
+			/*classNames = new String[]{
+					"asm.KlassStorage",
+					"asm.UmlOutputStream",
+					"asm.asmVisitor.ClassDeclarationVisitor",
+					"asm.asmVisitor.ClassFieldVisitor",
+					"asm.asmVisitor.ClassMethodVisitor",
+					"asm.asmVisitor.UMLMain",
+					"asm.asmVisitor.MethodVisitors.MethodInstanceVisitor",
+					"asm.impl2.Field",
+					"asm.impl2.Interphace",
+					"asm.impl2.Klass",
+					"asm.impl2.KlassDecorator",
+					"asm.impl2.Method",
+					"asm.impl2.SuperKlass",
+					"asm.impl2.Methodimp.MethodDecorator",
+					"asm.impl2.Methodimp.MethodInternalCall",
+					"asm.StorageApi.IField",
+					"asm.StorageApi.IInterphace",
+					"asm.StorageApi.IKlass",
+					"asm.StorageApi.IKlassPart",
+					"asm.StorageApi.IMethod",
+					"asm.StorageApi.ISuperKlass",
+					"asm.StorageApi.MethodStorage.IMethodInternalCall",
+					"asm.StorageApi.MethodStorage.IMethodPart",
+					"asm.visitorApi.ITraverser",
+					"asm.visitorApi.IVisitMethod",
+					"asm.visitorApi.IVisitor",
+					"asm.visitorApi.LookupKey",
+					"asm.visitorApi.Visitor",
+					"asm.visitorApi.VisitType"*/
+				classNames = new String[]{
+						"pizzafm.ChicagoPizzaStore",
+						"pizzafm.ChicagoStyleCheesePizza",
+						"pizzafm.ChicagoStyleClamPizza",
+						"pizzafm.ChicagoStylePepperoniPizza",
+						"pizzafm.ChicagoStyleVeggiePizza",
+						"pizzafm.DependentPizzaStore",
+						"pizzafm.NYPizzaStore",
+						"pizzafm.NYStyleCheesePizza",
+						"pizzafm.NYStyleClamPizza",
+						"pizzafm.NYStylePepperoniPizza",
+						"pizzafm.NYStyleVeggiePizza",
+						"pizzafm.Pizza",
+						"pizzafm.PizzaStore",
+						"pizzafm.PizzaTestDrive"
+
+				};
+		}
+		else {
+			classNames = args; }
+
+		for(String className: classNames){
 			//KlassStorage storage = new KlassStorage();
             Klass klass = new Klass();
 			// ASM's ClassReader does the heavy lifting of parsing the compiled Java class

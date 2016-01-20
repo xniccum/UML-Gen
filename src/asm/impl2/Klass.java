@@ -25,7 +25,7 @@ public class Klass implements IKlass, ITraverser {
         this.name = "";
         this.version = 1;
         this.access = -1;
-        klassParts = new HashSet<IKlassPart>();
+        this.klassParts = new HashSet<IKlassPart>();
     }
 
     public Klass(String name, int version, int access) {
@@ -64,7 +64,6 @@ public class Klass implements IKlass, ITraverser {
         return this.access;
     }
     //endregion
-
 
     @Override
     public void addKlassPart(IKlassPart part) {

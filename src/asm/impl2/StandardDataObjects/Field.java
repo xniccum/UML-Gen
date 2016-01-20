@@ -17,7 +17,6 @@ public class Field extends KlassDecorator implements IField{
 
 
     public Field( int accessLevel, String fieldName, String fieldSignature, String fieldType) {
-        super();
         this.accessLevel = super.getAccessStringLevel(accessLevel);
         this.fieldName = fieldName;
         this.fieldType = fieldType;

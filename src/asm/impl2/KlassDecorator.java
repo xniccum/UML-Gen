@@ -10,10 +10,6 @@ import org.objectweb.asm.Opcodes;
  * Created by Steven on 1/4/2016.
  */
 public abstract class KlassDecorator implements IKlassPart{
-    public KlassDecorator() {
-
-    }
-
 
     public void accept(IVisitor v) {
         v.preVisit(this);
@@ -55,11 +51,15 @@ public abstract class KlassDecorator implements IKlassPart{
     }
 
     public static String stripFilePath(String s){
+        if(s.charAt(s.length()-1)=='/')
+            return "";
         String[] sArray = s.split("/");
         return sArray[sArray.length -1];
     }
 
     public static String stripClassPath(String s){
+        if(s.charAt(s.length()-1)=='/' || s.charAt(s.length()-1)=='.')
+            return "";
         String[] strArr = s.split("[./]");
         return strArr[strArr.length-1];
     }
@@ -67,7 +67,7 @@ public abstract class KlassDecorator implements IKlassPart{
     public static String stripCollection(String type){
         int startParse = type.indexOf('<');
         int endParse =  type.indexOf('>');
-        return startParse > -1 && endParse > -1 ?type.substring(startParse,endParse):type;
+        return startParse > -1 && endParse > -1 ?type.substring(startParse+1,endParse):type;
     }
 
     public static String stripSymbols(String s){

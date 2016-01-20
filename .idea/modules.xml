@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UML-Gen.iml" filepath="$PROJECT_DIR$/UML-Gen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/pizzafm/pizzafm.iml" filepath="$PROJECT_DIR$/src/pizzafm/pizzafm.iml" />
     </modules>
   </component>
 </project>
