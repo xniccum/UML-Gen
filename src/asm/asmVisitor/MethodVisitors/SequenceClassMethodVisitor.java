@@ -1,10 +1,8 @@
-package asm.asmVisitor;
+package asm.asmVisitor.MethodVisitors;
 
-import asm.StorageApi.IKlass;
-import asm.asmVisitor.ClassMethodVisitor;
 import asm.asmVisitor.MethodVisitors.MethodInstanceVisitor;
 import asm.impl.Argument;
-import asm.impl2.Method;
+import asm.impl2.StandardDataObjects.Method;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;

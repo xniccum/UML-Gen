@@ -1,4 +1,4 @@
-package asm.impl2;
+package asm.impl2.StandardDataObjects;
 
 import asm.StorageApi.IField;
 import asm.StorageApi.IKlassPart;

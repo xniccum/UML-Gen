@@ -2,14 +2,10 @@ package asm.asmVisitor;
 
 import asm.SequenceOutputStream;
 import asm.SequenceRunner;
-import asm.StorageApi.MethodStorage.IMethodInternalCall;
-import asm.impl2.Method;
+import asm.impl2.StandardDataObjects.Method;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 /**
  * Created by Steven on 1/14/2016.

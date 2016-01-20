@@ -1,8 +1,7 @@
-package asm.asmVisitor;
+package asm.asmVisitor.StandardVisitors;
 
-import asm.KlassStorage;
 import asm.StorageApi.IKlass;
-import asm.impl2.Field;
+import asm.impl2.StandardDataObjects.Field;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Type;

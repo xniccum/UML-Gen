@@ -20,5 +20,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="asm-all-5.0.4 (2)" level="project" />
   </component>
 </module>

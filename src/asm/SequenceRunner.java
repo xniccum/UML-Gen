@@ -2,16 +2,10 @@ package asm;
 
 import asm.StorageApi.MethodStorage.IMethodInternalCall;
 import asm.StorageApi.MethodStorage.IMethodPart;
-import asm.asmVisitor.ClassDeclarationVisitor;
-import asm.asmVisitor.ClassMethodVisitor;
-import asm.asmVisitor.SequenceClassMethodVisitor;
-import asm.impl2.Klass;
-import asm.impl2.Method;
+import asm.asmVisitor.MethodVisitors.SequenceClassMethodVisitor;
+import asm.impl2.StandardDataObjects.Method;
 import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
-
-import java.io.IOException;
 
 /**
  * Created by Steven on 1/14/2016.

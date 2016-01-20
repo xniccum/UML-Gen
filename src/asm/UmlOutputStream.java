@@ -4,7 +4,7 @@ import asm.StorageApi.*;
 import asm.StorageApi.MethodStorage.IMethodPart;
 import asm.StorageApi.MethodStorage.IMethodInternalCall;
 import asm.impl.Argument;
-import asm.impl2.Interphace;
+import asm.impl2.StandardDataObjects.Interphace;
 import asm.impl2.KlassDecorator;
 import asm.visitorApi.ITraverser;
 import asm.visitorApi.IVisitor;

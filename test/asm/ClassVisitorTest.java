@@ -1,8 +1,5 @@
 package asm;
 
-import asm.asmVisitor.ClassDeclarationVisitor;
-import asm.asmVisitor.ClassFieldVisitor;
-import asm.asmVisitor.ClassMethodVisitor;
 import org.junit.Before;
 import org.junit.Test;
 import org.objectweb.asm.ClassReader;
