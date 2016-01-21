@@ -60,21 +60,25 @@ public class SequenceOutputStream extends FilterOutputStream {
     private void setupPreVisitMethod(){
         this.visitor.addVisit(VisitType.PreVisit, IMethod.class, (ITraverser t) -> {
             IMethod m = (IMethod) t;
+            String s = "";
 
             //use hashset to remove duplicates
-            usedClassNames.add(KlassDecorator.fullStripClean(m.getClassName()));
+//            usedClassNames.add(KlassDecorator.fullStripClean(m.getClassName()));
 
 
             //add used classes from submethods
             ArrayList<IMethodPart> subMethods = m.getMethodParts();
             for (IMethodPart subMethod : subMethods) {
                 IMethodInternalCall call = (IMethodInternalCall) subMethod;
-                usedClassNames.add(KlassDecorator.fullStripClean(call.getClassName()));
+                usedClassNames.add("/"+KlassDecorator.fullStripClean(call.getClassName()));
             }
 
-           // if(m.isTopLevel()) {
-            //    s = KlassDecorator.fullStripClean(m.getClassName())+":"+KlassDecorator.fullStripClean(m.getClassName())+"\n";
-            //} else {//add to hashset
+            if(m.isTopLevel()) {
+                s = KlassDecorator.fullStripClean(m.getClassName())+":"+KlassDecorator.fullStripClean(m.getClassName());
+                this.write(String.format("%s\n", s));
+
+            }
+            // else {//add to hashset
               //  s = String.format(KlassDecorator.fullStripClean(m.getClassName())+ ":" + KlassDecorator.fullStripClean(m.getClassName()) + "\n");
             //}
 
