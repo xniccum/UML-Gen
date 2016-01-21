@@ -49,6 +49,6 @@ public class ClassVisitorTest
     public void badClassTest() throws Exception
     {
         reader = new ClassReader("asm.asmVisitor.First");
-        fail("IOException Failed ot be thrown");
+        fail("IOException Failed to be thrown");
     }
 }

@@ -5,7 +5,6 @@ import asm.asmVisitor.StandardVisitors.ClassDeclarationVisitor;
 import asm.asmVisitor.StandardVisitors.ClassFieldVisitor;
 import asm.asmVisitor.StandardVisitors.ClassMethodVisitor;
 import asm.impl2.Klass;
-import org.junit.Before;
 import org.junit.Test;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
