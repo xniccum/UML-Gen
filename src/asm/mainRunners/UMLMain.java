@@ -7,6 +7,9 @@ import asm.asmVisitor.StandardVisitors.ClassDeclarationVisitor;
 import asm.asmVisitor.StandardVisitors.ClassFieldVisitor;
 import asm.asmVisitor.StandardVisitors.ClassMethodVisitor;
 import asm.impl2.Klass;
+//import org.objectweb.asm.ClassReader;
+//import org.objectweb.asm.ClassVisitor;
+//import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
@@ -47,7 +50,7 @@ public class UMLMain {
 
 		String[] classNames;
 		if(args.length < 2) {
-			/*classNames = new String[]{
+			classNames = new String[]{
 					"asm.KlassStorage",
 					"asm.UmlOutputStream",
 					"asm.asmVisitor.ClassDeclarationVisitor",
@@ -76,9 +79,8 @@ public class UMLMain {
 					"asm.visitorApi.IVisitor",
 					"asm.visitorApi.LookupKey",
 					"asm.visitorApi.Visitor",
-					"asm.visitorApi.VisitType"*/
-				classNames = new String[]{
-						"asm.mainRunners.Singleton"
+					"asm.visitorApi.VisitType",
+					"asm.mainRunners.SingletoClassRunner"
 				};
 		}
 		else {
@@ -88,7 +90,7 @@ public class UMLMain {
 			//KlassStorage storage = new KlassStorage();
             Klass klass = new Klass();
 			// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
-			ClassReader reader=new ClassReader(className);
+			ClassReader reader =new ClassReader(className);
 
 			// make class declaration visitor to get superclass and interfaces
 			ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, klass);

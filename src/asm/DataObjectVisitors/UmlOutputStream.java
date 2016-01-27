@@ -8,6 +8,7 @@ import asm.impl.Argument;
 import asm.impl2.DesignParts.SingletonDesign;
 import asm.impl2.StandardDataObjects.Interphace;
 import asm.impl2.KlassDecorator;
+import asm.mainRunners.Singleton;
 import asm.visitorApi.ITraverser;
 import asm.visitorApi.IVisitor;
 import asm.visitorApi.VisitType;
@@ -47,6 +48,8 @@ public class UmlOutputStream extends FilterOutputStream {
         setupPostVisitMethodUsedKlass();
         setupNameVisitDesignType();
         setupPostVisitSingletonClass();
+        setupPreVisitSingletonClass();
+        setupPreVisitKlass();
     }
 
     private void write(String m) {
@@ -123,11 +126,20 @@ public class UmlOutputStream extends FilterOutputStream {
         });
     }
 
+    private void setupPreVisitKlass(){
+        this.visitor.addVisit(VisitType.PreVisit, IKlass.class, (ITraverser t) -> {
+            IKlass k = (IKlass) t;
+            String nameString = KlassDecorator.stripFilePath(k.getName());
+            this.write(String.format("%s [  ", nameString));
+        });
+    }
+
+
     private void setupNameVistKlass() {
         this.visitor.addVisit(VisitType.NameVisit, IKlass.class, (ITraverser t) -> {
             IKlass k = (IKlass) t;
             String nameString = KlassDecorator.stripFilePath(k.getName());
-            this.write(String.format("%s [ \n label = \" { %s", nameString, nameString));
+            this.write(String.format(" \n label = \" { %s", nameString));
         });
     }
 
@@ -246,6 +258,12 @@ public class UmlOutputStream extends FilterOutputStream {
             String str = String.format("\n edge [ \n  style=\"solid\", arrowhead = \"normal\" \n ] \n %s -> %s \n",
                     this.className, this.className);
             this.write(str);
+        });
+    }
+
+    private void setupPreVisitSingletonClass(){
+        this.visitor.addVisit(VisitType.PreVisit, Singleton.class, (ITraverser t) ->{
+            this.write(String.format("\n fillcolor = red, style =\"filled\""));
         });
     }
 

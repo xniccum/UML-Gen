@@ -12,24 +12,33 @@ strict digraph G {
     fontname = "Bitstream Vera Sans"
     fontsize = 8
     ]
-Singleton [ 
- label = " { Singleton\l\<\<singleton\>\>|uniqueInstance uniqueInstance: Singleton \l |+ getInstance ( ): Singleton \l - init ( ): void \l  
+KlassStorage [   
+ label = " { KlassStorage|currentPart currentPart: IKlassPart \l |+ getCurrentPart ( ): IKlassPart \l + init ( arg0 : String, arg1 : int, arg2 : int): void \l + init ( ): void \l + setCurrentPart ( arg0 : IKlassPart): void \l  
  } " 
  ]
  edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Singleton -> Singleton 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Singleton -> Singleton 
-
- edge [ 
   style="solid", arrowhead= "vee" 
  ] 
-Singleton -> Singleton 
+KlassStorage -> KlassStorage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+KlassStorage -> IKlassPart 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+KlassStorage -> int 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+KlassStorage -> Klass 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -40,7 +49,14 @@ Singleton -> Singleton
  ] 
 
  edge [ 
-  style="solid", arrowhead = "normal" 
+  style="dashed", arrowhead= "vee" 
  ] 
- Singleton -> Singleton 
-}
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+KlassStorage -> IKlassPart 

@@ -21,3 +21,7 @@ hs_err_pid*
 /test-system
 /test-config
 *.pyc
+
+# Package Files #
+*.jar
+/lib

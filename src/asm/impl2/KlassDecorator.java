@@ -82,6 +82,8 @@ public abstract class KlassDecorator implements IKlassPart{
     }
 
     public static boolean isDesirableObject(String s){
+        if(s.contains("java."))
+            return false;
         String[] string = {"String", "Object","boolean","","Collection","Collections","List","ArrayList"};
         for(String s1: string){
             if(s1.equals(s))
