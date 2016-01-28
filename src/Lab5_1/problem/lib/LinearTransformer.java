@@ -1,3 +1,5 @@
+package Lab5_1.problem.lib;
+
 import java.io.OutputStream;
 import java.util.Enumeration;
 
