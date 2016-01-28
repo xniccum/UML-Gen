@@ -40,7 +40,7 @@ public class ComponetActionTest {
 
     @Test
     public void testSetAndGetTargetClass() throws Exception {
-        ComponetAction action = new ComponetAction("IField");
+        ComponentAction action = new ComponentAction("IField");
         assertEquals(action.getTargetClass(), "IField");
         action.setTargetClass("IMethod");
         assertEquals(action.getTargetClass(), "IMethod");
@@ -52,7 +52,7 @@ public class ComponetActionTest {
         Collection<IKlassPart> parts = (Collection<IKlassPart>) field.get(method);
         assertEquals(parts.size(), 0);
 
-        IAction action = new ComponetAction(METHODPATH);
+        IAction action = new ComponentAction(METHODPATH);
         action.triggerAction(map);
         assertEquals(parts.size(), 1);
     }
@@ -63,7 +63,7 @@ public class ComponetActionTest {
         Collection<IKlassPart> parts = (Collection<IKlassPart>) field.get(method);
         assertEquals(parts.size(), 0);
 
-        IAction action = new ComponetAction(VISITORPATH);
+        IAction action = new ComponentAction(VISITORPATH);
         action.triggerAction(map);
         assertEquals(parts.size(), 0);
     }

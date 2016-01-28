@@ -1,7 +1,7 @@
 package asm.impl2.Actions;
 
 import asm.StorageApi.IAction;
-import asm.impl2.DesignParts.ComponetDesign;
+import asm.impl2.DesignParts.ComponentDesign;
 import asm.impl2.DesignParts.TargetDesign;
 import asm.impl2.Klass;
 

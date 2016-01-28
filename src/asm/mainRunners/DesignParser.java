@@ -3,6 +3,7 @@ package asm.mainRunners;
 import asm.DataObjectVisitors.UmlOutputStream;
 import asm.FilePaths;
 import asm.StorageApi.IAction;
+import asm.asmVisitor.DesignVisitors.DecoratorClassVisitor;
 import asm.asmVisitor.DesignVisitors.SingletonClassVisitor;
 import asm.asmVisitor.StandardVisitors.ClassDeclarationVisitor;
 import asm.asmVisitor.StandardVisitors.ClassFieldVisitor;
@@ -52,9 +53,10 @@ public class DesignParser {
 
                 // Decorate with
                 ClassVisitor singletonClassVisitor = new SingletonClassVisitor(Opcodes.ASM5, methodVisitor, klass);
+                ClassVisitor decoratorClassVisitor = new DecoratorClassVisitor(Opcodes.ASM5, singletonClassVisitor, klass);
 
                 // Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
-                reader.accept(singletonClassVisitor, ClassReader.EXPAND_FRAMES);
+                reader.accept(decoratorClassVisitor, ClassReader.EXPAND_FRAMES);
 
                 classes.put(klass.getName(), klass);
                 klass.getActions().forEach(a -> actions.add(a));

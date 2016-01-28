@@ -1,7 +1,7 @@
 package asm.impl2.Actions;
 
 import asm.StorageApi.IAction;
-import asm.impl2.DesignParts.ComponetDesign;
+import asm.impl2.DesignParts.ComponentDesign;
 import asm.impl2.Klass;
 
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class ComponentAction implements IAction{
     public void triggerAction(HashMap<String, Klass> map) {
        Klass k =  map.get(targetClass);
         if(k != null)
-            k.addKlassPart(new ComponetDesign());
+            k.addKlassPart(new ComponentDesign());
     }
     @Override
     public String getTargetClass() {
