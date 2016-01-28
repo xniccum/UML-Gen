@@ -11,7 +11,7 @@ A DOT will be generated and output to the file path described in DesignParser.OU
 Enter a terminal:
 ```bash
     cd ../output_path_folder
-    dot -T png -o <DOT file name> <Output Image Name>
+    dot -T png -o <Output Image Name> <DOT file name>
 ```
 
 ####Sequence Diagram

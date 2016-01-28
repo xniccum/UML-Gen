@@ -93,4 +93,25 @@ public class Klass implements IKlass, ITraverser {
             v.postVisit((ITraverser) part);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Klass)) return false;
+
+        Klass klass = (Klass) o;
+
+        if (getVersion() != klass.getVersion()) return false;
+        if (getAccess() != klass.getAccess()) return false;
+        return getName().equals(klass.getName());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getVersion();
+        result = 31 * result + getAccess();
+        return result;
+    }
 }

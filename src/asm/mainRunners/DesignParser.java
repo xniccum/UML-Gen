@@ -12,6 +12,7 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
 
 import java.io.*;
+import java.util.HashMap;
 
 public class DesignParser {
     public static final String OUTPUT_PATH = "inputOutput/output.dot";
@@ -25,8 +26,45 @@ public class DesignParser {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException{
+
+		HashMap<String, Klass> classes = new HashMap<>();
+
+		BufferedReader br = new BufferedReader(new FileReader(INPUT_FILE_PATH));
+
+		for(String className; (className = br.readLine()) != null;){
+			Klass klass = new Klass();
+			// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
+			try {
+				ClassReader reader=new ClassReader(className);
+
+				// make class declaration visitor to get superclass and interfaces
+				ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, klass);
+
+				// DECORATE declaration visitor with field visitor
+				ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, klass);
+
+				// DECORATE field visitor with method visitor
+				ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, klass);
+
+				// Decorate with
+				ClassVisitor singletonClassVisitor = new SingletonClassVisitor(Opcodes.ASM5, methodVisitor, klass);
+
+				// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
+				reader.accept(singletonClassVisitor, ClassReader.EXPAND_FRAMES);
+
+				classes.put(klass.getName(), klass);
+
+			}catch(IOException e){
+				System.out.println("|----------------------------------------------------------| CLASS NOT FOUND!! : "+ className);
+			}
+		}
+        br.close();
+		printToFile(classes);
+	}
+
+	private static void printToFile(HashMap<String, Klass> classes) throws IOException {
 		OutputStream dotOut = new FileOutputStream(OUTPUT_PATH);
-        UmlOutputStream umlOut = new UmlOutputStream(dotOut);
+		UmlOutputStream umlOut = new UmlOutputStream(dotOut);
 
 		String s ="strict digraph G {\n" +
 				"    fontname = \"Bitstream Vera Sans\"\n" +
@@ -42,39 +80,14 @@ public class DesignParser {
 				"    fontname = \"Bitstream Vera Sans\"\n" +
 				"    fontsize = 8\n" +
 				"    ]\n";
-        umlOut.write(s.getBytes());
+		umlOut.write(s.getBytes());
 
-		BufferedReader br = new BufferedReader(new FileReader(INPUT_FILE_PATH));
+		//hm.forEach((k,v) -> System.out.println("key: "+k+" value:"+v));
+			classes.forEach((name,klass) -> {umlOut.setClassName(name); umlOut.write(klass);});
+		//umlOut.setClassName(klass.getName());
+		//umlOut.write(klass);
 
-        for(String className; (className = br.readLine()) != null;){
-            Klass klass = new Klass();
-			// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
-            try {
-			ClassReader reader=new ClassReader(className);
-
-			// make class declaration visitor to get superclass and interfaces
-			ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, klass);
-			
-			// DECORATE declaration visitor with field visitor
-			ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, klass);
-			
-			// DECORATE field visitor with method visitor
-			ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, klass);
-
-			// Decorate with
-			ClassVisitor singletonClassVisitor = new SingletonClassVisitor(Opcodes.ASM5, methodVisitor, klass);
-
-			// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
-		    reader.accept(singletonClassVisitor, ClassReader.EXPAND_FRAMES);
-
-            umlOut.setClassName(klass.getName());
-			umlOut.write(klass);
-            }catch(IOException e){
-                System.out.println("|----------------------------------------------------------| CLASS NOT FOUND!! : "+ className);
-            }
-		}
-        br.close();
-        umlOut.write("}".getBytes());
-        umlOut.close();
+		umlOut.write("}".getBytes());
+		umlOut.close();
 	}
 }

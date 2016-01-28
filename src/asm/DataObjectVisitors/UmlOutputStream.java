@@ -77,11 +77,14 @@ public class UmlOutputStream extends FilterOutputStream {
     private void setupPostVisitSuperKlass() {
         this.visitor.addVisit(VisitType.PostVisit, ISuperKlass.class, (ITraverser t) -> {
                     ISuperKlass sk = (ISuperKlass) t;
-                    String superName = KlassDecorator.stripFilePath(sk.getSuperKlass());
-                    if(!superName.equals("Object")) {
-                        String line = String.format("\n edge [ \n  style=\"solid\", arrowhead = \"normal\" \n ] \n %s -> %s \n",
-                                this.className, superName);
-                        this.write(line);
+                    if (KlassDecorator.isDesirableObject(sk.getSuperKlass())) {
+
+                        String superName = KlassDecorator.stripFilePath(sk.getSuperKlass());
+                        if (!superName.equals("Object")) {
+                            String line = String.format("\n edge [ \n  style=\"solid\", arrowhead = \"normal\" \n ] \n %s -> %s \n",
+                                    this.className, superName);
+                            this.write(line);
+                        }
                     }
                 }
         );
@@ -120,7 +123,8 @@ public class UmlOutputStream extends FilterOutputStream {
             StringBuilder outString = new StringBuilder();
             outString.append(" edge [\n style=\"solid\", arrowhead = \"empty\"\n]\n");
             for (String interphaceName : phace.getInterphase()) {
-                outString.append(String.format("%s -> %s \n", this.className, KlassDecorator.stripFilePath(interphaceName)));
+                if(KlassDecorator.isDesirableObject(interphaceName))
+                    outString.append(String.format("%s -> %s \n", this.className, KlassDecorator.stripFilePath(interphaceName)));
             }
             this.write(outString.toString());
         });
@@ -175,8 +179,8 @@ public class UmlOutputStream extends FilterOutputStream {
                     " edge [ \n" +
                     "  style=\"solid\", arrowhead= \"vee\" \n" +
                     " ] \n");
-            if(fieldSignature == null || fieldSignature.equals("")) {
-                if(className =="")
+            if(fieldSignature == null || fieldSignature.trim().equals("")) {
+                if(className.trim().equals(""))
                     return;
                 fieldSignature = className;
 
@@ -188,9 +192,12 @@ public class UmlOutputStream extends FilterOutputStream {
                 String[] strArry = fieldSignature.split("[;,:]");
 
                 for (String str : strArry) {
-                    String s = KlassDecorator.fullStripClean(str);
-                    if(KlassDecorator.isDesirableObject(s))
-                        strBuild.append(String.format("%s -> %s \n",className,s));
+                    if(KlassDecorator.isDesirableObject(str)) {
+                        if(KlassDecorator.isDesirableObject(str)) {
+                            String s = KlassDecorator.fullStripClean(str);
+                            strBuild.append(String.format("%s -> %s \n", className, s));
+                        }
+                    }
                 }
 
             this.write(strBuild.toString());
@@ -214,9 +221,10 @@ public class UmlOutputStream extends FilterOutputStream {
                     "  style=\"dashed\", arrowhead= \"vee\" \n" +
                     " ] \n");
             for (String str : set) {
-                String s = KlassDecorator.fullStripClean(str);
-                if (KlassDecorator.isDesirableObject(s))
+                if (KlassDecorator.isDesirableObject(str)) {
+                    String s = KlassDecorator.fullStripClean(str);
                     strBuild.append(String.format("%s -> %s \n", className, s));
+                }
             }
             this.write(strBuild.toString());
             for(IMethodPart part : m.getMethodParts()){
@@ -236,7 +244,7 @@ public class UmlOutputStream extends FilterOutputStream {
                     " ] \n");
 
                 String s = KlassDecorator.fullStripClean(m.getClassName());
-                if(KlassDecorator.isDesirableObject(s))
+                if(KlassDecorator.isDesirableObject(m.getClassName()))
                     strBuild.append(String.format("%s -> %s \n",className, s));
 
             this.write(strBuild.toString());

@@ -19,6 +19,11 @@ public abstract class KlassDecorator implements IKlassPart{
         v.postVisit(this);
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
     //region Helper Methods
 
     public static String getAccessStringLevel(String accessLevel){
@@ -82,9 +87,10 @@ public abstract class KlassDecorator implements IKlassPart{
     }
 
     public static boolean isDesirableObject(String s){
-        if(s.contains("java."))
+        if(s.contains("java.") || s.trim().equals(""))
             return false;
-        String[] string = {"String", "Object","boolean","","Collection","Collections","List","ArrayList"};
+        s = KlassDecorator.fullStripClean(s);
+        String[] string = {"","String","int","FilterOutputStream", "Object","StringBuilder", "HashSet", "PrintStream", "LinkedHashSet", "HashMap", "Map","boolean","Arrays", "RuntimeException", "Collection","Collections","List","ArrayList"};
         for(String s1: string){
             if(s1.equals(s))
                 return false;

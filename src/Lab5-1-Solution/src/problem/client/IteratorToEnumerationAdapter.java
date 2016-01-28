@@ -1,6 +1,6 @@
 import java.util.Enumeration;
 import java.util.Iterator;
-
+/**
 public class IteratorToEnumerationAdapter<E> implements Enumeration<E> {
 	private Iterator<E> itr;
 	
@@ -17,4 +17,4 @@ public class IteratorToEnumerationAdapter<E> implements Enumeration<E> {
 	public E nextElement() {
 		return itr.next();
 	}
-}
+}**/
