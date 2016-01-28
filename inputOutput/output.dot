@@ -1,0 +1,42 @@
+strict digraph G {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+
+    node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+    ]
+
+    edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    ]
+DecoratorSameClass [   
+ label = " { DecoratorSameClass\l\<\<singleton\>\>|decoratee decoratee: Klass \l |+ init ( ): void \l  
+ } " 
+ ]
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+DecoratorSameClass -> Klass 
+
+ edge [ 
+  style="solid", arrowhead = "normal" 
+ ] 
+ DecoratorSameClass -> Klass 
+
+ edge [ 
+  style="solid", arrowhead = "normal" 
+ ] 
+ DecoratorSameClass -> DecoratorSameClass 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+DecoratorSameClass -> DecoratorSameClass 
+}

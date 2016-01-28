@@ -25,9 +25,9 @@ SingletonDesign was created extending KlassDecorator and implementing DesignType
 
 ## Milestone 3 Design
 Our application has several design types.
-Our Asm parser uses a decorator pattern to decorate visitor pattern visitors. 
+Our Asm parser uses a lab_2_1 pattern to decorate visitor pattern visitors.
 
-These visitors utilize our internal data storage which is a slight play on decorator allowing for multiple unique objects and individual object ownership.
+These visitors utilize our internal data storage which is a slight play on lab_2_1 allowing for multiple unique objects and individual object ownership.
 This data structure is also traversable.
 
 Finally we one of two lambda style visitors for visit the data structure depending on if we are looking to generate UML diagrams or sequence diagrams.
