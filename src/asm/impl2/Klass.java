@@ -1,5 +1,6 @@
 package asm.impl2;
 
+import asm.StorageApi.IAction;
 import asm.StorageApi.IKlass;
 import asm.StorageApi.IKlassPart;
 import asm.impl2.KlassDecorator;
@@ -20,19 +21,21 @@ public class Klass implements IKlass, ITraverser {
     private int access;
 
     private Collection<IKlassPart> klassParts;
+    private Collection<IAction> actions;
 
     public Klass(){
-        this.name = "";
-        this.version = 1;
-        this.access = -1;
-        this.klassParts = new HashSet<IKlassPart>();
+        this("",1, -1);
+
     }
 
     public Klass(String name, int version, int access) {
         this.name = name;
         this.version = version;
         this.access = access;
+        this.klassParts = new HashSet<IKlassPart>();
+        this.actions = new HashSet<IAction>();
     }
+
     //region IKlass methods
     @Override
     public void setVersion(int version) {
@@ -68,6 +71,12 @@ public class Klass implements IKlass, ITraverser {
     @Override
     public void addKlassPart(IKlassPart part) {
         klassParts.add(part);
+    }
+
+    public void addAction(IAction action){actions.add(action);}
+
+    public Collection<IAction> getActions() {
+        return actions;
     }
 
     @Override
