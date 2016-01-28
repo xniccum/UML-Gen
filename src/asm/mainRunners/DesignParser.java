@@ -20,7 +20,7 @@ import java.util.HashSet;
 
 public class DesignParser {
     public static final String OUTPUT_PATH = "inputOutput/output.dot";
-    public static final String INPUT_FILE_PATH = FilePaths.PROJECTCLASSES;
+    public static final String INPUT_FILE_PATH = FilePaths.LAB2_1_EXAMPLE;
 
     /**
      * Reads in a list of Java Classes and reverse engineers their design.

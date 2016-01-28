@@ -30,6 +30,8 @@ public class ComponentAction implements IAction{
     @Override
     public String getTargetClass() {
         return targetClass;
+
+
     }
 
     @Override

@@ -62,6 +62,14 @@ public abstract class KlassDecorator implements IKlassPart{
         return sArray[sArray.length -1];
     }
 
+    public static String stripTypeClassPath(String s) {
+        if(s.length()>1) {
+            s = s.substring(1, s.length()-1);
+        }
+
+        return s;
+    }
+
     public static String stripClassPath(String s){
         if(s.charAt(s.length()-1)=='/' || s.charAt(s.length()-1)=='.')
             return "";

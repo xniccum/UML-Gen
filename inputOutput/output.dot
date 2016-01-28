@@ -12,1829 +12,14 @@ strict digraph G {
     fontname = "Bitstream Vera Sans"
     fontsize = 8
     ]
-ClassMethodVisitor [   
- label = " { ClassMethodVisitor|klass klass: IKlass \l |+ init ( arg0 : int, arg1 : IKlass): void \l + init ( arg0 : int, arg1 : ClassVisitor, arg2 : IKlass): void \l  getReturnType ( arg0 : String): String \l  addArguments ( arg0 : String): void \l  getArguments ( arg0 : String): Argument[] \l + visitMethod ( arg0 : int, arg1 : String, arg2 : String, arg3 : String, arg4 : String[]): MethodVisitor \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> ClassVisitor 
-ClassMethodVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> MethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> ClassMethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> ClassMethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> MethodInstanceVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> IKlass 
-
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- ClassMethodVisitor -> ClassVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-ClassMethodVisitor -> ClassMethodVisitor 
-IInterphace [   
- label = " { IInterphace||+ getInterphase ( ): String[] \l  
- } " 
- ] edge [
- style="solid", arrowhead = "empty"
-]
-IInterphace -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType [   
- label = " { VisitType|MethodVisit MethodVisit: VisitType \l $VALUES $VALUES: VisitType[] \l PreVisit PreVisit: VisitType \l NameVisit NameVisit: VisitType \l FieldVisit FieldVisit: VisitType \l PostVisit PostVisit: VisitType \l |+ valueOf ( arg0 : String): VisitType \l + values ( ): VisitType[] \l - init ( arg0 : String, arg1 : int): void \l  clinit ( ): void \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> Enum 
-
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- VisitType -> Enum 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> Enum 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-VisitType -> VisitType 
-Argument [   
- label = " { Argument|type type: String \l name name: String \l |+ getName ( ): String \l + getType ( ): String \l + init ( arg0 : String, arg1 : String): void \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-Argument -> Argument 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-Argument -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor [   
- label = " { ClassDeclarationVisitor|klass klass: IKlass \l |+ visit ( arg0 : int, arg1 : int, arg2 : String, arg3 : String, arg4 : String, arg5 : String[]): void \l + init ( arg0 : int, arg1 : IKlass): void \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> ClassDeclarationVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> SuperKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> Interphace 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> ClassVisitor 
-
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- ClassDeclarationVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassDeclarationVisitor -> ClassVisitor 
-SequenceOutputStream [   
- label = " { SequenceOutputStream|visitor visitor: IVisitor \l classNamesOutputed classNamesOutputed: boolean \l usedClassNames usedClassNames: LinkedHashSet \l |- setupNameVisitMethod ( ): void \l - write ( arg0 : String): void \l + init ( arg0 : OutputStream): void \l - lambdasetupMethodVisitMethods2 ( arg0 : ITraverser): void \l - setupPreVisitMethod ( ): void \l + write ( arg0 : IMethod): void \l - lambdasetupPreVisitMethod0 ( arg0 : ITraverser): void \l - lambdasetupNameVisitMethod1 ( arg0 : ITraverser): void \l - setupMethodVisitMethods ( ): void \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> Visitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> SequenceOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceOutputStream -> IVisitor 
-UmlOutputStream [   
- label = " { UmlOutputStream|className className: String \l visitor visitor: IVisitor \l |- setupNameVistKlass ( ): void \l - setupPostVisitKlass ( ): void \l - setupPostVisitField ( ): void \l - lambdasetupMethodVisitKlass7 ( arg0 : ITraverser): void \l - setupNameVisitDesignType ( ): void \l - setupPostVisitInterphase ( ): void \l - lambdasetupPostVisitMethod10 ( arg0 : ITraverser): void \l - setupPreVisitKlass ( ): void \l - lambdasetupPostVisitInterphase3 ( arg0 : ITraverser): void \l - setupPostVisitMethod ( ): void \l + getClassName ( ): String \l - lambdasetupPostVisitSingletonClass13 ( arg0 : ITraverser): void \l + write ( arg0 : IKlassPart): void \l + setClassName ( arg0 : String): void \l - setupPostVisitMethodUsedKlass ( ): void \l - lambdasetupNameVistKlass5 ( arg0 : ITraverser): void \l - setupMethodVisitKlass ( ): void \l - lambdasetupFieldVisitKlass6 ( arg0 : ITraverser): void \l + init ( arg0 : OutputStream): void \l - setupMethodVisitMethod ( ): void \l - setupPostVisitSuperKlass ( ): void \l - lambdasetupPostVisitKlass8 ( arg0 : ITraverser): void \l - lambdasetupPostVisitField9 ( arg0 : ITraverser): void \l - lambdasetupPreVisitKlass4 ( arg0 : ITraverser): void \l - lambdasetupMethodVisitMethod2 ( arg0 : ITraverser): void \l - lambdasetupFieldVisitField1 ( arg0 : ITraverser): void \l - lambdasetupPostVisitMethodUsedKlass11 ( arg0 : ITraverser): void \l - setupFieldVisitField ( ): void \l - setupPreVisitSingletonClass ( ): void \l - lambdasetupPreVisitSingletonClass14 ( arg0 : ITraverser): void \l - setupPostVisitSingletonClass ( ): void \l - lambdasetupNameVisitDesignType12 ( arg0 : ITraverser): void \l - lambdasetupPostVisitSuperKlass0 ( arg0 : ITraverser): void \l - setupFieldVisitKlass ( ): void \l - write ( arg0 : String): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IInterphace 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Visitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IField 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IField 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IField 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IField 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IMethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> DesignType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ISuperKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> ISuperKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> UmlOutputStream 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-UmlOutputStream -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitMethod [   
- label = " { IVisitMethod||+ execute ( arg0 : ITraverser): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitMethod -> ITraverser 
-IVisitor [   
- label = " { IVisitor||+ addVisit ( arg0 : VisitType, arg1 : Class, arg2 : IVisitMethod): void \l + removeVisit ( arg0 : VisitType, arg1 : Class): void \l + nameVisit ( arg0 : ITraverser): void \l + fieldVisit ( arg0 : ITraverser): void \l + preVisit ( arg0 : ITraverser): void \l + methodVisit ( arg0 : ITraverser): void \l + postVisit ( arg0 : ITraverser): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitor -> VisitType 
-IVisitor -> IVisitMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitor -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IVisitor -> ITraverser 
-Visitor [   
- label = " { Visitor|keyToVisitMethodMap keyToVisitMethodMap: Map \l |+ addVisit ( arg0 : VisitType, arg1 : Class, arg2 : IVisitMethod): void \l + postVisit ( arg0 : ITraverser): void \l + nameVisit ( arg0 : ITraverser): void \l + removeVisit ( arg0 : VisitType, arg1 : Class): void \l + init ( ): void \l + fieldVisit ( arg0 : ITraverser): void \l + methodVisit ( arg0 : ITraverser): void \l + preVisit ( arg0 : ITraverser): void \l - doVisit ( arg0 : VisitType, arg1 : ITraverser): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> VisitType 
-Visitor -> IVisitMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> LookupKey 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> Visitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> Visitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> LookupKey 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
- edge [
- style="solid", arrowhead = "empty"
-]
-Visitor -> IVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-Visitor -> LookupKey 
-Visitor -> IVisitMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> Visitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> Visitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> Visitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> ITraverser 
-Visitor -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> LookupKey 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Visitor -> IVisitMethod 
-IAssociation [   
- label = " { IAssociation||+ getClassName ( ): String \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
- edge [
- style="solid", arrowhead = "empty"
-]
-IAssociation -> IKlassPart 
-IField [   
- label = " { IField||+ getFieldType ( ): String \l + getAccessLevel ( ): String \l + getfieldSignature ( ): String \l + getFieldName ( ): String \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
- edge [
- style="solid", arrowhead = "empty"
-]
-IField -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor [   
- label = " { SequenceClassMethodVisitor|method method: Method \l methodName methodName: String \l |+ init ( arg0 : int, arg1 : String): void \l + getMethod ( ): Method \l  getArguments ( arg0 : String): Argument[] \l  getReturnType ( arg0 : String): String \l + visitMethod ( arg0 : int, arg1 : String, arg2 : String, arg3 : String, arg4 : String[]): MethodVisitor \l + init ( arg0 : int, arg1 : ClassVisitor, arg2 : String): void \l + getMethodName ( ): String \l  
+Milk [   
+ label = " { Milk\l\<\<decorator\>\>|beverage beverage: Beverage \l |+ getDescription ( ): String \l + cost ( ): double \l + init ( arg0 : Beverage): void \l  
  } " 
  ]
  edge [ 
   style="solid", arrowhead = "normal" 
  ] 
- SequenceClassMethodVisitor -> ClassVisitor 
+ Milk -> CondimentDecorator 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -1843,258 +28,60 @@ SequenceClassMethodVisitor [
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SequenceClassMethodVisitor -> ClassVisitor 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Milk -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Milk -> double 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Milk -> Beverage 
 
  edge [ 
   style="solid", arrowhead= "vee" 
  ] 
-SequenceClassMethodVisitor -> SequenceClassMethodVisitor 
+Milk -> Milk 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SequenceClassMethodVisitor -> Method 
+Milk -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SequenceClassMethodVisitor -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> Argument 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> MethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> SequenceClassMethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> SequenceClassMethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> MethodInstanceVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> SequenceClassMethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceClassMethodVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodDecorator [   
- label = " { MethodDecorator||+ accept ( arg0 : IVisitor): void \l + init ( ): void \l  
- } " 
- ] edge [
- style="solid", arrowhead = "empty"
-]
-MethodDecorator -> IMethodPart 
-MethodDecorator -> ITraverser 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodDecorator -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodDecorator -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodDecorator -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodDecorator -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodDecorator -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodDecorator -> IVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodInstanceVisitor [   
- label = " { MethodInstanceVisitor|method method: IMethod \l |+ visitMethodInsn ( arg0 : int, arg1 : String, arg2 : String, arg3 : String, arg4 : boolean): void \l + init ( arg0 : int, arg1 : MethodVisitor, arg2 : IMethod): void \l  
+Milk -> CondimentDecorator 
+CondimentDecorator [   
+ label = " { CondimentDecorator||+ getDescription ( ): String \l + init ( ): void \l  
  } " 
  ]
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodInstanceVisitor -> MethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodInstanceVisitor -> MethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodInstanceVisitor -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodInstanceVisitor -> MethodVisitor 
-MethodInstanceVisitor -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodInstanceVisitor -> MethodVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-MethodInstanceVisitor -> MethodInstanceVisitor 
 
  edge [ 
   style="solid", arrowhead = "normal" 
  ] 
- MethodInstanceVisitor -> MethodVisitor 
-IMethod [   
- label = " { IMethod||+ addMethodPart ( arg0 : IMethodPart): void \l + getArguments ( ): Argument[] \l + isTopLevel ( ): boolean \l + getAccessLevel ( ): String \l + getReturnType ( ): String \l + setTopLevel ( arg0 : boolean): void \l + getExceptions ( ): String[] \l + setClassName ( arg0 : String): void \l + getSubMethods ( ): ArrayList \l + getMethodParts ( ): ArrayList \l + getMethodName ( ): String \l + addSubMethod ( arg0 : IMethod): void \l + getClassName ( ): String \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IMethod -> IMethodPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IMethod -> Argument 
+ CondimentDecorator -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -2103,49 +90,9 @@ IMethod -> Argument
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
- edge [
- style="solid", arrowhead = "empty"
-]
-IMethod -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IMethod -> IMethod 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner [   
- label = " { SequenceRunner||- init ( ): void \l + run ( arg0 : String, arg1 : String, arg2 : int): Method \l  
+CondimentDecorator -> Beverage 
+Beverage [   
+ label = " { Beverage\l\<\<component\>\>|description description: String \l |+ getDescription ( ): String \l + cost ( ): double \l + init ( ): void \l  
  } " 
  ]
  edge [ 
@@ -2155,36 +102,7 @@ SequenceRunner [
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> ClassReader 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> SequenceClassMethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> ClassReader 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> SequenceClassMethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Method 
+Beverage -> double 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -2195,634 +113,259 @@ SequenceRunner -> Method
  ] 
 
  edge [ 
-  style="dashed", arrowhead= "vee" 
+  style="solid", arrowhead= "vee" 
  ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> ClassReader 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Iterator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> IMethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> IMethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> SequenceRunner 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> IMethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SequenceRunner -> Method 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor [   
- label = " { SingletonClassVisitor|flagPrivateStaticOwnClass flagPrivateStaticOwnClass: boolean \l flagPrivateConstructorExists flagPrivateConstructorExists: boolean \l designAdded designAdded: boolean \l klass klass: IKlass \l flagMethodReturnTypeofClassType flagMethodReturnTypeofClassType: boolean \l |+ init ( arg0 : int, arg1 : IKlass): void \l + init ( arg0 : int, arg1 : ClassVisitor, arg2 : IKlass): void \l + visit ( arg0 : int, arg1 : int, arg2 : String, arg3 : String, arg4 : String, arg5 : String[]): void \l + visitField ( arg0 : int, arg1 : String, arg2 : String, arg3 : String, arg4 : Object): FieldVisitor \l - UpdateKlass ( ): void \l - conditionsMet ( ): boolean \l + visitMethod ( arg0 : int, arg1 : String, arg2 : String, arg3 : String, arg4 : String[]): MethodVisitor \l  
+Beverage -> Beverage 
+StarbuzzCoffee [   
+ label = " { StarbuzzCoffee||+ main ( arg0 : String[]): void \l + init ( ): void \l  
  } " 
  ]
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SingletonClassVisitor -> IKlass 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SingletonClassVisitor -> ClassVisitor 
+StarbuzzCoffee -> Espresso 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> DarkRoast 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Mocha 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Mocha 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Whip 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> HouseBlend 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Soy 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Mocha 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Whip 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+StarbuzzCoffee -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Soy [   
+ label = " { Soy\l\<\<decorator\>\>|beverage beverage: Beverage \l |+ getDescription ( ): String \l + cost ( ): double \l + init ( arg0 : Beverage): void \l  
+ } " 
+ ]
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+Soy -> Soy 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Soy -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
 
  edge [ 
   style="solid", arrowhead = "normal" 
  ] 
- SingletonClassVisitor -> ClassVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
+ Soy -> CondimentDecorator 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SingletonClassVisitor -> ClassVisitor 
-SingletonClassVisitor -> IKlass 
+Soy -> double 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SingletonClassVisitor -> ClassVisitor 
+Soy -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
+Soy -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SingletonClassVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> FieldVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> ClassVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonDesign 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> MethodVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> KlassDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> ClassVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SingletonClassVisitor -> SingletonClassVisitor 
-ClassFieldVisitor [   
- label = " { ClassFieldVisitor|klass klass: IKlass \l |+ init ( arg0 : int, arg1 : IKlass): void \l + init ( arg0 : int, arg1 : ClassVisitor, arg2 : IKlass): void \l + visitField ( arg0 : int, arg1 : String, arg2 : String, arg3 : String, arg4 : Object): FieldVisitor \l  
+Soy -> CondimentDecorator 
+Espresso [   
+ label = " { Espresso||+ cost ( ): double \l + init ( ): void \l  
  } " 
  ]
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ClassFieldVisitor -> IKlass 
+Espresso -> double 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ClassFieldVisitor -> ClassVisitor 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-ClassFieldVisitor -> ClassVisitor 
-ClassFieldVisitor -> IKlass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassFieldVisitor -> ClassVisitor 
+Espresso -> Beverage 
 
  edge [ 
   style="solid", arrowhead = "normal" 
  ] 
- ClassFieldVisitor -> ClassVisitor 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-ClassFieldVisitor -> ClassFieldVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassFieldVisitor -> FieldVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassFieldVisitor -> ClassVisitor 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassFieldVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassFieldVisitor -> Type 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassFieldVisitor -> Field 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ClassFieldVisitor -> IKlass 
-ITraverser [   
- label = " { ITraverser||+ accept ( arg0 : IVisitor): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-ITraverser -> IVisitor 
-LookupKey [   
- label = " { LookupKey|visitType visitType: VisitType \l clazz clazz: Class \l |+ init ( arg0 : VisitType, arg1 : Class): void \l + hashCode ( ): int \l + equals ( arg0 : Object): boolean \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-LookupKey -> VisitType 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-LookupKey -> VisitType 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-LookupKey -> LookupKey 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-LookupKey -> Class 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-DesignType [   
- label = " { DesignType||+ getDesignName ( ): String \l  
- } " 
- ] edge [
- style="solid", arrowhead = "empty"
-]
-DesignType -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage [   
- label = " { KlassStorage|className className: String \l access access: int \l version version: int \l currentPart currentPart: IKlassPart \l |+ setCurrentPart ( arg0 : IKlassPart): void \l + equals ( arg0 : Object): boolean \l + init ( arg0 : String, arg1 : int, arg2 : int): void \l + getAccess ( ): int \l + getClassName ( ): String \l + getCurrentPart ( ): IKlassPart \l + getVersion ( ): int \l + hashCode ( ): int \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> Klass 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-KlassStorage -> KlassStorage 
-SingletonDesign [   
- label = " { SingletonDesign|designName designName: String \l |+ init ( ): void \l + getDesignName ( ): String \l  
+ Espresso -> Beverage 
+Decaf [   
+ label = " { Decaf||+ init ( ): void \l + cost ( ): double \l  
  } " 
  ]
  edge [ 
   style="solid", arrowhead = "normal" 
  ] 
- SingletonDesign -> KlassDecorator 
- edge [
- style="solid", arrowhead = "empty"
-]
-SingletonDesign -> DesignType 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-SingletonDesign -> SingletonDesign 
+ Decaf -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -2831,31 +374,20 @@ SingletonDesign -> SingletonDesign
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-SingletonDesign -> KlassDecorator 
+Decaf -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IKlass [   
- label = " { IKlass||+ setAccess ( arg0 : int): void \l + addKlassPart ( arg0 : IKlassPart): void \l + setName ( arg0 : String): void \l + getName ( ): String \l + addAction ( arg0 : IAction): void \l + getVersion ( ): int \l + setVersion ( arg0 : int): void \l + getAccess ( ): int \l  
+Decaf -> double 
+DarkRoast [   
+ label = " { DarkRoast||+ cost ( ): double \l + init ( ): void \l  
  } " 
  ]
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IKlass -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
+DarkRoast -> double 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -2864,96 +396,148 @@ IKlass -> IKlassPart
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-IKlass -> IAction 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
- edge [
- style="solid", arrowhead = "empty"
-]
-IKlass -> IKlassPart 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodInternalCall [   
- label = " { MethodInternalCall|desc desc: String \l owner owner: String \l itf itf: boolean \l name name: String \l |+ init ( arg0 : String, arg1 : String, arg2 : String, arg3 : boolean): void \l + isInterface ( ): boolean \l + getClassName ( ): String \l + getCallDescriptor ( ): String \l + getCallName ( ): String \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-MethodInternalCall -> MethodDecorator 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-MethodInternalCall -> MethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-MethodInternalCall -> MethodInternalCall 
+DarkRoast -> Beverage 
 
  edge [ 
   style="solid", arrowhead = "normal" 
  ] 
- MethodInternalCall -> MethodDecorator 
- edge [
- style="solid", arrowhead = "empty"
-]
-MethodInternalCall -> IMethodInternalCall 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-MethodInternalCall -> MethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-MethodInternalCall -> MethodInternalCall 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-IKlassPart [   
- label = " { IKlassPart|| 
+ DarkRoast -> Beverage 
+Mocha [   
+ label = " { Mocha\l\<\<decorator\>\>|beverage beverage: Beverage \l |+ getDescription ( ): String \l + cost ( ): double \l + init ( arg0 : Beverage): void \l  
  } " 
- ] edge [
- style="solid", arrowhead = "empty"
-]
-IKlassPart -> ITraverser 
-ISuperKlass [   
- label = " { ISuperKlass||+ getSuperKlass ( ): String \l  
+ ]
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+Mocha -> Mocha 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Mocha -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="solid", arrowhead = "normal" 
+ ] 
+ Mocha -> CondimentDecorator 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Mocha -> double 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Mocha -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Mocha -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Mocha -> CondimentDecorator 
+Whip [   
+ label = " { Whip\l\<\<decorator\>\>|beverage beverage: Beverage \l |+ init ( arg0 : Beverage): void \l + cost ( ): double \l + getDescription ( ): String \l  
  } " 
  ]
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
- edge [
- style="solid", arrowhead = "empty"
-]
-ISuperKlass -> IKlassPart 
+Whip -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Whip -> CondimentDecorator 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Whip -> double 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Whip -> Beverage 
+
+ edge [ 
+  style="solid", arrowhead = "normal" 
+ ] 
+ Whip -> CondimentDecorator 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+Whip -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="solid", arrowhead= "vee" 
+ ] 
+Whip -> Whip 
+HouseBlend [   
+ label = " { HouseBlend||+ cost ( ): double \l + init ( ): void \l  
+ } " 
+ ]
+ edge [ 
+  style="solid", arrowhead = "normal" 
+ ] 
+ HouseBlend -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+HouseBlend -> double 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+HouseBlend -> Beverage 
 }

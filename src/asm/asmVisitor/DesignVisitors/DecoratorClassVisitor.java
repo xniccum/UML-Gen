@@ -1,19 +1,27 @@
 package asm.asmVisitor.DesignVisitors;
 
 import asm.StorageApi.IKlass;
+import asm.impl2.Actions.ComponentAction;
+import asm.impl2.Actions.TargetAction;
+import asm.impl2.DesignParts.DecoratorDesign;
 import asm.impl2.DesignParts.SingletonDesign;
 import asm.impl2.KlassDecorator;
 import jdk.internal.org.objectweb.asm.Opcodes;
+import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Steven on 1/19/2016.
  */
 public class DecoratorClassVisitor extends ClassVisitor {
     private IKlass klass;
-    private String superClassName;
+    private ArrayList<String> superClassNames;
+    private String decoratedClassName;
     private boolean flagContainsSuperclass = false;
 
     private boolean designAdded = false;
@@ -35,8 +43,8 @@ public class DecoratorClassVisitor extends ClassVisitor {
     private void UpdateKlass(){
         if(conditionsMet()  && !designAdded){
             designAdded = true;
-            klass.addKlassPart(new SingletonDesign());
-
+            klass.addKlassPart(new DecoratorDesign());
+            klass.addAction(new ComponentAction(decoratedClassName));
         }
         else if(!conditionsMet() && designAdded){
             //remove klassPart
@@ -56,7 +64,12 @@ public class DecoratorClassVisitor extends ClassVisitor {
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         super.visit(version, access, name, signature, superName, interfaces);
-        superClassName = KlassDecorator.fullStripClean(superName);
+
+        try {
+            this.superClassNames = visitAndListSuperclasses(superName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -71,17 +84,60 @@ public class DecoratorClassVisitor extends ClassVisitor {
      */
     @Override
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
-        String varType = KlassDecorator.fullStripClean(desc);
+//        String varType = KlassDecorator.fullStripClean(desc);
+        ArrayList<String> typeSuperNames = new ArrayList<>();
+        String cleanVarClass = KlassDecorator.stripTypeClassPath(desc);
+        try {
+            System.out.println("XXX type name: "+cleanVarClass);
+            if(KlassDecorator.isDesirableObject(cleanVarClass)) {
+                typeSuperNames = visitAndListSuperclasses(cleanVarClass);
+            } else {
+                typeSuperNames.add(cleanVarClass);
+            }
 
-        System.out.println("var type: "+varType + ", superclass name: "+superClassName);
-
-        if (superClassName.equals(varType)) {
-            flagContainsSuperclass = true;
-            System.out.println("FLAG SET: flagContainsSuperclass = " + flagContainsSuperclass);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        String strippedSuperName, strippedFieldType;
+        for(String superName : superClassNames) {
+            strippedSuperName = KlassDecorator.fullStripClean(superName);
+
+            for(String typeSuperName : typeSuperNames) {
+                strippedFieldType = KlassDecorator.fullStripClean(typeSuperName);
+
+                System.out.println("COMPARE: "+strippedFieldType + ", "+strippedSuperName);
+
+                if(strippedSuperName.equals(strippedFieldType)) {
+                    flagContainsSuperclass = true;
+                    decoratedClassName = superName;
+                    System.out.println("FLAG SET: flagContainsSuperclass = " + flagContainsSuperclass);
+                    break;
+                }
+
+                if(flagContainsSuperclass) {
+                    break;
+                }
+            }
+        }
+
         // TODO private static field of ClassType
         UpdateKlass();
         return super.visitField(access, name, desc, signature, value);
+    }
+
+    private ArrayList<String> visitAndListSuperclasses(String className) throws IOException {
+        ArrayList<String> classNames = new ArrayList();
+        ClassReader reader = new ClassReader(className);
+        String string = reader.getClassName();
+
+        while(KlassDecorator.isDesirableObject(string)) {
+            System.out.println("VISITSUPERCLASS"+string);
+            classNames.add(string);
+            reader = new ClassReader(string);
+            string = reader.getSuperName();
+        }
+        return classNames;
     }
 
 }
