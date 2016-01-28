@@ -1,0 +1,5 @@
+package lab_2_1_example.decorator.starbuzz;
+
+public abstract class CondimentDecorator extends Beverage {
+	public abstract String getDescription();
+}
