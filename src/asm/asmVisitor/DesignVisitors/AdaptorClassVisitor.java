@@ -24,11 +24,13 @@ public class AdaptorClassVisitor extends ClassVisitor {
     private String privateFieldInstance;
     private String constructorArgumentInstance;
     private boolean designAdded = false;
-    private int fieldCount = 0;
 
     public AdaptorClassVisitor(int i, IKlass klass) {
         super(i);
         this.klass = klass;
+        this.implementsInstance = null;
+        this.privateFieldInstance = null;
+        this.constructorArgumentInstance = null;
     }
 
     public AdaptorClassVisitor(int i, ClassVisitor classVisitor, IKlass klass) {
@@ -37,13 +39,18 @@ public class AdaptorClassVisitor extends ClassVisitor {
     }
 
     private boolean conditionsMet(){
+        if(implementsInstance!=null && privateFieldInstance !=null && constructorArgumentInstance!=null) {
+            //System.out.println(!(implementsInstance.equals(privateFieldInstance)));
+            System.out.println((privateFieldInstance + "+" + constructorArgumentInstance));
+        }
         return (implementsInstance!=null) && (privateFieldInstance!=null) && !(implementsInstance.equals(privateFieldInstance)) &&
-                (fieldCount == 1) && (privateFieldInstance.equals(constructorArgumentInstance));
+                (privateFieldInstance.equals(constructorArgumentInstance));
     }
 
     private void UpdateKlass(){
         if(conditionsMet()  && !designAdded) {
             designAdded = true;
+            System.out.println("Found");
             klass.addKlassPart(new TargetDesign());
             klass.addAction(new TargetAction(implementsInstance));
         }
@@ -65,7 +72,7 @@ public class AdaptorClassVisitor extends ClassVisitor {
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         if(interfaces.length == 1)   {
-            this.implementsInstance = interfaces[0];
+            this.implementsInstance = KlassDecorator.fullStripClean(interfaces[0]);
         }
 
         super.visit(version, access, name, signature, superName, interfaces);
@@ -83,7 +90,6 @@ public class AdaptorClassVisitor extends ClassVisitor {
     @Override
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
         String varType = KlassDecorator.fullStripClean(desc);
-        this.fieldCount++;
 
         if(access == Opcodes.ACC_PRIVATE) {
             privateFieldInstance = varType;
@@ -110,7 +116,7 @@ public class AdaptorClassVisitor extends ClassVisitor {
         if(name.equals("<init>")) {
             Type[] argTypes = Type.getArgumentTypes(desc);
             if(argTypes.length == 1) {
-                constructorArgumentInstance = argTypes[0].getClassName();
+                constructorArgumentInstance = KlassDecorator.stripClassPath(argTypes[0].getClassName());
             }
         }
 

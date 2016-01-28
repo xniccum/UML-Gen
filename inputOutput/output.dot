@@ -12,293 +12,14 @@ strict digraph G {
     fontname = "Bitstream Vera Sans"
     fontsize = 8
     ]
-Milk [   
- label = " { Milk\l\<\<decorator\>\>|beverage beverage: Beverage \l |+ getDescription ( ): String \l + cost ( ): double \l + init ( arg0 : Beverage): void \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- Milk -> CondimentDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Milk -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Milk -> double 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Milk -> Beverage 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-Milk -> Milk 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Milk -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Milk -> CondimentDecorator 
-CondimentDecorator [   
- label = " { CondimentDecorator||+ getDescription ( ): String \l + init ( ): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- CondimentDecorator -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-CondimentDecorator -> Beverage 
-Beverage [   
- label = " { Beverage\l\<\<component\>\>|description description: String \l |+ getDescription ( ): String \l + cost ( ): double \l + init ( ): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Beverage -> double 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="solid", arrowhead= "vee" 
- ] 
-Beverage -> Beverage 
-StarbuzzCoffee [   
- label = " { StarbuzzCoffee||+ main ( arg0 : String[]): void \l + init ( ): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Espresso 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> DarkRoast 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Mocha 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Mocha 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Whip 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> HouseBlend 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Soy 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Mocha 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Whip 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-StarbuzzCoffee -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Soy [   
- label = " { Soy\l\<\<decorator\>\>|beverage beverage: Beverage \l |+ getDescription ( ): String \l + cost ( ): double \l + init ( arg0 : Beverage): void \l  
+LinearTransformer [   
+ label = " { LinearTransformer|enumTion enumTion: Enumeration \l |+ init ( arg0 : Enumeration): void \l + transform ( arg0 : OutputStream): void \l  
  } " 
  ]
  edge [ 
   style="solid", arrowhead= "vee" 
  ] 
-Soy -> Soy 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Soy -> Beverage 
+LinearTransformer -> EnumerationTT 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -313,37 +34,23 @@ Soy -> Beverage
  ] 
 
  edge [ 
-  style="solid", arrowhead = "normal" 
+  style="dashed", arrowhead= "vee" 
  ] 
- Soy -> CondimentDecorator 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Soy -> double 
+LinearTransformer -> OutputStream 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Soy -> Beverage 
+LinearTransformer -> Enumeration 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Soy -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Soy -> CondimentDecorator 
-Espresso [   
- label = " { Espresso||+ cost ( ): double \l + init ( ): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Espresso -> double 
+LinearTransformer -> Enumeration 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -352,20 +59,6 @@ Espresso -> double
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Espresso -> Beverage 
-
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- Espresso -> Beverage 
-Decaf [   
- label = " { Decaf||+ init ( ): void \l + cost ( ): double \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- Decaf -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -374,20 +67,6 @@ Decaf [
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Decaf -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Decaf -> double 
-DarkRoast [   
- label = " { DarkRoast||+ cost ( ): double \l + init ( ): void \l  
- } " 
- ]
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-DarkRoast -> double 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -396,33 +75,56 @@ DarkRoast -> double
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-DarkRoast -> Beverage 
+LinearTransformer -> OutputStream 
 
  edge [ 
-  style="solid", arrowhead = "normal" 
+  style="dashed", arrowhead= "vee" 
  ] 
- DarkRoast -> Beverage 
-Mocha [   
- label = " { Mocha\l\<\<decorator\>\>|beverage beverage: Beverage \l |+ getDescription ( ): String \l + cost ( ): double \l + init ( arg0 : Beverage): void \l  
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+LinearTransformer -> OutputStream 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+LinearTransformer -> OutputStream 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+LinearTransformer -> OutputStream 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+LinearTransformer -> OutputStream 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+LinearTransformer -> OutputStream 
+IteratorToEnumerationAdapter [   
+ label = " { IteratorToEnumerationAdapter\l\<\<target\>\>|itr itr: Iterator \l |+ init ( arg0 : Iterator): void \l + nextElement ( ): Object \l + hasMoreElements ( ): boolean \l  
  } " 
  ]
  edge [ 
   style="solid", arrowhead= "vee" 
  ] 
-Mocha -> Mocha 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Mocha -> Beverage 
+IteratorToEnumerationAdapter -> IteratorTE 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -437,70 +139,29 @@ Mocha -> Beverage
  ] 
 
  edge [ 
-  style="solid", arrowhead = "normal" 
+  style="dashed", arrowhead= "vee" 
  ] 
- Mocha -> CondimentDecorator 
+IteratorToEnumerationAdapter -> Iterator 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Mocha -> double 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Mocha -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Mocha -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Mocha -> CondimentDecorator 
-Whip [   
- label = " { Whip\l\<\<decorator\>\>|beverage beverage: Beverage \l |+ init ( arg0 : Beverage): void \l + cost ( ): double \l + getDescription ( ): String \l  
+IteratorToEnumerationAdapter -> Iterator 
+ edge [
+ style="solid", arrowhead = "empty"
+]
+IteratorToEnumerationAdapter -> Enumeration 
+App [   
+ label = " { App||+ main ( arg0 : String[]): void \l + init ( ): void \l  
  } " 
  ]
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-Whip -> Beverage 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Whip -> CondimentDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Whip -> double 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Whip -> Beverage 
-
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- Whip -> CondimentDecorator 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-
- edge [ 
-  style="dashed", arrowhead= "vee" 
- ] 
-Whip -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -515,22 +176,12 @@ Whip -> Beverage
  ] 
 
  edge [ 
-  style="solid", arrowhead= "vee" 
+  style="dashed", arrowhead= "vee" 
  ] 
-Whip -> Whip 
-HouseBlend [   
- label = " { HouseBlend||+ cost ( ): double \l + init ( ): void \l  
- } " 
- ]
- edge [ 
-  style="solid", arrowhead = "normal" 
- ] 
- HouseBlend -> Beverage 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-HouseBlend -> double 
 
  edge [ 
   style="dashed", arrowhead= "vee" 
@@ -539,5 +190,27 @@ HouseBlend -> double
  edge [ 
   style="dashed", arrowhead= "vee" 
  ] 
-HouseBlend -> Beverage 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+App -> IteratorToEnumerationAdapter 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+App -> LinearTransformer 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+App -> LinearTransformer 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
+
+ edge [ 
+  style="dashed", arrowhead= "vee" 
+ ] 
 }
