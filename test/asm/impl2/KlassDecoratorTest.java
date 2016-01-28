@@ -29,4 +29,9 @@ public class KlassDecoratorTest {
         assertEquals("BILL,MAY",KlassDecorator.stripCollection("Map<BILL,MAY>"));
         assertEquals("String",KlassDecorator.stripCollection("String"));
     }
+
+    @Test
+    public void testAccept() throws Exception {
+
+    }
 }
