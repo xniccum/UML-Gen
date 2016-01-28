@@ -30,6 +30,11 @@ public class TargetAction implements IAction {
     }
 
     @Override
+    public String getTargetClass() {
+        return targetClass;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TargetAction)) return false;
