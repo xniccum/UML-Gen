@@ -11,5 +11,6 @@ public interface IKlass extends IKlassPart {
     void setAccess(int access);
     int getAccess();
     void addKlassPart(IKlassPart part);
+    void addAction(IAction action);
 
 }
