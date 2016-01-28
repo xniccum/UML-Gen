@@ -27,6 +27,10 @@ public class ComponentAction implements IAction{
         if(k != null)
             k.addKlassPart(new ComponetDesign());
     }
+    @Override
+    public String getTargetClass() {
+        return targetClass;
+    }
 
     @Override
     public boolean equals(Object o) {

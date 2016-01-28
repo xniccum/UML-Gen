@@ -96,18 +96,30 @@ Finally he assisted in Debugging attempts and visually tested the outputted diag
 
 
 ###M4:
-For milestone 3, our team made small design changes to milestone 3 code to add design types
+For milestone 4, our team made small design changes to milestone 3 code to add design types
 ####Disclaimer:
 This code was not shown to Chandan on demo day due to complications with the asm files. The features were working, the asm issues have been addressed and little to no modifications has been changed to the M4 specific code. 
 #####Davis, Doolan, and Niccum
 Met and white boarded the design
-#####Doolan
-Doolan created the new classes and interfaces. He also wrote the UMLOutputStream lambda listeners for design and singleton IKlassParts. 
-
 #####Davis 
 Davis coded the SingletonClassVisitor and implemented the logic to detect if the class is a singleton.
+
+#####Doolan
+Doolan created the new classes and interfaces. He also wrote the UMLOutputStream lambda listeners for design and singleton IKlassParts. 
 
 #####Niccum
 Through the milestone Niccum pulled down the changes to the code and implemented automated unit tests. 
 He also manually generated diagrams to use as a baseline for the project code. 
 Finally he assisted in Debugging attempts and visually tested the outputed diagrams. 
+
+
+###M5:
+For milestone 5, our team expanded the design visitor pattern and added an action phase after data object generation but before output
+####Davis, Doolan, and Niccum 
+Met and white boarded the design
+####Davis
+Davis built the visitor to check and denote the Decorator pattern. He then wrote a separate function to generate the parent structure of a class.
+####Doolan
+Doolan refactored code base and main function. Added the action phase and create the action classes. He also took care of the README.md changes.
+####Niccum
+Niccum built the visitor to check and denote the Adapter pattern. He also updated and added legacy tests and updated the UML.

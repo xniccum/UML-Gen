@@ -9,5 +9,6 @@ import java.util.HashMap;
  */
 public interface IAction {
      void setTargetClass(String className);
+     String getTargetClass();
      void triggerAction(HashMap<String, Klass> map);
 }
