@@ -1,6 +1,7 @@
 package asm.mainRunners;
 
 import asm.DataObjectVisitors.UmlOutputStream;
+import asm.FilePaths;
 import asm.asmVisitor.DesignVisitors.SingletonClassVisitor;
 import asm.asmVisitor.StandardVisitors.ClassDeclarationVisitor;
 import asm.asmVisitor.StandardVisitors.ClassFieldVisitor;
@@ -10,11 +11,12 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 public class DesignParser {
+    public static final String OUTPUT_PATH = "inputOutput/output.dot";
+    public static final String INPUT_FILE_PATH =FilePaths.PROJECTCLASSES;
+
 	/**
 	 * Reads in a list of Java Classes and reverse engineers their design.
 	 * 
@@ -23,7 +25,7 @@ public class DesignParser {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException{
-		OutputStream dotOut = new FileOutputStream("inputOutput/output.dot");
+		OutputStream dotOut = new FileOutputStream(OUTPUT_PATH);
         UmlOutputStream umlOut = new UmlOutputStream(dotOut);
 
 		String s ="strict digraph G {\n" +
@@ -41,13 +43,13 @@ public class DesignParser {
 				"    fontsize = 8\n" +
 				"    ]\n";
         umlOut.write(s.getBytes());
-        //OutputStream uml = new PipedOutputStream();
-		//UmlOutputStream umlOut = new UmlOutputStream(uml);
 
-		for(String className: args){
-			//KlassStorage storage = new KlassStorage();
+		BufferedReader br = new BufferedReader(new FileReader(INPUT_FILE_PATH));
+
+        for(String className; (className = br.readLine()) != null;){
             Klass klass = new Klass();
 			// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
+            try {
 			ClassReader reader=new ClassReader(className);
 
 			// make class declaration visitor to get superclass and interfaces
@@ -59,23 +61,19 @@ public class DesignParser {
 			// DECORATE field visitor with method visitor
 			ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, klass);
 
-
 			// Decorate with
 			ClassVisitor singletonClassVisitor = new SingletonClassVisitor(Opcodes.ASM5, methodVisitor, klass);
 
-
-
-
 			// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
-			reader.accept(singletonClassVisitor, ClassReader.EXPAND_FRAMES);
-			//string.append(storage.toString());
-			//dotOut.write(storage.toString().getBytes());
+		    reader.accept(singletonClassVisitor, ClassReader.EXPAND_FRAMES);
+
             umlOut.setClassName(klass.getName());
 			umlOut.write(klass);
-
+            }catch(IOException e){
+                System.out.println("|----------------------------------------------------------| CLASS NOT FOUND!! : "+ className);
+            }
 		}
-		//System.out.println(string.toString());
-       // dotOut.write(umlOut.);
+        br.close();
         umlOut.write("}".getBytes());
         umlOut.close();
 	}
