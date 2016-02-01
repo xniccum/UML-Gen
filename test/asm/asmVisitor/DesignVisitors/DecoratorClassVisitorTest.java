@@ -34,6 +34,7 @@ public class DecoratorClassVisitorTest {
         boolean test = false;
         ClassReader reader = new ClassReader("Lab5_1.problem.client.App");
 
+
         // make class declaration visitor to get superclass and interfaces
         DecoratorClassVisitor visitor = new DecoratorClassVisitor(Opcodes.ASM5, klass);
         reader.accept(visitor, ClassReader.EXPAND_FRAMES);
